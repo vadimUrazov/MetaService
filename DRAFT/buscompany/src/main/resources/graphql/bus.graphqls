@@ -1,0 +1,8 @@
+type GetBusesResponse {
+    busList: [BusDto]
+}
+
+input AddBusDtoRequest {
+    busName: String!
+    placeCount: Int!
+}

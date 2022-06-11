@@ -1,0 +1,24 @@
+type UserDto {
+    surname: String
+    name: String
+    middlename: String
+    login: String
+    password: String
+}
+
+input LoginDto {
+    login: String!
+    password: String!
+}
+
+type LoginDtoResponse {
+    id: ID
+    surname: String
+    name: String
+    middlename: String
+    position: String
+    email: String
+    phone: String
+    type: String
+    jwtToken:String!
+}

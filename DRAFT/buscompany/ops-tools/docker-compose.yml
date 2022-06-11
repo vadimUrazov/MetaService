@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: buscompany/ops-tools/docker/images/app/Dockerfile
+    command: sh -c "mvn package; java -jar ./buscompany/target/buscompany-1.0-SNAPSHOT.jar"
+    volumes:
+      - ../../:/app
+    networks:
+      - buscompany-net
+    ports:
+      - 9090:9090
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:13.1-alpine
+    restart: always
+    volumes:
+      - ../../data/postgres:/var/lib/postgresql/data
+      - ../../data/dump:/db-dump
+    networks:
+      - buscompany-net
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=buscompany
+
+networks:
+  buscompany-net:

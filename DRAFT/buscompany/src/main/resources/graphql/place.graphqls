@@ -1,0 +1,23 @@
+input ChoosePlaceRequest{
+    orderId: ID!
+    lastName: String!
+    firstName: String!
+    passport:Int!
+    place:Int!
+}
+
+type PlaceDto{
+    number: Int
+}
+
+type ChoosePlaceResponse{
+    orderId: ID
+    ticket: String
+    firstName: String
+    lastName: String
+    place:Int
+}
+
+type GetFreePlaceResponse{
+    places:[PlaceDto]
+}

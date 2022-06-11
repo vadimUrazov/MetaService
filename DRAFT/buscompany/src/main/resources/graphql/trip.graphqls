@@ -1,0 +1,95 @@
+type DayTripDto {
+    date: String
+}
+
+type GetCitiesResponse{
+    cities: [TripDto]
+}
+
+input AddTripRequest {
+    fromStation: String!
+    toStation: String!
+    busName: String!
+    start: String!
+    duration: String!
+    price: Int!
+    dates: [String]!
+}
+
+type BusDto {
+    busName: String
+    placeCount: Int
+}
+
+input UpdateTripDtoRequest{
+    fromStation: String!
+    toStation: String!
+    busName: String!
+    start: String!
+    duration: String!
+    price: Int!
+    dates: [String]!
+}
+type AddTripResponse {
+    id: ID
+    fromStation: String
+    toStation: String
+    busDto: BusDto
+    start: String
+    duration: String
+    price: Int
+    dayTrips: [DayTripDto]
+    approved: Boolean
+}
+
+type TripDto{
+    id: ID
+    fromStation: String
+    toStation: String
+    busDto: BusDto
+    start: String
+    duration: String
+    price: Int
+    dayTrips: [DayTripDto]
+    approved: Boolean
+}
+
+type GetTripResponse{
+    id: ID
+    fromStation: String
+    toStation: String
+    busDto: BusDto
+    start: String
+    duration: String
+    price: Int
+    dayTrips: [DayTripDto]
+    approved: Boolean
+}
+
+type GetTripsResponse {
+    trips: [TripDto]
+}
+
+type ApprovedTripResponse {
+    id: ID
+    fromStation: String
+    toStation: String
+    busDto: BusDto
+    start: String
+    duration: String
+    price: Int
+    dayTrips: [DayTripDto]
+    approved: Boolean
+}
+
+type UpdateTripDtoResponse {
+    id: ID
+    fromStation: String
+    toStation: String
+    busDto: BusDto
+    start: String
+    duration: String
+    price: Int
+    dayTrips: [DayTripDto]
+    approved: Boolean
+}
