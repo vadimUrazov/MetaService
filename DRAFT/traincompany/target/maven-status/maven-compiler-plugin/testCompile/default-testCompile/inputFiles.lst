@@ -1,0 +1,17 @@
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestPlaceOperations.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/dao/TestUserDao.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/dao/TestAccountDao.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestTrip.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/AbstractTest.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestOrderOperations.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/AbstractControllerTest.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestUserValidator.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/dao/TestAdminDao.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestAccountController.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/config/RestClientConfig.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestRoles.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestGetSettings.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/config/TestJdbcConfig.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/dao/TestGetDayTrips.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/controllers/TestTripOperations.java
+/home/vadim/Projects/DRAFT/traincompany/src/test/java/net/thumbtack/traincompany/AbstractDaoTest.java
