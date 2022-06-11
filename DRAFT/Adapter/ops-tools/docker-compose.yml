@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: Adapter/ops-tools/docker/images/app/Dockerfile
+    command: sh -c "mvn package; java -jar ./Adapter/target/Adapter-1.0-SNAPSHOT.jar"
+    volumes:
+      - ../../:/app
+    networks:
+      - adapter-net
+    ports:
+      - 8070:8070
+networks:
+  adapter-net:

@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: metasearchservice/ops-tools/docker/images/app/Dockerfile
+    command: sh -c "mvn package; java -jar ./metasearchservice/target/metasearchservice-1.0-SNAPSHOT.jar"
+    volumes:
+      - ../../:/app
+    networks:
+      - search-net
+    ports:
+      - 9080:9080
+networks:
+  search-net:

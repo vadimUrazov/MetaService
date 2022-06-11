@@ -1,0 +1,18 @@
+input AddTrainDtoRequest{
+    trainName: String!,
+    placeCount: Int!,
+    cars: Int!
+}
+
+type GetTrainsResponse {
+    trainList: [TrainDto]
+}
+
+
+
+
+
+
+
+
+

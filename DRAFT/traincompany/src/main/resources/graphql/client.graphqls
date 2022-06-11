@@ -1,0 +1,54 @@
+input RegisterClientRequest{
+    surname: String!
+    name: String!
+    middlename: String
+    login: String!
+    password: String!
+    email: String!
+    phone: String!
+}
+
+type RegisterClientDtoResponse{
+    id: ID
+    surname: String
+    name: String
+    middlename: String
+    email: String
+    phone: String
+    userType: String
+}
+
+input UpdateClientDtoRequest {
+    surname: String!
+    name: String!
+    middlename: String
+    oldPassword: String!
+    newPassword: String!
+    email: String!
+    phone: String!
+}
+
+type UpdateClientDtoResponse {
+    surname: String
+    name: String
+    middlename: String
+    email: String
+    phone: String
+    userType: String
+}
+
+type ClientDtoResponse {
+    id: ID
+    surname: String
+    name: String
+    middlename: String
+    login: String
+    password: String
+    email: String
+    phone: String
+    userType: String
+}
+
+type GetClientsResponse {
+    clients: [ClientDtoResponse]
+}
