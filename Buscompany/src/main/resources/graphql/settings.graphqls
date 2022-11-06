@@ -1,0 +1,8 @@
+type ConfigDtoResponse {
+    maxNameLength: Int!
+    minPasswordLength: Int!
+    port: Int!
+    userIdleTimeout: Int!
+}
+
+

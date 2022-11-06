@@ -1,0 +1,36 @@
+input RegisterAdminDtoRequest {
+    surname: String!
+    name: String!
+    middlename: String
+    login: String!
+    password: String!
+    position: String!
+}
+
+input UpdateAdminDtoRequest {
+    surname: String!
+    name: String!
+    middlename: String
+    oldPassword: String!
+    newPassword: String!
+    position: String!
+}
+type UpdateAdminDtoResponse {
+    surname: String!
+    name: String!
+    middlename: String
+    position: String!
+    userType: String!
+}
+
+type RegisterAdminDtoResponse {
+    id: ID!
+    surname: String
+    name: String
+    middlename: String
+    position: String
+    userType: String,
+    token: String
+}
+
+
