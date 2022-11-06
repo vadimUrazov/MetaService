@@ -1,3 +1,0 @@
-type Query{
-    getTripsAdapter(fromStation: String,toStation:String): GetTripsDto
-}

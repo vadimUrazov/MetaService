@@ -1,0 +1,8 @@
+type GetShipsResponse {
+    shipList: [ShipDto]
+}
+
+input AddShipDtoRequest {
+    shipName: String!
+    placeCount: Int!
+}

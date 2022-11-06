@@ -1,0 +1,58 @@
+type TripBus{
+    id: ID
+    fromStation: String
+    toStation: String
+    busDto: BusDto
+    price: Int
+    start: String
+    duration: String
+    dayTrips:[DayTripDto]
+}
+
+type TripShip{
+    id: ID
+    fromStation: String
+    toStation: String
+    shipDto: ShipDto
+    price: Int
+    start: String
+    duration: String
+    dayTrips:[DayTripDto]
+}
+
+type TripTrain{
+    id: ID
+    fromStation: String
+    toStation: String
+    trainDto: TrainDto
+    price: Int
+    start: String
+    duration: String
+    dayTrips:[DayTripDto]
+}
+
+type BusDto{
+    busName: String
+}
+
+type TrainDto{
+    trainName: String
+}
+
+type ShipDto{
+    shipName: String
+}
+
+type GetCitiesBusDto{
+    cities:[TripBus]
+}
+type GetCitiesShipDto{
+    cities:[TripShip]
+}
+
+type GetCitiesTrainDto{
+    cities:[TripTrain]
+}
+type DayTripDto{
+    date: String
+}

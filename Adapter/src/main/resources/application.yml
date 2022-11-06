@@ -1,0 +1,19 @@
+server:
+  port: '8070'
+spring:
+  profiles:
+    active: local
+  main:
+    banner-mode: console
+  graphql:
+    schema:
+      printer:
+        enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health,metrics,info'
+delivery:
+  type: getBus
+
