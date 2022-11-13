@@ -29,7 +29,7 @@ public class ServiceController {
 
     @QueryMapping
     @Path
-    public GetPathDtoResponse getPaths(@Valid  @Argument GetPathsDtoRequest request) throws Exception {
+    public GetPathDtoResponse getPaths(@Valid @Argument GetPathsDtoRequest request) throws Exception {
         return transportService.getPath(request);
     }
 

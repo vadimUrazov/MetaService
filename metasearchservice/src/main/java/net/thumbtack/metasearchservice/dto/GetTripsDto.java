@@ -18,6 +18,10 @@ public class GetTripsDto {
     private List<TripDto> fromTrains = new ArrayList<>();
     private List<TripDto> toTrains = new ArrayList<>();
 
+    private List<TripDto> fromShips = new ArrayList<>();
+
+    private List<TripDto> toShips = new ArrayList<>();
+
     public List<TripDto> getFromBuses() {
         return fromBuses;
     }
@@ -50,13 +54,32 @@ public class GetTripsDto {
         this.toTrains = toTrains;
     }
 
+    public List<TripDto> getFromShips() {
+        return fromShips;
+    }
+
+    public void setFromShips(List<TripDto> fromShips) {
+        this.fromShips = fromShips;
+    }
+
+    public List<TripDto> getToShips() {
+        return toShips;
+    }
+
+    public void setToShips(List<TripDto> toShips) {
+        this.toShips = toShips;
+    }
+
     @JsonCreator
     public GetTripsDto(@JsonProperty("fromBuses") List<TripDto> fromBuses, @JsonProperty("toBuses") List<TripDto> toBuses,
-                       @JsonProperty("fromTrains") List<TripDto> fromTrains, @JsonProperty("toTrains") List<TripDto> toTrains) {
+                       @JsonProperty("fromTrains") List<TripDto> fromTrains, @JsonProperty("toTrains") List<TripDto> toTrains,
+                       @JsonProperty("fromShips") List<TripDto> fromShips, @JsonProperty("toShips") List<TripDto> toShips) {
         this.fromBuses = fromBuses;
         this.toBuses = toBuses;
         this.fromTrains = fromTrains;
         this.toTrains = toTrains;
+        this.fromShips = fromShips;
+        this.toShips = toShips;
 
     }
 }

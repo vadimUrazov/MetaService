@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.util.*;
 
 @Component
-public class Algorithm{
+public class Algorithm {
 
     public List<List<Trip>> getPath(List<Trip> fr, List<Trip> toSt, String from, String to, String criteria) {
         List<Node> r = new ArrayList<>();
@@ -303,7 +303,7 @@ public class Algorithm{
 
     }
 
-    public List<List<Trip>> calculateOptionalAll(List<List<Trip>> paths, String criteria,String from) {
+    public List<List<Trip>> calculateOptionalAll(List<List<Trip>> paths, String criteria, String from) {
         List<List<Trip>> result = new ArrayList<>();
 
         for (int i = 0; i < paths.size(); i++) {
@@ -317,7 +317,6 @@ public class Algorithm{
         }
 
 
-
         Set<List<Trip>> set = new HashSet<>();
 
         set.addAll(paths);
@@ -329,8 +328,8 @@ public class Algorithm{
             result = getOptionalPathPrice(buf);
 
         } else if (criteria.equals("TIME")) {
-            for(List<Trip> l: buf){
-                if(!l.get(0).getFromStation().equals(from)){
+            for (List<Trip> l : buf) {
+                if (!l.get(0).getFromStation().equals(from)) {
                     Collections.reverse(l);
                 }
             }

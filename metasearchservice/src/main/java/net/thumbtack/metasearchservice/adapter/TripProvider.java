@@ -72,6 +72,26 @@ public class TripProvider {
                 "duration " +
                 "dayTrips " +
                 "}" +
+                "fromShips{" +
+                "id " +
+                "fromStation " +
+                "toStation " +
+                "transport " +
+                "price " +
+                "start " +
+                "duration " +
+                "dayTrips " +
+                "}" +
+                "toShips{" +
+                "id " +
+                "fromStation " +
+                "toStation " +
+                "transport " +
+                "price " +
+                "start " +
+                "duration " +
+                "dayTrips " +
+                "}" +
                 "}" +
                 "}";
     }

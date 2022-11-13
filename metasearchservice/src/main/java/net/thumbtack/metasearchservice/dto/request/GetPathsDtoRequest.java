@@ -3,7 +3,6 @@ package net.thumbtack.metasearchservice.dto.request;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.thumbtack.metasearchservice.validate.Path;
 
 import javax.validation.constraints.NotEmpty;
 

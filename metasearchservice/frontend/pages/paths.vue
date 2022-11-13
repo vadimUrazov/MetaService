@@ -146,6 +146,9 @@ export default {
       } else if (transport == 'TRAIN') {
         alert("TRAIN")
         location.href = 'http://192.168.0.109:3004/'
+      }else if(transport == 'SHIP'){
+        alert("SHIP")
+        location.href = 'http://192.168.0.109:3005/'
       }
     },
     async getPath() {

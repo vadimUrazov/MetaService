@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,7 +34,8 @@ public class TestGetPaths {
                 List.of(new TripDto(1, "Omsk", "Moskow", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
 
                 List.of(new TripDto(2, "Moskow", "Anapa", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01")),
-                        new TripDto(1, "Omsk", "Moskow", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))));
+                        new TripDto(1, "Omsk", "Moskow", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
+                new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Taraz"))).thenReturn(getTripsDto);
         var res = service.getPath(new GetPathsDtoRequest("Omsk", "Taraz", "PRICE"));
         assertTrue(res.getPaths().isEmpty());
@@ -54,7 +56,8 @@ public class TestGetPaths {
                         new TripDto(2, "Samara", "Abc", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
 
                 List.of(new TripDto(2, "Samara", "Abc", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01")),
-                        new TripDto(1, "Omsk", "Samara", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))));
+                        new TripDto(1, "Omsk", "Samara", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
+                new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Abc"))).thenReturn(getTripsDto);
         var res = service.getPath(new GetPathsDtoRequest("Omsk", "Abc", "TIME"));
         var path = res.getPaths().get(0);
@@ -82,7 +85,8 @@ public class TestGetPaths {
                         new TripDto(2, "Omsk", "Lipew", "TRAIN", 1500, "00:00", "05:00", List.of("2012-01-01")),
                         new TripDto(3, "Moskow", "Anapa", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
 
-                List.of(new TripDto(1, "Omsk", "Anapa", "TRAIN", 3500, "00:00", "05:00", List.of("2012-01-01"))));
+                List.of(new TripDto(1, "Omsk", "Anapa", "TRAIN", 3500, "00:00", "05:00", List.of("2012-01-01"))),
+                new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Anapa"))).thenReturn(getTripsDto);
 
         var res = service.getPath(new GetPathsDtoRequest("Omsk", "Anapa", "PRICE"));
@@ -111,7 +115,8 @@ public class TestGetPaths {
                         new TripDto(2, "Samara", "Moskow", "TRAIN", 500, "00:00", "15:00", List.of("2012-01-01"))),
 
                 List.of(new TripDto(1, "Omsk", "Samara", "TRAIN", 500, "00:00", "15:00", List.of("2012-01-01")),
-                        new TripDto(2, "Samara", "Moskow", "TRAIN", 500, "00:00", "15:00", List.of("2012-01-01"))));
+                        new TripDto(2, "Samara", "Moskow", "TRAIN", 500, "00:00", "15:00", List.of("2012-01-01"))),
+                new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Moskow"))).thenReturn(getTripsDto);
 
         var res = service.getPath(new GetPathsDtoRequest("Omsk", "Moskow", "TIME"));
@@ -145,7 +150,8 @@ public class TestGetPaths {
                         new TripDto(2, "Surgut", "Moskow", "TRAIN", 3500, "00:00", "15:00", List.of("2012-01-01")),
                         new TripDto(3, "Moskow", "Joi", "TRAIN", 100, "00:00", "15:00", List.of("2012-01-01")),
                         new TripDto(4, "Joi", "Samara", "TRAIN", 10, "00:00", "15:00", List.of("2012-01-01")),
-                        new TripDto(5, "Samara", "Abc", "TRAIN", 50, "00:00", "15:00", List.of("2012-01-01")))
+                        new TripDto(5, "Samara", "Abc", "TRAIN", 50, "00:00", "15:00", List.of("2012-01-01"))),
+                new ArrayList<>(), new ArrayList<>()
 
         );
 

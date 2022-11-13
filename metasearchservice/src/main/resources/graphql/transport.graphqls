@@ -24,6 +24,7 @@ type GetTripsDto{
     toBuses:[TripDto]
     fromTrains:[TripDto]
     toTrains:[TripDto]
-
+    fromShips:[TripDto]
+    toShips:[TripDto]
 
 }

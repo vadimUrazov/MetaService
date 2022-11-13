@@ -5,10 +5,11 @@ import lombok.Getter;
 @Getter
 public enum Transport {
     BUS("BUS"),
-    TRAIN("TRAIN");
+    TRAIN("TRAIN"),
+    SHIP("SHIP");
     private final String type;
 
-    Transport(String train) {
-        this.type = train;
+    Transport(String type) {
+        this.type = type;
     }
 }
