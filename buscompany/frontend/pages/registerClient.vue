@@ -121,7 +121,7 @@ export default {
     ],
 
   }),
-  methods:{
+  methods: {
     async registerCl() {
       var response = await $fetch('http://127.0.0.1:9090/graphql',
           {
@@ -130,13 +130,13 @@ export default {
               "query": "mutation{  " +
                   "registerAdmin(\n" +
                   "    request: {" +
-                  "surname: "+this.firstname + "\",\n" +
-                  "name: "+this.lastname + "\",\n" +
-                  " middlename: "+this.middlename + "\",\n" +
-                  "login: "+this.login + "\",\n" +
-                  "      password: "+this.password + "\",\n" +
-                  "    email:"+this.email + "\",\n" +
-                  "  phone:"+this.phone +
+                  "surname: " + this.firstname + "\",\n" +
+                  "name: " + this.lastname + "\",\n" +
+                  " middlename: " + this.middlename + "\",\n" +
+                  "login: " + this.login + "\",\n" +
+                  "      password: " + this.password + "\",\n" +
+                  "    email:" + this.email + "\",\n" +
+                  "  phone:" + this.phone +
                   "}\n" +
                   "  ) {\n" +
                   "    id\n" +
@@ -145,8 +145,8 @@ export default {
                   "  }"
             },
           })
-      alert("Client id"+response.data.registerClient.id)
-      if(response.data.registerClient.id>0){
+      alert("Client id" + response.data.registerClient.id)
+      if (response.data.registerClient.id > 0) {
         this.$router.push('/login');
       }
     }

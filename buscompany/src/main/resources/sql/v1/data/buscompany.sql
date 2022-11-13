@@ -86,7 +86,15 @@ CREATE TABLE buscompany.public.passenger
     id_order   int          NOT NULL,
     CONSTRAINT orderFk FOREIGN KEY (id_order) REFERENCES "order" (id) ON DELETE CASCADE
 );
-
+CREATE TABLE buscompany.public.cargo
+(
+    id         SERIAL primary key,
+    cargo_type varchar(100) NOT NULL,
+    id_client  int          NOT NULL,
+    id_order   int          NOT NULL,
+    CONSTRAINT clnFk FOREIGN KEY (id_client) REFERENCES client (id) ON DELETE CASCADE,
+    CONSTRAINT ordFk FOREIGN KEY (id_order) REFERENCES "order" (id) ON DELETE CASCADE
+);
 
 CREATE TABLE buscompany.public.place
 (

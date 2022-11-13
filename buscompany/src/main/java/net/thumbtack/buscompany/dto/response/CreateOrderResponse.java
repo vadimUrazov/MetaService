@@ -22,5 +22,6 @@ public class CreateOrderResponse {
     private BigDecimal price;
     private BigDecimal totalPrice;
     private List<PassengerDtoResponse> passengers;
+    private List<CargoDtoResponse> cargoDtos;
 
 }

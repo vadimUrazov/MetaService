@@ -11,7 +11,8 @@ public class BaseDaoImpl {
     @Autowired
     protected TripRepository tripRepository;
 
-
+    @Autowired
+    protected CargoRepository cargoRepository;
     @Autowired
     protected ClientRepository clientRepository;
 

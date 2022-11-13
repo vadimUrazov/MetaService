@@ -84,8 +84,8 @@ export default {
           })
       console.log(response.data.login.jwtToken)
       localStorage.setItem('Authorization', "Bearer " + response.data.login.jwtToken)
-   //   const router = useRouter();
-    //  await router.push('/bus')
+      //   const router = useRouter();
+      //  await router.push('/bus')
     }
   },
 

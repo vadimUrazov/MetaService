@@ -29,6 +29,7 @@ public class DebugDaoImpl extends BaseDaoImpl implements DebugDao {
         entityManager.createNativeQuery("DELETE FROM client").executeUpdate();
         entityManager.createNativeQuery("DELETE FROM \"user\"").executeUpdate();
         entityManager.createNativeQuery("DELETE FROM place").executeUpdate();
+        entityManager.createNativeQuery("DELETE FROM cargo").executeUpdate();
         entityManager.createNativeQuery("DELETE FROM passenger").executeUpdate();
         entityManager.createNativeQuery("DELETE FROM day_trip").executeUpdate();
         entityManager.createNativeQuery("DELETE FROM trip").executeUpdate();

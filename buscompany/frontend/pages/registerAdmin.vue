@@ -110,7 +110,7 @@ export default {
       v => v.length <= 50 || 'Position must be less than 50 characters',
     ],
   }),
-  methods:{
+  methods: {
     async registerAdm() {
       var response = await $fetch('http://127.0.0.1:9090/graphql',
           {
@@ -119,12 +119,12 @@ export default {
               "query": "mutation{  " +
                   "registerAdmin(\n" +
                   "    request: {" +
-                  " surname: "+this.firstname + "\",\n" +
-                      "name: "+this.lastname + "\",\n" +
-                  " middlename: "+this.middlename + "\",\n" +
-                  " login: "+this.login + "\",\n" +
-                  "      password: "+this.password + "\",\n" +
-                  " position:"+this.position +
+                  " surname: " + this.firstname + "\",\n" +
+                  "name: " + this.lastname + "\",\n" +
+                  " middlename: " + this.middlename + "\",\n" +
+                  " login: " + this.login + "\",\n" +
+                  "      password: " + this.password + "\",\n" +
+                  " position:" + this.position +
                   "}\n" +
                   "  ) {\n" +
                   "    id\n" +
@@ -133,11 +133,11 @@ export default {
                   "  }"
             },
           })
-      if(response.data.registerAdmin.id>0){
+      if (response.data.registerAdmin.id > 0) {
         this.$router.push('/login');
       }
+    }
   }
-}
 }
 </script>
 
