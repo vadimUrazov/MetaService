@@ -11,13 +11,11 @@ import net.thumbtack.traincompany.service.OrderService;
 import net.thumbtack.traincompany.service.TripService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -131,7 +129,7 @@ public class TestOrderOperations extends AbstractControllerTest {
         var tripId = getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(0, tripId, "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(0, tripId, "2022-01-02", "Moskow", "2022-01-02", list);
 
         assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
