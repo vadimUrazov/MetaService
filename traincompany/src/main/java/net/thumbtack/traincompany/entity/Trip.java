@@ -12,7 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "trip",schema = "public")
+@Table(name = "trip", schema = "public")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Trip {

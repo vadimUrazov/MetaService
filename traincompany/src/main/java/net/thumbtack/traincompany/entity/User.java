@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"user\"",schema = "public")
+@Table(name = "\"user\"", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id

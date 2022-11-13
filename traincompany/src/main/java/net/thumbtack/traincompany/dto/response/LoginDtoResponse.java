@@ -25,7 +25,7 @@ public class LoginDtoResponse {
         this.name = name;
         this.middlename = middlename;
         this.position = position;
-        this.userType=userType;
+        this.userType = userType;
         this.jwtToken = jwtToken;
     }
 
@@ -36,7 +36,7 @@ public class LoginDtoResponse {
         this.middlename = middlename;
         this.email = email;
         this.phone = phone;
-        this.userType= userType;
+        this.userType = userType;
         this.jwtToken = jwtToken;
     }
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "admin",schema = "public")
+@Table(name = "admin", schema = "public")
 @PrimaryKeyJoinColumn(name = "id_user")
 public class Admin extends User {
     @Column(name = "position")

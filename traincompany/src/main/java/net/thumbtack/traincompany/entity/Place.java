@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "place",schema = "public")
+@Table(name = "place", schema = "public")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Place {
@@ -36,6 +36,6 @@ public class Place {
     }
 
     public Place(int number, int car, long idDayTrip, Passenger passenger) {
-      this(0,number,car,idDayTrip,passenger);
+        this(0, number, car, idDayTrip, passenger);
     }
 }

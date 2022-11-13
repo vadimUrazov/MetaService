@@ -2,7 +2,6 @@ package net.thumbtack.traincompany.dao.impl;
 
 import lombok.NoArgsConstructor;
 import net.thumbtack.traincompany.dao.AccountDao;
-import net.thumbtack.traincompany.entity.User;
 import net.thumbtack.traincompany.entity.UserType;
 import net.thumbtack.traincompany.exception.ErrorCode;
 import net.thumbtack.traincompany.exception.ServiceException;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Map;
 
 @Repository("SQLAccountDao")
 @NoArgsConstructor

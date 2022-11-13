@@ -52,7 +52,7 @@ public class TripMapper {
             st.addAll(List.of(dur));
             TripDto tripDto = new TripDto(trip.getId(), trip.getFromStation(), st,
                     trip.getToStation(), new TrainDto(trip.getTrain().getTrainName(),
-                    trip.getTrain().getPlaceCount(),trip.getTrain().getCar()), trip.getPrice(), trip.getStart().toString(), trip.getDuration().toString(),
+                    trip.getTrain().getPlaceCount(), trip.getTrain().getCar()), trip.getPrice(), trip.getStart().toString(), trip.getDuration().toString(),
                     list);
 
             tripDtos.add(tripDto);
@@ -75,7 +75,7 @@ public class TripMapper {
 
             TripDto tripDto = new TripDto(trip.getId(), trip.getFromStation(), st,
                     trip.getToStation(), new TrainDto(trip.getTrain().getTrainName(),
-                    trip.getTrain().getPlaceCount(),trip.getTrain().getCar()), trip.getPrice(), trip.getStart().toString(), trip.getDuration().toString(),
+                    trip.getTrain().getPlaceCount(), trip.getTrain().getCar()), trip.getPrice(), trip.getStart().toString(), trip.getDuration().toString(),
                     list, trip.isApproved());
 
             tripDtos.add(tripDto);

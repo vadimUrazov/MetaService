@@ -4,7 +4,6 @@ import lombok.SneakyThrows;
 import net.thumbtack.traincompany.exception.ErrorCode;
 import net.thumbtack.traincompany.exception.ServiceException;
 
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

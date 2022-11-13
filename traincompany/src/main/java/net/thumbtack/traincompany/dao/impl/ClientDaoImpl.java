@@ -2,9 +2,7 @@ package net.thumbtack.traincompany.dao.impl;
 
 import lombok.NoArgsConstructor;
 import net.thumbtack.traincompany.dao.ClientDao;
-import net.thumbtack.traincompany.entity.Order;
-import net.thumbtack.traincompany.entity.Passenger;
-import net.thumbtack.traincompany.entity.Place;
+import net.thumbtack.traincompany.entity.*;
 import net.thumbtack.traincompany.exception.ErrorCode;
 import net.thumbtack.traincompany.exception.ServiceException;
 import org.slf4j.Logger;
@@ -42,24 +40,35 @@ public class ClientDaoImpl extends BaseDaoImpl implements ClientDao {
 
     @Override
     @Transactional
-    public Order createOrder(Order order) throws ServiceException {
+    public Order createOrder(Order order, OrderType orderType) throws ServiceException {
         LOGGER.debug("DAO create order{ }");
 
         List<Passenger> pass = new ArrayList<>();
+        List<Cargo> carg = new ArrayList<>();
         pass.addAll(order.getPassengers());
+        carg.addAll(order.getCargos());
         order.getPassengers().clear();
-        if (orderRepository.updateDayTrip(order.getPassengers().size()) == 0) {
-            throw new ServiceException(ErrorCode.INCORRECT_ORDER);
-        }
+        order.getCargos().clear();
+
         orderRepository.save(order);
 
         var id = order.getId();
-        for (Passenger passenger : pass) {
-            passenger.setIdOrder(id);
-            passengerRepository.save(passenger);
-            order.getPassengers().add(passenger);
+        if (orderType.equals(OrderType.CARGO)) {
+            for (Cargo cargo : carg) {
+                cargo.setIdOrder(id);
+                cargoRepository.save(cargo);
+                order.getCargos().add(cargo);
+            }
+        } else {
+            if (orderRepository.updateDayTrip(order.getPassengers().size()) == 0) {
+                throw new ServiceException(ErrorCode.INCORRECT_ORDER);
+            }
+            for (Passenger passenger : pass) {
+                passenger.setIdOrder(id);
+                passengerRepository.save(passenger);
+                order.getPassengers().add(passenger);
+            }
         }
-
 
         return order;
     }

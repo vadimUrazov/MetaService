@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "client",schema = "public")
+@Table(name = "client", schema = "public")
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "id_user")
 public class Client extends User {
@@ -21,6 +21,9 @@ public class Client extends User {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_client")
     private List<Order> orders = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_client")
+    private List<Cargo> cargos = new ArrayList<>();
 
     public Client(long id, String surname, String name, String middlename, String login, String password, String email,
                   String phone, List<Order> orders) {

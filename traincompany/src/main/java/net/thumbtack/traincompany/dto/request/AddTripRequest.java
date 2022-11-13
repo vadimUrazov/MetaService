@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor

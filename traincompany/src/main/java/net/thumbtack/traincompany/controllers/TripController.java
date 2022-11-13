@@ -41,7 +41,7 @@ public class TripController {
 
     @MutationMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public UpdateTripDtoResponse updateTrip(@Argument long id,@Valid @Argument UpdateTripDtoRequest request) throws ServiceException {
+    public UpdateTripDtoResponse updateTrip(@Argument long id, @Valid @Argument UpdateTripDtoRequest request) throws ServiceException {
         validator.validate(request);
         return service.updateTrip(id, request);
     }

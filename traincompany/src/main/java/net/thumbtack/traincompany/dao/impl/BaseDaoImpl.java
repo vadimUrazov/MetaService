@@ -1,10 +1,7 @@
 package net.thumbtack.traincompany.dao.impl;
 
 import net.thumbtack.traincompany.dao.repository.*;
-import net.thumbtack.traincompany.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.concurrent.ConcurrentHashMap;
 
 public class BaseDaoImpl {
     @Autowired
@@ -13,7 +10,8 @@ public class BaseDaoImpl {
     @Autowired
     protected TripRepository tripRepository;
 
-
+    @Autowired
+    protected CargoRepository cargoRepository;
     @Autowired
     protected ClientRepository clientRepository;
 

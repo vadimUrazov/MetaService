@@ -19,14 +19,18 @@ public class CreateOrderRequest {
     @NotEmpty
     @Date
     private String date;
+
+    private List<CargoDto> cargoDtos;
     private List<PassengerDto> passengers;
+    private String orderType = "CARGO";
 
 
-    public CreateOrderRequest(long idClient, long tripId, String date, List<PassengerDto> passengers) {
+    public CreateOrderRequest(long idClient, long tripId, String date, String moskow, String s, List<PassengerDto> passengers) {
         this.idClient = idClient;
         this.tripId = tripId;
         this.date = date;
         this.passengers = passengers;
+        this.orderType = "PASS";
     }
 
     @JsonCreator
