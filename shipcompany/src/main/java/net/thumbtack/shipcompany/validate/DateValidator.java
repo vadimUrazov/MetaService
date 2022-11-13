@@ -20,7 +20,10 @@ public class DateValidator implements ConstraintValidator<Date, String> {
             err.setField("date");
             throw new ServiceException(err);
         }
-
+        var date = LocalDate.parse(s);
+        if (date.getMonthValue() == 1 || date.getMonthValue() == 2 || date.getMonthValue() == 3) {
+            throw new ServiceException(ErrorCode.ERROR_DATE);
+        }
         return true;
     }
 }

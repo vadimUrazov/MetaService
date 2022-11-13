@@ -1,4 +1,4 @@
-CREATE TABLE buscompany.public.ship
+CREATE TABLE shipcompany.public.ship
 (
     id          SERIAL primary key,
     ship_name   varchar(100) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE buscompany.public.ship
 );
 
 
-CREATE TABLE buscompany.public."user"
+CREATE TABLE shipcompany.public."user"
 (
     id         SERIAL primary key,
     surname    varchar(100)        NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE buscompany.public."user"
 );
 
 
-CREATE TABLE buscompany.public.admin
+CREATE TABLE shipcompany.public.admin
 (
     id       SERIAL primary key,
     id_user  int          NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE buscompany.public.admin
 );
 
 
-CREATE TABLE buscompany.public.client
+CREATE TABLE shipcompany.public.client
 (
     id      SERIAL primary key,
     id_user int          NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE buscompany.public.client
 );
 
 
-CREATE TABLE buscompany.public.trip
+CREATE TABLE shipcompany.public.trip
 (
     id           SERIAL primary key,
     from_station varchar(100)   NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE buscompany.public.trip
     CONSTRAINT shipFk FOREIGN KEY (id_ship) REFERENCES ship (id) ON DELETE CASCADE
 );
 
-CREATE TABLE buscompany.public.day_trip
+CREATE TABLE shipcompany.public.day_trip
 (
     id         SERIAL primary key,
     id_trip    int  NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE buscompany.public.day_trip
 
 
 
-CREATE TABLE buscompany.public."order"
+CREATE TABLE shipcompany.public."order"
 (
     id          SERIAL primary key,
     id_day_trip int            NOT NULL,
@@ -76,8 +76,16 @@ CREATE TABLE buscompany.public."order"
     CONSTRAINT clientFk FOREIGN KEY (id_client) REFERENCES client (id) ON DELETE CASCADE
 );
 
-
-CREATE TABLE buscompany.public.passenger
+CREATE TABLE shipcompany.public.cargo
+(
+    id         SERIAL primary key,
+    cargo_type varchar(100) NOT NULL,
+    id_client  int          NOT NULL,
+    id_order   int          NOT NULL,
+    CONSTRAINT clnFk FOREIGN KEY (id_client) REFERENCES client (id) ON DELETE CASCADE,
+    CONSTRAINT ordFk FOREIGN KEY (id_order) REFERENCES "order" (id) ON DELETE CASCADE
+);
+CREATE TABLE shipcompany.public.passenger
 (
     id         SERIAL primary key,
     first_name varchar(100) NOT NULL,
@@ -88,7 +96,7 @@ CREATE TABLE buscompany.public.passenger
 );
 
 
-CREATE TABLE buscompany.public.place
+CREATE TABLE shipcompany.public.place
 (
     id           SERIAL primary key,
     number       int NOT NULL,
@@ -99,17 +107,17 @@ CREATE TABLE buscompany.public.place
     CONSTRAINT passFk FOREIGN KEY (id_passenger) REFERENCES passenger (id) ON DELETE CASCADE
 );
 
-INSERT INTO buscompany.public.ship(ship_name, place_count)
+INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Renault', 40);
-INSERT INTO buscompany.public.ship(ship_name, place_count)
+INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Pazik', 25);
-INSERT INTO buscompany.public.ship(ship_name, place_count)
+INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Honday', 30);
-INSERT INTO buscompany.public.ship(ship_name, place_count)
+INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Toyota', 35);
-INSERT INTO buscompany.public.ship(ship_name, place_count)
+INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Lada', 1);
-INSERT INTO buscompany.public.ship(ship_name, place_count)
+INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Audi', 3);
 
 

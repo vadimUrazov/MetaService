@@ -21,6 +21,9 @@ public class Client extends User {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_client")
     private List<Order> orders = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_client")
+    private List<Cargo> cargos = new ArrayList<>();
 
     public Client(long id, String surname, String name, String middlename, String login, String password, String email,
                   String phone, List<Order> orders) {

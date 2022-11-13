@@ -4,6 +4,14 @@ input PassengerDto{
     lastName: String
     passport: ID!
 }
+input CargoDto{
+    cargoType:String
+    idClient:ID
+}
+type CargoDtoResponse{
+    cargoType:String
+    idClient:ID
+}
 type PassengerDtoResponse{
     firstName:  String
     lastName: String
@@ -14,7 +22,8 @@ input CreateOrderRequest{
     tripId: ID!
     date: String!
     passengers: [PassengerDto]!
-
+    cardoDtos:[CargoDto]
+    orderType:String
 }
 
 type CreateOrderResponse{
@@ -29,7 +38,7 @@ type CreateOrderResponse{
     price: Int
     totalPrice: Int
     passengers: [PassengerDtoResponse]
-
+    cardoDtos:[CargoDtoResponse]
 }
 
 type OrderDto {
@@ -44,6 +53,7 @@ type OrderDto {
     price: Int
     totalPrice: Int
     passengers: [PassengerDtoResponse]!
+    cardoDtos:[CargoDtoResponse]
 }
 
 type GetOrderResponse {

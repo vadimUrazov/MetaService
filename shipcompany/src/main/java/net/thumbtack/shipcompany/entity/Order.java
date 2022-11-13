@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -29,9 +30,13 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_order")
     private List<Passenger> passengers;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_order")
+    private List<Cargo> cargos;
+
 
     public Order(DayTrip dayTrip, BigDecimal totalPrice, Client client, List<Passenger> passengers) {
-        this(0, dayTrip, totalPrice, client, passengers);
+        this(0, dayTrip, totalPrice, client, passengers, new ArrayList<>());
     }
 
     public Order(DayTrip dayTrip, List<Passenger> passengers, Client client) {

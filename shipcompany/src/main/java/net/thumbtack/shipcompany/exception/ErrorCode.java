@@ -40,6 +40,8 @@ public enum ErrorCode {
     INCORRECT_PRICE("price", "Incorrect price"),
     INCORRECT_START_TIME("start", "Incorrect start time"),
     INCORRECT_DURATION("duration", "Incorrect duration time"),
+
+    ERROR_DATE("date", "Incorrect date. Transport does not work in winter"),
     INCORRECT_PHONE("phone", "Phone has written no correctly"),
     USER_NOT_AUTHORIZED("token", "User not authorized"),
     USER_NOT_ADMIN("type User", "User not admin"),

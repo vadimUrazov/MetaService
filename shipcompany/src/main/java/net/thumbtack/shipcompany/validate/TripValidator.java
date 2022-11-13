@@ -29,6 +29,12 @@ public class TripValidator {
         } catch (DateTimeParseException e) {
             throw new ServiceException(ErrorCode.DATE_NOT_FOUND);
         }
+        for (String date : dates) {
+            var dat = LocalDate.parse(date);
+            if (dat.getMonthValue() == 1 || dat.getMonthValue() == 2 || dat.getMonthValue() == 3) {
+                throw new ServiceException(ErrorCode.ERROR_DATE);
+            }
+        }
 
         return Optional.of(dates);
     }
@@ -88,7 +94,7 @@ public class TripValidator {
             throw new ServiceException(err);
         }
         if (StringUtils.isBlank(request.getShipName())) {
-            err.setField("busName");
+            err.setField("shipName");
             throw new ServiceException(err);
         }
 
