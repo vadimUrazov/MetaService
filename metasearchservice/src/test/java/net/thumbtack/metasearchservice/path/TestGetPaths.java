@@ -1,5 +1,12 @@
 package net.thumbtack.metasearchservice.path;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.eq;
+
+import java.util.ArrayList;
+import java.util.List;
 import net.thumbtack.metasearchservice.dto.GetTripsDto;
 import net.thumbtack.metasearchservice.dto.TripDto;
 import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
@@ -9,12 +16,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.eq;
 
 @ExtendWith(SpringExtension.class)
 public class TestGetPaths {

@@ -33,13 +33,15 @@
           </v-col>
         </v-row>
       </v-container>
-      <v-btn left="900px" color="blue" class="mr-4" width="150px" height="50px" @click="getPath">
+      <v-btn class="mr-4" color="blue" height="50px" left="900px" width="150px" @click="getPath">
         Get
       </v-btn>
     </v-form>
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp
     &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp
     &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 
     <v-table>
@@ -47,19 +49,24 @@
       <tr>
         <th class="text-left">
           From Station
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp
           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
           To Station
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp
           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
           Transport
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp
           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
           Price
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp
           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
           Duration Time
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+          &nbsp &nbsp &nbsp
           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
           Tickets
         </th>
@@ -103,7 +110,8 @@
               }}
             </td>
             <td>
-              <v-btn color="blue" class="mr-4" width="150px" height="50px" @click="create(q.transport)">
+              <v-btn class="mr-4" color="blue" height="50px" width="150px"
+                     @click="create(q.transport)">
                 Create Order
               </v-btn>
             </td>
@@ -146,7 +154,7 @@ export default {
       } else if (transport == 'TRAIN') {
         alert("TRAIN")
         location.href = 'http://192.168.0.109:3004/'
-      }else if(transport == 'SHIP'){
+      } else if (transport == 'SHIP') {
         alert("SHIP")
         location.href = 'http://192.168.0.109:3005/'
       }

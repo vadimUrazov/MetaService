@@ -30,10 +30,6 @@ public class Node {
         adjacentNodes.remove(destination, distance);
     }
 
-    public void setTransport(String transport) {
-        this.transport = transport;
-    }
-
     public String getStation() {
         return station;
     }
@@ -49,7 +45,6 @@ public class Node {
     public void setAdjacentNodes(Map<Node, Integer> adjacentNodes) {
         this.adjacentNodes = adjacentNodes;
     }
-
 
     public Integer getDistance() {
         return distance;
@@ -69,6 +64,10 @@ public class Node {
 
     public String getTransport() {
         return transport;
+    }
+
+    public void setTransport(String transport) {
+        this.transport = transport;
     }
 
 }

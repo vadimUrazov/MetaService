@@ -1,9 +1,9 @@
 <template>
   <v-app :theme="theme">
     <v-app-bar app>
-      <v-btn flat to="/" nuxt> Home</v-btn>
-      <v-btn flat to="/graphPath" nuxt> Paths</v-btn>
-      <v-switch hide-details inset v-model="model"></v-switch>
+      <v-btn flat nuxt to="/"> Home</v-btn>
+      <v-btn flat nuxt to="/graphPath"> Paths</v-btn>
+      <v-switch v-model="model" hide-details inset></v-switch>
     </v-app-bar>
     <v-main>
       <slot/>

@@ -1,11 +1,10 @@
 package net.thumbtack.metasearchservice.validate;
 
-import lombok.SneakyThrows;
-import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
-
+import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.List;
+import lombok.SneakyThrows;
+import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
 
 public class PathValidator implements ConstraintValidator<Path, GetPathsDtoRequest> {
 

@@ -1,11 +1,10 @@
 package net.thumbtack.metasearchservice.dto.response;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.thumbtack.metasearchservice.dto.TripDto;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
