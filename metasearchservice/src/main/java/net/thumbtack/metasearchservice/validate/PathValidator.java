@@ -22,4 +22,5 @@ public class PathValidator implements ConstraintValidator<Path, GetPathsDtoReque
 
         return true;
     }
+
 }

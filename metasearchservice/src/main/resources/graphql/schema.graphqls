@@ -1,4 +1,5 @@
 type Query{
+
     getSettings: GetSettingsResponse
     getPaths(request: GetPathsDtoRequest):GetPathsDtoResponse
 }

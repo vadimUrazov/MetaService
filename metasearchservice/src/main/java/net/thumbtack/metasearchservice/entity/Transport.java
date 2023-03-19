@@ -12,4 +12,5 @@ public enum Transport {
     Transport(String type) {
         this.type = type;
     }
+
 }

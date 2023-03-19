@@ -26,7 +26,6 @@ public class OrderDto {
     this.orderType = "PASS";
   }
 
-
   @JsonCreator
   public OrderDto() {
   }

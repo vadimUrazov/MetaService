@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
+
 @Mapper
 public interface TripMapper {
     TripMapper INSTANCE = Mappers.getMapper(TripMapper.class);

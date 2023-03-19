@@ -3,6 +3,7 @@ input GetPathsDtoRequest{
     toStation: String!
     criteria: String!
 }
+
 type GetPathsDtoResponse{
     paths: [[TripDto]]
 }

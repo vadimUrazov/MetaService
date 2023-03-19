@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class TripProvider {
 
-
     private static String requestQuery(GraphQLTemplate.GraphQLMethod method) {
         return method.getValue() +
                 "($fromStation: String,$toStation: String,){ " +

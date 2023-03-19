@@ -31,7 +31,7 @@ public class UserController {
   public RegisterUserDtoResponse registerUser(@Valid @Argument RegisterUserDtoRequest request){
     return service.registerUser(request);
   }
-@MutationMapping
+  @MutationMapping
   public LoginDtoResponse loginUser(@Valid @Argument LoginDtoRequest request){
     return service.loginUser(request);
   }

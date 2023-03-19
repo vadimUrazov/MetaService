@@ -153,7 +153,6 @@ public class MetaSearchService {
             resBuses = algorithm.getPath(fromBuses, toBuses, request.getFromStation(), request.getToStation(), criteria[0]);
         }
 
-
         if (checkTrips(toTrains, request.getToStation())) {
             resTrains = algorithm.getPath(fromTrains, toTrains, request.getFromStation(), request.getToStation(), criteria[0]);
 

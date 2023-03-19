@@ -16,6 +16,5 @@ public class RegisterUserDtoResponse {
   private String name;
   private  String middlename;
   private String email;
-
   private  String phone;
 }

@@ -20,7 +20,6 @@ public class ServiceController {
 
     private final MetaSearchService transportService;
 
-
     @Autowired
     public ServiceController(MetaSearchService metasearchService) {
         this.transportService = metasearchService;

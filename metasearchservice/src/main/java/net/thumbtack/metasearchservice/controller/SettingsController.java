@@ -18,4 +18,5 @@ public class SettingsController {
     public GetSettingsResponse getSettings() {
         return new GetSettingsResponse(port);
     }
+
 }

@@ -36,7 +36,6 @@ public class Trip {
         this(0, fromStation, toStation, transport, price, start, duration, dayTrips);
     }
 
-
 }
 
 

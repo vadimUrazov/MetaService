@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CargoDto {
-
   @NotEmpty
   private String cargoType;
   private List<Integer> idClient;

@@ -69,7 +69,6 @@ public class TestGetPaths {
         assertTrue(path.containsAll(List.of(new TripDto(1, "Omsk", "Samara", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01")),
                 new TripDto(2, "Samara", "Abc", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01")))));
 
-
     }
 
     @Test

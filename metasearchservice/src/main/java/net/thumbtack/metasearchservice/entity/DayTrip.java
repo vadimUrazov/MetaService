@@ -13,6 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class DayTrip {
 
+
     private LocalDate date;
 
 

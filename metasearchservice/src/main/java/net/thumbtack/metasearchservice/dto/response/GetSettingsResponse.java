@@ -7,4 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetSettingsResponse {
     private int port;
+
 }

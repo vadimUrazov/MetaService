@@ -1,4 +1,5 @@
 <configuration>
+
   <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
     <encoder>
       <Pattern>%c %d{yyyy.MM.dd HH:mm:ss.SSS} %-5p [%t] %c{1}: %m%n

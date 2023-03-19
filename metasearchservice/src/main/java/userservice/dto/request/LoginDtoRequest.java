@@ -19,5 +19,6 @@ public class LoginDtoRequest {
 
   @JsonCreator
   public LoginDtoRequest() {
+
   }
 }

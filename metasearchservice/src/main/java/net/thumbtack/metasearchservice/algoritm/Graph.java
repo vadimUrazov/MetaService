@@ -18,4 +18,5 @@ public class Graph {
     public void setNodes(Set<Node> nodes) {
         this.nodes = nodes;
     }
+
 }

@@ -3,3 +3,4 @@
     <p>Hello User!</p>
   </NuxtLayout>
 </template>
+

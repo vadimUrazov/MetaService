@@ -14,7 +14,6 @@
 <script setup>
 const model = useState('model', () => 0)
 </script>
-
 <script>
 
 export default {

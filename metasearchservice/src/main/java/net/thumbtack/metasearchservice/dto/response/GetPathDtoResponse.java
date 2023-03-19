@@ -11,4 +11,5 @@ import net.thumbtack.metasearchservice.dto.TripDto;
 @NoArgsConstructor
 public class GetPathDtoResponse {
     private List<List<TripDto>> paths;
+
 }

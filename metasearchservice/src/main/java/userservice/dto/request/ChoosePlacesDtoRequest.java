@@ -8,4 +8,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class ChoosePlacesDtoRequest {
 private List<PlaceDto> placeDto;
+
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Algorithm {
 
+
     public List<List<Trip>> getPath(List<Trip> fr, List<Trip> toSt, String from, String to, String criteria) {
         List<Node> r = new ArrayList<>();
         List<Node> r1 = new ArrayList<>();
