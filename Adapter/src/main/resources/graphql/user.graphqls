@@ -1,0 +1,34 @@
+input RegisterClientDtoRequest{
+    surname:String!
+    name:String!
+    middlename:String
+    email:String!
+    phone:String!
+    login:String!
+    password:String!
+    typeCompany:String!
+}
+input LoginDtoRequest{
+    login:String!
+    password:String!
+}
+type LoginDtoResponse{
+    token:String
+}
+type RegisterClientDtoResponse{
+    id: ID
+    surname:String
+    name:String
+    middlename:String
+    email:String
+    phone:String
+    userType:String
+}
+type RegisterUserDtoResponse{
+    surname:String
+    name:String
+    middlename:String
+    email:String
+    phone:String
+    userType:String
+}

@@ -1,3 +1,9 @@
 type Query{
     getTrips(fromStation: String,toStation:String): GetTripsDto
+
+}
+
+type Mutation{
+    registerUser(request: RegisterClientDtoRequest):RegisterUserDtoResponse
+    login(request: LoginDtoRequest): LoginDtoResponse
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.aexp.nodes.graphql.annotations.GraphQLProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import net.thumbtack.adapter.dto.trips.TripBus;
 import net.thumbtack.adapter.dto.trips.TripShip;
 
 import java.util.ArrayList;

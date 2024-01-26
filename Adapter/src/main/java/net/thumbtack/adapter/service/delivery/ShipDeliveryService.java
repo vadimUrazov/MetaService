@@ -1,4 +1,4 @@
-package net.thumbtack.adapter.service;
+package net.thumbtack.adapter.service.delivery;
 
 import io.aexp.nodes.graphql.GraphQLRequestEntity;
 import io.aexp.nodes.graphql.GraphQLTemplate;
@@ -19,7 +19,11 @@ import java.util.concurrent.ExecutionException;
         value = "delivery.type",
         havingValue = "getShip",
         matchIfMissing = true)
-public class ShipService implements Delivery<GetCitiesShipDto> {
+public class ShipDeliveryService implements Delivery<GetCitiesShipDto> {
+    @Override
+    public String getTypeCompany() {
+        return "Ship";
+    }
 
     @Override
     public GetCitiesShipDto send(String from, String to) {

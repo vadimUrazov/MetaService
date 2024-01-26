@@ -3,8 +3,6 @@ package net.thumbtack.adapter.dto.trips;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.thumbtack.adapter.dto.DayTripDto;
-import net.thumbtack.adapter.dto.TrainDto;
 
 import java.util.ArrayList;
 import java.util.List;

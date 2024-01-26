@@ -1,4 +1,4 @@
-package net.thumbtack.adapter.dto;
+package net.thumbtack.adapter.dto.trips;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
