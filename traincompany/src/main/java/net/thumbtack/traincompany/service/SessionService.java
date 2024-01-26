@@ -1,10 +1,14 @@
 package net.thumbtack.traincompany.service;
 
 import net.thumbtack.traincompany.dto.request.LoginDto;
+import net.thumbtack.traincompany.dto.request.UserDto;
+import net.thumbtack.traincompany.dto.response.AdminDtoResponse;
+import net.thumbtack.traincompany.dto.response.ClientDtoResponse;
 import net.thumbtack.traincompany.dto.response.LoginDtoResponse;
 import net.thumbtack.traincompany.entity.Admin;
 import net.thumbtack.traincompany.entity.Client;
 import net.thumbtack.traincompany.entity.User;
+import net.thumbtack.traincompany.entity.UserType;
 import net.thumbtack.traincompany.exception.ErrorCode;
 import net.thumbtack.traincompany.exception.ServiceException;
 import net.thumbtack.traincompany.security.JwtUtils;
@@ -23,6 +27,19 @@ public class SessionService extends ServiceBase {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public UserDto getUserByLogin(String login){
+        User user = userDao.getUserByLogin(login);
+        if (user.getUserType() == UserType.ADMIN) {
+            var admin = (Admin) user;
+
+            return new AdminDtoResponse(admin.getId(), user.getSurname(), user.getName(),
+                    user.getMiddlename(), admin.getPosition(), "ADMIN");
+        } else {
+            var client = (Client) user;
+            return new ClientDtoResponse(client.getId(), user.getSurname(), user.getName(),
+                    user.getMiddlename(), client.getEmail(), client.getPassword(),client.getPhone(), "CLIENT");
+        }
+    }
     public LoginDtoResponse login(LoginDto loginDto) throws ServiceException {
 
         User user = userDao.getUserByLogin(loginDto.getLogin());

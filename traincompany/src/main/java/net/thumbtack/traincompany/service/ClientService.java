@@ -2,9 +2,11 @@ package net.thumbtack.traincompany.service;
 
 import net.thumbtack.traincompany.dto.PlaceDto;
 import net.thumbtack.traincompany.dto.request.ChoosePlaceRequest;
+import net.thumbtack.traincompany.dto.request.ChoosePlacesRequest;
 import net.thumbtack.traincompany.dto.request.RegisterClientDtoRequest;
 import net.thumbtack.traincompany.dto.request.UpdateClientDtoRequest;
 import net.thumbtack.traincompany.dto.response.ChoosePlaceResponse;
+import net.thumbtack.traincompany.dto.response.ChoosePlacesResponse;
 import net.thumbtack.traincompany.dto.response.GetFreePlaceResponse;
 import net.thumbtack.traincompany.dto.response.RegisterClientDtoResponse;
 import net.thumbtack.traincompany.dto.response.UpdateClientDtoResponse;
@@ -116,6 +118,14 @@ public class ClientService extends ServiceBase {
         return new ChoosePlaceResponse(request.getOrderId(), ticket, request.getLastName(), request.getFirstName(), request.getPlace(), request.getCar());
     }
 
+    public ChoosePlacesResponse choosePlaces(ChoosePlacesRequest request) throws ServiceException {
+        List<ChoosePlaceResponse> resp = new ArrayList<>();
+        for (ChoosePlaceRequest req : request.getRequest()) {
+            var buf = choosePlace(req);
+            resp.add(buf);
+        }
+        return new ChoosePlacesResponse(resp);
+    }
     public GetFreePlaceResponse getFreePlaces(long id) throws ServiceException {
 
 

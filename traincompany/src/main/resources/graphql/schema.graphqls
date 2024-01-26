@@ -4,6 +4,7 @@ type Query{
     getTrains: GetTrainsResponse
     getClients: GetClientsResponse
     getUser: UserDto
+    getUserByLogin: UserDto
     getTrips: GetTripsResponse
     getCitiesByFromStation(fromStation: String): GetCitiesResponse
     getCitiesByToStation(toStation: String): GetCitiesResponse
@@ -22,6 +23,8 @@ type Mutation{
     clear: Int
 
     choosePlace(request: ChoosePlaceRequest): ChoosePlaceResponse
+    choosePlaces(request: ChoosePlacesRequest): ChoosePlacesResponse
+
 
     createOrder(request: CreateOrderRequest): CreateOrderResponse
     deleteOrder(id: ID): Int

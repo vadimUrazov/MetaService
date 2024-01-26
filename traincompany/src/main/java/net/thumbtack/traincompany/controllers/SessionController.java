@@ -2,6 +2,7 @@ package net.thumbtack.traincompany.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.traincompany.dto.request.LoginDto;
+import net.thumbtack.traincompany.dto.request.UserDto;
 import net.thumbtack.traincompany.dto.response.LoginDtoResponse;
 import net.thumbtack.traincompany.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class SessionController {
     @MutationMapping
     public LoginDtoResponse login(@Valid @Argument LoginDto loginDto) throws Exception {
         return service.login(loginDto);
+    }
+    @QueryMapping
+    public UserDto getUserByLogin(@Argument String login){
+        return service.getUserByLogin(login);
     }
 
     @QueryMapping
