@@ -1,10 +1,10 @@
 <template>
   <v-app :theme="theme">
     <v-app-bar app>
-      <v-btn flat to="/" nuxt> Home</v-btn>
-      <v-btn flat to="/users" nuxt> Users</v-btn>
-      <v-btn flat to="/graph" nuxt> Graph</v-btn>
-      <v-switch hide-details inset v-model="model"></v-switch>
+      <v-btn flat nuxt to="/"> Home</v-btn>
+      <v-btn flat nuxt to="/users"> Users</v-btn>
+      <v-btn flat nuxt to="/graph"> Graph</v-btn>
+      <v-switch v-model="model" hide-details inset></v-switch>
     </v-app-bar>
     <v-main>
       <slot/>

@@ -11,21 +11,22 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @Slf4j
 public class SettingsController {
-    @Value("${min_password_length}")
-    private int minPasswordLength;
 
-    @Value("${max_name_length}")
-    private int maxNameLength;
+  @Value("${min_password_length}")
+  private int minPasswordLength;
 
-    @Value("${server.port}")
-    private int port;
+  @Value("${max_name_length}")
+  private int maxNameLength;
 
-    @Value("${user_idle_timeout}")
-    private int userIdleTimeout;
+  @Value("${server.port}")
+  private int port;
 
-    @QueryMapping
-    public ConfigDtoResponse getSettings() {
-        return new ConfigDtoResponse(maxNameLength, minPasswordLength, port, userIdleTimeout);
-    }
+  @Value("${user_idle_timeout}")
+  private int userIdleTimeout;
+
+  @QueryMapping
+  public ConfigDtoResponse getSettings() {
+    return new ConfigDtoResponse(maxNameLength, minPasswordLength, port, userIdleTimeout);
+  }
 
 }

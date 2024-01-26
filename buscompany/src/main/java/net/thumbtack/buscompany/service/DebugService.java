@@ -8,15 +8,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DebugService {
-    private final DebugDao debugDao;
 
-    @Autowired
-    public DebugService(@Qualifier("DaoDebug") DebugDao debugDao) {
-        this.debugDao = debugDao;
-    }
+  private final DebugDao debugDao;
 
-    public void clear() throws ServiceException {
-        debugDao.clear();
-    }
+  @Autowired
+  public DebugService(@Qualifier("DaoDebug") DebugDao debugDao) {
+    this.debugDao = debugDao;
+  }
+
+  public void clear() throws ServiceException {
+    debugDao.clear();
+  }
 
 }

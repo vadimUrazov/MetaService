@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    @Modifying
-    @Query("UPDATE DayTrip SET freeCount = freeCount - :count WHERE freeCount >=:count")
-    int updateDayTrip(@Param("count") int count);
+  @Modifying
+  @Query("UPDATE DayTrip SET freeCount = freeCount - :count WHERE freeCount >=:count")
+  int updateDayTrip(@Param("count") int count);
 
-    Order getOrderById(long id);
+  Order getOrderById(long id);
 }

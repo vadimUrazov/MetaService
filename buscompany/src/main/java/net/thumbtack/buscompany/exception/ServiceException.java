@@ -10,10 +10,10 @@ import lombok.ToString;
 @ToString
 public class ServiceException extends Exception {
 
-    private String message;
+  private String message;
 
-    public ServiceException(ErrorCode errorCode) {
-        this.message = "field:  " + errorCode.getField() + " ,cause:  " + errorCode.getMessage();
+  public ServiceException(ErrorCode errorCode) {
+    this.message = "field:  " + errorCode.getField() + " ,cause:  " + errorCode.getMessage();
 
-    }
+  }
 }

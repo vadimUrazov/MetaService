@@ -9,15 +9,17 @@
 
       <v-card-text>
         <v-form ref="form" v-model="valid" lazy-validation>
-          <v-text-field v-model="username" label="Username" :rules="nameRules" required></v-text-field>
+          <v-text-field v-model="username" :rules="nameRules" label="Username"
+                        required></v-text-field>
 
           <v-text-field v-model="password" :append-icon="show1 ? mdiEyeOff : mdiEye"
-                        :type="show1 ? 'text' : 'password'" name="input-10-1" label="Normal with hint text"
+                        :type="show1 ? 'text' : 'password'" label="Normal with hint text"
+                        name="input-10-1"
                         @click:append="show1 = !show1">
           </v-text-field>
 
 
-          <v-btn color="success" class="mr-4" @click="login">
+          <v-btn class="mr-4" color="success" @click="login">
             Login
           </v-btn>
         </v-form>

@@ -19,28 +19,29 @@ import org.springframework.web.context.WebApplicationContext;
 
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(properties = "spring.main.allow-bean-definition-overriding=true", classes = {Application.class, TestJdbcConfig.class})
+@SpringBootTest(properties = "spring.main.allow-bean-definition-overriding=true", classes = {
+    Application.class, TestJdbcConfig.class})
 @Transactional
 public abstract class AbstractControllerTest extends AbstractDaoTest {
 
-    @Autowired
-    protected ApplicationContext applicationContext;
+  @Autowired
+  protected ApplicationContext applicationContext;
 
-    @Autowired
-    protected ObjectMapper objectMapper;
+  @Autowired
+  protected ObjectMapper objectMapper;
 
-    @Autowired
-    protected MockMvc mockMvc;
+  @Autowired
+  protected MockMvc mockMvc;
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
-
-
-    @LocalServerPort
-    private int port;
+  @Autowired
+  private WebApplicationContext webApplicationContext;
 
 
-    protected void set() {
-        RestAssured.port = port;
-    }
+  @LocalServerPort
+  private int port;
+
+
+  protected void set() {
+    RestAssured.port = port;
+  }
 }

@@ -12,17 +12,18 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @Slf4j
 public class DebugController {
-    private final DebugService debugService;
 
-    @Autowired
-    public DebugController(DebugService debugService) {
-        this.debugService = debugService;
-    }
+  private final DebugService debugService;
 
-    @MutationMapping
-    public int clear() throws ServiceException {
-        debugService.clear();
-        return 0;
-    }
+  @Autowired
+  public DebugController(DebugService debugService) {
+    this.debugService = debugService;
+  }
+
+  @MutationMapping
+  public int clear() throws ServiceException {
+    debugService.clear();
+    return 0;
+  }
 
 }

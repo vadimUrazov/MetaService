@@ -12,16 +12,16 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 @PropertySource({"classpath:/application-test.properties"})
 public class TestJdbcConfig {
 
-    @Bean
-    public EmbeddedDatabase dataSource() {
+  @Bean
+  public EmbeddedDatabase dataSource() {
 
-        return new EmbeddedDatabaseBuilder(new FileSystemResourceLoader())
-                .generateUniqueName(false)
-                .setScriptEncoding("UTF-8").setName("buscompany")
-                .setType(EmbeddedDatabaseType.H2)
-                .addScripts("src/test/resources/sql/switch-mode.sql")
-                .build();
-    }
+    return new EmbeddedDatabaseBuilder(new FileSystemResourceLoader())
+        .generateUniqueName(false)
+        .setScriptEncoding("UTF-8").setName("buscompany")
+        .setType(EmbeddedDatabaseType.H2)
+        .addScripts("src/test/resources/sql/switch-mode.sql")
+        .build();
+  }
 
 
 }

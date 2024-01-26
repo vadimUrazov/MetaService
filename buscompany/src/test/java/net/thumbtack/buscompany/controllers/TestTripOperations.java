@@ -1,5 +1,14 @@
 package net.thumbtack.buscompany.controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import net.thumbtack.buscompany.dto.request.AddTripRequest;
 import net.thumbtack.buscompany.dto.request.RegisterAdminDtoRequest;
 import net.thumbtack.buscompany.dto.response.AddTripResponse;
@@ -13,262 +22,275 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @Disabled
 public class TestTripOperations extends AbstractControllerTest {
 
 
-    @SpyBean
-    private AdminService adminService;
+  @SpyBean
+  private AdminService adminService;
 
-    @SpyBean
-    private TripValidator validator;
+  @SpyBean
+  private TripValidator validator;
 
-    @SpyBean
-    private TripService service;
+  @SpyBean
+  private TripService service;
 
 
-    @Test
-    public void testAddTripWithDates() throws Exception {
-        List<String> dates = new ArrayList<>();
-        dates.add("2022-01-01");
-        dates.add("2022-01-02");
-        dates.add("2022-01-03");
-        dates.add("2022-01-04");
-        dates.add("2022-01-05");
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+  @Test
+  public void testAddTripWithDates() throws Exception {
+    List<String> dates = new ArrayList<>();
+    dates.add("2022-01-01");
+    dates.add("2022-01-02");
+    dates.add("2022-01-03");
+    dates.add("2022-01-04");
+    dates.add("2022-01-05");
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03",
+        BigDecimal.valueOf(50000, 2), dates);
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03", BigDecimal.valueOf(50000, 2), dates);
+    adminService.registerAdmin(admin);
 
-        adminService.registerAdmin(admin);
+    AddTripResponse trip = service.addTrip(request);
 
+    GetTripResponse expected = service.getTripById(trip.getId());
 
-        AddTripResponse trip = service.addTrip(request);
+    assertTrue(trip.getId() > 0);
+    assertNotNull(service.getTripById(trip.getId()));
+    assertEquals(expected.getFromStation(), trip.getFromStation());
+    assertEquals(expected.getToStation(), trip.getToStation());
+    assertEquals(expected.getPrice(), trip.getPrice());
+    assertEquals(expected.getBus(), trip.getBus());
+    assertEquals(expected.isApproved(), trip.isApproved());
 
-        GetTripResponse expected = service.getTripById(trip.getId());
 
+  }
 
-        assertTrue(trip.getId() > 0);
-        assertNotNull(service.getTripById(trip.getId()));
-        assertEquals(expected.getFromStation(), trip.getFromStation());
-        assertEquals(expected.getToStation(), trip.getToStation());
-        assertEquals(expected.getPrice(), trip.getPrice());
-        assertEquals(expected.getBus(), trip.getBus());
-        assertEquals(expected.isApproved(), trip.isApproved());
 
+  @Test
+  public void testApprovedTrip() throws Exception {
+    List<String> dates = new ArrayList<>();
 
-    }
+    dates.add("2022-01-01");
+    dates.add("2022-01-02");
+    dates.add("2022-01-03");
+    dates.add("2022-01-04");
+    dates.add("2022-01-05");
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03",
+        BigDecimal.valueOf(50000, 2), dates);
 
-    @Test
-    public void testApprovedTrip() throws Exception {
-        List<String> dates = new ArrayList<>();
+    adminService.registerAdmin(admin);
 
-        dates.add("2022-01-01");
-        dates.add("2022-01-02");
-        dates.add("2022-01-03");
-        dates.add("2022-01-04");
-        dates.add("2022-01-05");
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    AddTripResponse response = service.addTrip(request);
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03", BigDecimal.valueOf(50000, 2), dates);
+    service.approvedTrip(response.getId());
 
-        adminService.registerAdmin(admin);
+    var res = service.getTripById(response.getId());
 
+    assertTrue(res.isApproved());
 
-        AddTripResponse response = service.addTrip(request);
+  }
 
-        service.approvedTrip(response.getId());
+  @Test
+  public void testGetTrips() throws Exception {
+    List<String> dates = new ArrayList<>();
 
-        var res = service.getTripById(response.getId());
+    dates.add("2022-01-01");
+    dates.add("2022-01-02");
+    dates.add("2022-01-03");
+    dates.add("2022-01-04");
+    dates.add("2022-01-05");
 
-        assertTrue(res.isApproved());
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-    }
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03",
+        BigDecimal.valueOf(50000, 2), dates);
 
-    @Test
-    public void testGetTrips() throws Exception {
-        List<String> dates = new ArrayList<>();
+    var res = adminService.registerAdmin(admin);
 
-        dates.add("2022-01-01");
-        dates.add("2022-01-02");
-        dates.add("2022-01-03");
-        dates.add("2022-01-04");
-        dates.add("2022-01-05");
+    AddTripResponse response = service.addTrip(request);
 
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    service.approvedTrip(response.getId());
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03", BigDecimal.valueOf(50000, 2), dates);
+    GetTripsResponse resp = service.getTrips(res.getId());
+    assertNotNull(resp.getTrips());
+    assertFalse(resp.getTrips().isEmpty());
 
-        var res = adminService.registerAdmin(admin);
+  }
 
-        AddTripResponse response = service.addTrip(request);
+  @Test
+  public void testGetTripsNoApproved() throws Exception {
 
-        service.approvedTrip(response.getId());
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-        GetTripsResponse resp = service.getTrips(res.getId());
-        assertNotNull(resp.getTrips());
-        assertFalse(resp.getTrips().isEmpty());
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03",
+        BigDecimal.valueOf(500), List.of("2022-01-03"));
 
-    }
+    var resp = adminService.registerAdmin(admin);
 
-    @Test
-    public void testGetTripsNoApproved() throws Exception {
+    service.addTrip(request);
 
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    GetTripsResponse response = service.getTrips(resp.getId());
+    assertNotNull(response.getTrips());
+    assertTrue(response.getTrips().isEmpty());
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03", BigDecimal.valueOf(500), List.of("2022-01-03"));
 
-        var resp = adminService.registerAdmin(admin);
+  }
 
-        service.addTrip(request);
+  @Test
+  public void testAddTripWithDatesFailEmpty() throws Exception {
+    List<String> dates = new ArrayList<>();
 
-        GetTripsResponse response = service.getTrips(resp.getId());
-        assertNotNull(response.getTrips());
-        assertTrue(response.getTrips().isEmpty());
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03",
+        BigDecimal.valueOf(500), dates);
 
-    }
+    adminService.registerAdmin(admin);
 
-    @Test
-    public void testAddTripWithDatesFailEmpty() throws Exception {
-        List<String> dates = new ArrayList<>();
+    set();
 
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    assertThrows(ServiceException.class, () -> validator.validate(request));
+  }
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03", BigDecimal.valueOf(500), dates);
 
-        adminService.registerAdmin(admin);
+  @Test
+  public void testAddTripWithDatesFailTime() throws Exception {
+    List<String> dates = new ArrayList<>();
 
-        set();
+    dates.add("2022-01-01");
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-        assertThrows(ServiceException.class, () -> validator.validate(request));
-    }
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "31:78", "07:03",
+        BigDecimal.valueOf(500), dates);
 
+    adminService.registerAdmin(admin);
 
-    @Test
-    public void testAddTripWithDatesFailTime() throws Exception {
-        List<String> dates = new ArrayList<>();
+    set();
 
-        dates.add("2022-01-01");
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    assertThrows(ServiceException.class, () -> validator.validate(request));
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "31:78", "07:03", BigDecimal.valueOf(500), dates);
 
-        adminService.registerAdmin(admin);
+  }
 
-        set();
 
-        assertThrows(ServiceException.class, () -> validator.validate(request));
+  @Test
+  public void testAddTripWithDatesFailTimeStart() throws Exception {
+    List<String> dates = new ArrayList<>();
 
+    dates.add("2022-01-01");
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-    }
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "efvbd", "07:03",
+        BigDecimal.valueOf(500), dates);
 
+    adminService.registerAdmin(admin);
 
-    @Test
-    public void testAddTripWithDatesFailTimeStart() throws Exception {
-        List<String> dates = new ArrayList<>();
+    set();
 
-        dates.add("2022-01-01");
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    assertThrows(ServiceException.class, () -> validator.validate(request));
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "efvbd", "07:03", BigDecimal.valueOf(500), dates);
+  }
 
-        adminService.registerAdmin(admin);
 
-        set();
+  @Test
+  public void testAddTripWithDurationFail() throws Exception {
 
-        assertThrows(ServiceException.class, () -> validator.validate(request));
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-    }
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "48:90",
+        BigDecimal.valueOf(500), List.of("2022-01-03"));
 
+    adminService.registerAdmin(admin);
+    set();
 
-    @Test
-    public void testAddTripWithDurationFail() throws Exception {
+    assertThrows(ServiceException.class, () -> validator.validate(request));
 
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+  }
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "48:90", BigDecimal.valueOf(500), List.of("2022-01-03"));
+  @Test
+  public void testAddTripWithDatesFail() throws Exception {
+    List<String> dates = new ArrayList<>();
 
-        adminService.registerAdmin(admin);
-        set();
+    dates.add("2022-02-32");
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-        assertThrows(ServiceException.class, () -> validator.validate(request));
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03",
+        BigDecimal.valueOf(500), dates);
 
-    }
+    adminService.registerAdmin(admin);
 
-    @Test
-    public void testAddTripWithDatesFail() throws Exception {
-        List<String> dates = new ArrayList<>();
+    set();
 
-        dates.add("2022-02-32");
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    assertThrows(ServiceException.class, () -> validator.validate(request));
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03", BigDecimal.valueOf(500), dates);
+  }
 
-        adminService.registerAdmin(admin);
+  @Test
+  public void testDeleteTripFail() throws Exception {
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-        set();
+    adminService.registerAdmin(admin);
 
-        assertThrows(ServiceException.class, () -> validator.validate(request));
+    set();
+    assertThrows(ServiceException.class, () -> service.deleteTrip(154));
+  }
 
-    }
 
-    @Test
-    public void testDeleteTripFail() throws Exception {
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+  @Test
+  public void testApprovedTripFail() throws Exception {
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-        adminService.registerAdmin(admin);
+    adminService.registerAdmin(admin);
 
-        set();
-        assertThrows(ServiceException.class, () -> service.deleteTrip(154));
-    }
+    set();
 
+    assertThrows(ServiceException.class, () -> service.approvedTrip(154));
+  }
 
-    @Test
-    public void testApprovedTripFail() throws Exception {
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+  @Test
+  public void testAddTripFailPrice() throws Exception {
 
-        adminService.registerAdmin(admin);
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-        set();
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03",
+        BigDecimal.valueOf(-500), List.of("2022-01-03"));
 
-        assertThrows(ServiceException.class, () -> service.approvedTrip(154));
-    }
+    adminService.registerAdmin(admin);
 
-    @Test
-    public void testAddTripFailPrice() throws Exception {
+    set();
 
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    assertThrows(ServiceException.class, () -> validator.validate(request));
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "06:03", "07:03", BigDecimal.valueOf(-500), List.of("2022-01-03"));
+  }
 
-        adminService.registerAdmin(admin);
+  @Test
+  public void testAddTripFailBus() throws Exception {
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "FIAT", "06:03", "07:03",
+        BigDecimal.valueOf(500), List.of("2022-01-03"));
 
-        set();
+    adminService.registerAdmin(admin);
 
-        assertThrows(ServiceException.class, () -> validator.validate(request));
+    set();
 
-    }
-
-    @Test
-    public void testAddTripFailBus() throws Exception {
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "FIAT", "06:03", "07:03", BigDecimal.valueOf(500), List.of("2022-01-03"));
-
-
-        adminService.registerAdmin(admin);
-
-        set();
-
-        assertThrows(ServiceException.class, () -> service.addTrip(request));
-    }
+    assertThrows(ServiceException.class, () -> service.addTrip(request));
+  }
 
 
 }

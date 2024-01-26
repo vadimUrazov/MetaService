@@ -1,10 +1,13 @@
 package net.thumbtack.buscompany.dto.response;
 
 
-import lombok.*;
-import net.thumbtack.buscompany.dto.BusDto;
-
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import net.thumbtack.buscompany.dto.BusDto;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,5 +15,6 @@ import java.util.List;
 @Setter
 @ToString
 public class GetBusesResponse {
-    private List<BusDto> busList;
+
+  private List<BusDto> busList;
 }

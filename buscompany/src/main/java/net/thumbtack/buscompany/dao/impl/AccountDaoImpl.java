@@ -13,28 +13,29 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("SQLAccountDao")
 @NoArgsConstructor
 public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AccountDaoImpl.class);
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(AccountDaoImpl.class);
 
 
-    @Override
-    @Transactional
-    public void deleteUser(long id) throws ServiceException {
-        LOGGER.debug("DAO delete user{ }");
-        var user = userRepository.getUserById(id);
-        if (user == null) {
-            throw new ServiceException(ErrorCode.USER_NOT_FOUND);
-        }
+  @Override
+  @Transactional
+  public void deleteUser(long id) throws ServiceException {
+    LOGGER.debug("DAO delete user{ }");
+    var user = userRepository.getUserById(id);
+    if (user == null) {
+      throw new ServiceException(ErrorCode.USER_NOT_FOUND);
+    }
 
-        if (user.getUserType() == UserType.ADMIN) {
-            var admin = adminRepository.findAll();
-            if (admin.size() == 1) {
-                throw new ServiceException(ErrorCode.ERROR_ADMIN);
-            }
-
-        }
-
-        userRepository.delete(user);
-
+    if (user.getUserType() == UserType.ADMIN) {
+      var admin = adminRepository.findAll();
+      if (admin.size() == 1) {
+        throw new ServiceException(ErrorCode.ERROR_ADMIN);
+      }
 
     }
+
+    userRepository.delete(user);
+
+
+  }
 }

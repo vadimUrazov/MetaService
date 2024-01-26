@@ -1,5 +1,6 @@
 package net.thumbtack.buscompany.controllers;
 
+import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.buscompany.dto.request.CreateOrderRequest;
 import net.thumbtack.buscompany.dto.response.CreateOrderResponse;
@@ -14,39 +15,39 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
-
 @Controller
 @Validated
 @Slf4j
 public class OrderController {
-    private final OrderService service;
+
+  private final OrderService service;
 
 
-    @Autowired
-    public OrderController(OrderService service) {
+  @Autowired
+  public OrderController(OrderService service) {
 
-        this.service = service;
-    }
+    this.service = service;
+  }
 
-    @MutationMapping
-    @PreAuthorize("hasRole('CLIENT')")
-    public CreateOrderResponse createOrder(@Valid @Argument CreateOrderRequest request) throws ServiceException {
-        return service.createOrder(request);
-    }
+  @MutationMapping
+  @PreAuthorize("hasRole('CLIENT')")
+  public CreateOrderResponse createOrder(@Valid @Argument CreateOrderRequest request)
+      throws ServiceException {
+    return service.createOrder(request);
+  }
 
-    @QueryMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
-    public GetOrderResponse getOrders() throws ServiceException {
+  @QueryMapping
+  @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
+  public GetOrderResponse getOrders() throws ServiceException {
 
-        return service.getOrders();
-    }
+    return service.getOrders();
+  }
 
-    @MutationMapping
-    @PreAuthorize("hasRole('CLIENT')")
-    public int deleteOrder(@Validated @Argument long id) throws ServiceException {
-        service.deleteOrder(id);
-        return 0;
-    }
+  @MutationMapping
+  @PreAuthorize("hasRole('CLIENT')")
+  public int deleteOrder(@Validated @Argument long id) throws ServiceException {
+    service.deleteOrder(id);
+    return 0;
+  }
 
 }

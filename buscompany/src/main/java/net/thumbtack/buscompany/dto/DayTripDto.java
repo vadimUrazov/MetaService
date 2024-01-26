@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DayTripDto {
-    private String date;
+
+  private String date;
 
 }

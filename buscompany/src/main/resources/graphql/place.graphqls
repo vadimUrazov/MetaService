@@ -5,7 +5,9 @@ input ChoosePlaceRequest{
     passport:Int!
     place:Int!
 }
-
+input ChoosePlacesRequest{
+    request:[ChoosePlaceRequest]
+}
 type PlaceDto{
     number: Int
 }
@@ -16,6 +18,9 @@ type ChoosePlaceResponse{
     firstName: String
     lastName: String
     place:Int
+}
+type ChoosePlacesResponse{
+    placeResponses:[ChoosePlaceResponse]
 }
 
 type GetFreePlaceResponse{

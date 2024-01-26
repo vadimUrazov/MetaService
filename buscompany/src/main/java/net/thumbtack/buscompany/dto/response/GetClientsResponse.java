@@ -1,8 +1,11 @@
 package net.thumbtack.buscompany.dto.response;
 
-import lombok.*;
-
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class GetClientsResponse {
-    private List<ClientDtoResponse> clients;
+
+  private List<ClientDtoResponse> clients;
 
 }

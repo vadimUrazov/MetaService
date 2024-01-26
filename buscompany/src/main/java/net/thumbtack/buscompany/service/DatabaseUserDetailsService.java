@@ -10,19 +10,19 @@ import org.springframework.stereotype.Service;
 public class DatabaseUserDetailsService extends ServiceBase implements UserDetailsService {
 
 
-    public DatabaseUserDetailsService() {
+  public DatabaseUserDetailsService() {
 
-    }
+  }
 
-    @Override
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
+  @Override
+  public UserDetails loadUserByUsername(String username)
+      throws UsernameNotFoundException {
 
-        var user = userDao.getUserByLogin(username);
+    var user = userDao.getUserByLogin(username);
 
-        return User.withUsername(user.getLogin())
-                .password(user.getPassword())
-                .roles(user.getUserType().toString())
-                .build();
-    }
+    return User.withUsername(user.getLogin())
+        .password(user.getPassword())
+        .roles(user.getUserType().toString())
+        .build();
+  }
 }

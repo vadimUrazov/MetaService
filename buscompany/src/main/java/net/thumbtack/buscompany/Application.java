@@ -10,21 +10,23 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableJpaRepositories
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = "net.thumbtack.buscompany")
+@SpringBootApplication(exclude = {
+    DataSourceAutoConfiguration.class}, scanBasePackages = "net.thumbtack.buscompany")
 public class Application extends SpringBootServletInitializer {
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry
-                        .addMapping("/*")
-                        .allowedOrigins("*");
-            }
-        };
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
+
+  @Bean
+  public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+      @Override
+      public void addCorsMappings(CorsRegistry registry) {
+        registry
+            .addMapping("/*")
+            .allowedOrigins("*");
+      }
+    };
+  }
 }

@@ -1,6 +1,19 @@
 package net.thumbtack.buscompany.controllers;
 
-import net.thumbtack.buscompany.dto.request.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import net.thumbtack.buscompany.dto.request.AddTripRequest;
+import net.thumbtack.buscompany.dto.request.CreateOrderRequest;
+import net.thumbtack.buscompany.dto.request.PassengerDto;
+import net.thumbtack.buscompany.dto.request.RegisterAdminDtoRequest;
+import net.thumbtack.buscompany.dto.request.RegisterClientDtoRequest;
 import net.thumbtack.buscompany.dto.response.AddTripResponse;
 import net.thumbtack.buscompany.dto.response.CreateOrderResponse;
 import net.thumbtack.buscompany.exception.ServiceException;
@@ -12,262 +25,267 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @Disabled
 public class TestOrderOperations extends AbstractControllerTest {
 
 
-    @SpyBean
-    private AdminService adminService;
+  @SpyBean
+  private AdminService adminService;
 
-    @SpyBean
-    private TripService service;
+  @SpyBean
+  private TripService service;
 
-    @SpyBean
-    private ClientService clientService;
+  @SpyBean
+  private ClientService clientService;
 
-    @SpyBean
-    private OrderService orderService;
+  @SpyBean
+  private OrderService orderService;
 
 
-    public long getTrip() throws Exception {
+  public long getTrip() throws Exception {
 
-        RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович", "Директор", "123drv23Swgdc", "petrovichpetr");
+    RegisterAdminDtoRequest admin = new RegisterAdminDtoRequest("Пётров", "Пётр", "Петрович",
+        "Директор", "123drv23Swgdc", "petrovichpetr");
 
-        AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "18:03", "02:00", BigDecimal.valueOf(50000, 2), List.of("2022-01-02"));
+    AddTripRequest request = new AddTripRequest("Omsk", "Moskow", "Toyota", "18:03", "02:00",
+        BigDecimal.valueOf(50000, 2), List.of("2022-01-02"));
 
-        adminService.registerAdmin(admin);
+    adminService.registerAdmin(admin);
 
+    AddTripResponse trip = service.addTrip(request);
+    service.approvedTrip(trip.getId());
 
-        AddTripResponse trip = service.addTrip(request);
-        service.approvedTrip(trip.getId());
+    return trip.getId();
+  }
 
-        return trip.getId();
-    }
+  @Test
+  public void testCreateOrder() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Сидоров", "Георгий",
+        "Александрович", "ivanob@mail.ru", "8-917-681-32-65", "ivanboIvanv6", "12s2893dfghj");
+    var cl = clientService.registerClient(client);
 
-    @Test
-    public void testCreateOrder() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Сидоров", "Георгий", "Александрович", "ivanob@mail.ru", "8-917-681-32-65", "ivanboIvanv6", "12s2893dfghj");
-        var cl = clientService.registerClient(client);
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    CreateOrderResponse response = orderService.createOrder(request);
 
-        CreateOrderResponse response = orderService.createOrder(request);
+    var res = orderService.getOrders();
 
-        var res = orderService.getOrders();
+    var orderDto = res.getOrders().get(0);
 
-        var orderDto = res.getOrders().get(0);
+    assertTrue(response.getOrderId() > 0);
+    assertFalse(res.getOrders().isEmpty());
+    assertEquals(response.getFromStation(), orderDto.getFromStation());
+    assertEquals(response.getToStation(), orderDto.getToStation());
+    assertEquals(response.getPrice(), orderDto.getPrice());
+    assertEquals(response.getTotalPrice(), orderDto.getTotalPrice());
+    assertEquals(response.getBusName(), orderDto.getBusName());
+    assertEquals(response.getStart(), orderDto.getStart());
+    assertEquals(response.getDuration(), orderDto.getDuration());
+    assertEquals(response.getPassengers(), orderDto.getPassengers());
 
+  }
 
-        assertTrue(response.getOrderId() > 0);
-        assertFalse(res.getOrders().isEmpty());
-        assertEquals(response.getFromStation(), orderDto.getFromStation());
-        assertEquals(response.getToStation(), orderDto.getToStation());
-        assertEquals(response.getPrice(), orderDto.getPrice());
-        assertEquals(response.getTotalPrice(), orderDto.getTotalPrice());
-        assertEquals(response.getBusName(), orderDto.getBusName());
-        assertEquals(response.getStart(), orderDto.getStart());
-        assertEquals(response.getDuration(), orderDto.getDuration());
-        assertEquals(response.getPassengers(), orderDto.getPassengers());
+  @Test
+  public void testGetOrders() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv4", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-    }
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-    @Test
-    public void testGetOrders() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv4", "12s223dfghj");
-        var cl = clientService.registerClient(client);
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
+    orderService.createOrder(request);
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
+    var res = orderService.getOrders();
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    assertNotNull(res.getOrders());
+    assertFalse(res.getOrders().isEmpty());
 
-        orderService.createOrder(request);
+  }
 
-        var res = orderService.getOrders();
+  @Test
+  public void testDeleteOrder() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv32", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-        assertNotNull(res.getOrders());
-        assertFalse(res.getOrders().isEmpty());
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-    }
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
-    @Test
-    public void testDeleteOrder() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv32", "12s223dfghj");
-        var cl = clientService.registerClient(client);
+    CreateOrderResponse response = orderService.createOrder(request);
 
+    orderService.deleteOrder(response.getOrderId());
+    var res = orderService.getOrders();
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
+    assertTrue(res.getOrders().isEmpty());
+  }
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+  @Test
+  public void testCreateOrderNotClient() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Сидоров", "Георгий",
+        "Александрович", "ivanob@mail.ru", "8-917-681-32-65", "ivanboIvanv6", "12s2893dfghj");
+    var cl = clientService.registerClient(client);
 
-        CreateOrderResponse response = orderService.createOrder(request);
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-        orderService.deleteOrder(response.getOrderId());
-        var res = orderService.getOrders();
+    CreateOrderRequest request = new CreateOrderRequest(0, tripId, "2022-01-02", list);
 
-        assertTrue(res.getOrders().isEmpty());
-    }
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
-    @Test
-    public void testCreateOrderNotClient() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Сидоров", "Георгий", "Александрович", "ivanob@mail.ru", "8-917-681-32-65", "ivanboIvanv6", "12s2893dfghj");
-        var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
+  }
 
-        CreateOrderRequest request = new CreateOrderRequest(0, tripId, "2022-01-02", list);
+  @Test
+  public void testCreateOrderFailNotFoundTrip() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv6", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
+    var tripId = 125;
+    var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
-    }
+    set();
 
-    @Test
-    public void testCreateOrderFailNotFoundTrip() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv6", "12s223dfghj");
-        var cl = clientService.registerClient(client);
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
+  }
 
-        var tripId = 125;
-        var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
+  @Test
+  public void testCreateOrderFailIncorrectDate() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv8", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-        set();
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-02-32", list);
 
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
-    }
+    set();
 
-    @Test
-    public void testCreateOrderFailIncorrectDate() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv8", "12s223dfghj");
-        var cl = clientService.registerClient(client);
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-02-32", list);
+  }
 
+  @Test
+  public void testCreateOrderFailNoDate() throws Exception {
 
-        set();
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv9", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "rgtyuy", list);
 
-    }
+    set();
 
-    @Test
-    public void testCreateOrderFailNoDate() throws Exception {
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv9", "12s223dfghj");
-        var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
+  }
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "rgtyuy", list);
+  @Test
+  public void testCreateOrderFailEmptyPassengers() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv0", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
+    var tripId = getTrip();
+    List<PassengerDto> list = new ArrayList<>();
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
-        set();
+    set();
 
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
+  }
 
-    }
+  @Test
+  public void testCreateOrderFailPassengerLastName() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv81", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-    @Test
-    public void testCreateOrderFailEmptyPassengers() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv0", "12s223dfghj");
-        var cl = clientService.registerClient(client);
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", null, 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-        var tripId = getTrip();
-        List<PassengerDto> list = new ArrayList<>();
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
+    set();
 
-        set();
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
 
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
+  }
 
-    }
+  @Test
+  public void testCreateOrderFailPassengerFirstName() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv54", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-    @Test
-    public void testCreateOrderFailPassengerLastName() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv81", "12s223dfghj");
-        var cl = clientService.registerClient(client);
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("", "Иван", 23456),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", null, 23456), new PassengerDto("Пётров", "Пётр", 153468));
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    set();
 
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
-        set();
 
+  }
 
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
+  @Test
+  public void testCreateOrderFailPassengerPassport() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv098", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
+    var tripId = getTrip();
+    var list = List.of(new PassengerDto("Иванов", "Иван", -2),
+        new PassengerDto("Пётров", "Пётр", 153468));
 
-    }
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
 
-    @Test
-    public void testCreateOrderFailPassengerFirstName() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv54", "12s223dfghj");
-        var cl = clientService.registerClient(client);
+    set();
 
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
+    assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+  }
 
+  @Test
+  public void testDeleteOrderFail() throws Exception {
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+        "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv208", "12s223dfghj");
+    var cl = clientService.registerClient(client);
 
-        set();
+    set();
 
+    assertThrows(ServiceException.class, () -> orderService.deleteOrder(154));
 
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
-
-
-    }
-
-    @Test
-    public void testCreateOrderFailPassengerPassport() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv098", "12s223dfghj");
-        var cl = clientService.registerClient(client);
-
-        var tripId = getTrip();
-        var list = List.of(new PassengerDto("Иванов", "Иван", -2), new PassengerDto("Пётров", "Пётр", 153468));
-
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
-
-
-        set();
-
-        assertThrows(ServiceException.class, () -> orderService.createOrder(request));
-
-    }
-
-    @Test
-    public void testDeleteOrderFail() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv208", "12s223dfghj");
-        var cl = clientService.registerClient(client);
-
-        set();
-
-        assertThrows(ServiceException.class, () -> orderService.deleteOrder(154));
-
-    }
+  }
 
 
 }

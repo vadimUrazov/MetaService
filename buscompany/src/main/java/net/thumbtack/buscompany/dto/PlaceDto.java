@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PlaceDto {
-    private int number;
+
+  private int number;
 
 }

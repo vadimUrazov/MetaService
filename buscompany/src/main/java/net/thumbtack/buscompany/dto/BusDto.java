@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BusDto {
-    private String busName;
-    private int placeCount;
+
+  private String busName;
+  private int placeCount;
 }

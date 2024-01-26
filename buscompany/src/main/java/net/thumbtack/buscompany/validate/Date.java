@@ -1,17 +1,22 @@
 package net.thumbtack.buscompany.validate;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = DateValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Date {
-    String message() default "Error date!";
 
-    Class<?>[] groups() default {};
+  String message() default "Error date!";
 
-    Class<? extends Payload>[] payload() default {};
+  Class<?>[] groups() default {};
+
+  Class<? extends Payload>[] payload() default {};
 }

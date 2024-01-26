@@ -1,4 +1,4 @@
-input RegisterClientRequest{
+input RegisterClientDtoRequest{
     surname: String!
     name: String!
     middlename: String
@@ -16,7 +16,6 @@ type RegisterClientDtoResponse{
     email: String
     phone: String
     userType: String
-    token: String
 }
 
 input UpdateClientDtoRequest {

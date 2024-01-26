@@ -1,22 +1,21 @@
 package net.thumbtack.buscompany.dao.repository;
 
+import java.util.List;
 import net.thumbtack.buscompany.entity.Trip;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
 
-    void deleteById(long id);
+  void deleteById(long id);
 
 
-    List<Trip> getAllByApprovedTrue();
+  List<Trip> getAllByApprovedTrue();
 
-    Trip getTripById(long id);
+  Trip getTripById(long id);
 
-    List<Trip> getTripsByFromStation(String fromStation);
+  List<Trip> getTripsByFromStation(String fromStation);
 
-    List<Trip> getTripsByToStation(String toStation);
+  List<Trip> getTripsByToStation(String toStation);
 }

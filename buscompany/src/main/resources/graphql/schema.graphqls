@@ -4,6 +4,7 @@ type Query{
     getBuses: GetBusesResponse
     getClients: GetClientsResponse
     getUser: UserDto
+    getUserByLogin: UserDto
     getTrips(id: ID): GetTripsResponse
     getCitiesByFromStation(fromStation: String): GetCitiesResponse
     getCitiesByToStation(toStation: String): GetCitiesResponse
@@ -13,7 +14,7 @@ type Query{
 }
 
 type Mutation{
-    registerClient(request: RegisterClientRequest):RegisterClientDtoResponse
+    registerClient(request: RegisterClientDtoRequest):RegisterClientDtoResponse
     updateClient(request: UpdateClientDtoRequest,token: String): UpdateClientDtoResponse
 
     registerAdmin(request: RegisterAdminDtoRequest): RegisterAdminDtoResponse
@@ -22,6 +23,8 @@ type Mutation{
     clear: Int
 
     choosePlace(request: ChoosePlaceRequest): ChoosePlaceResponse
+    choosePlaces(request: ChoosePlacesRequest): ChoosePlacesResponse
+
 
     createOrder(request: CreateOrderRequest): CreateOrderResponse
     deleteOrder(id: ID): Int

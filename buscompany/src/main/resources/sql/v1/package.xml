@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
-    <changeSet failOnError="true" author="vurazov" id="73" runInTransaction="true"
-               logicalFilePath="v1/data/buscompany.sql">
-        <comment>buscompany</comment>
-        <sqlFile encoding="utf8" path="data/buscompany.sql" relativeToChangelogFile="true"/>
-    </changeSet>
+  <changeSet author="vurazov" failOnError="true" id="73" logicalFilePath="v1/data/buscompany.sql"
+    runInTransaction="true">
+    <comment>buscompany</comment>
+    <sqlFile encoding="utf8" path="data/buscompany.sql" relativeToChangelogFile="true"/>
+  </changeSet>
 
 </databaseChangeLog>

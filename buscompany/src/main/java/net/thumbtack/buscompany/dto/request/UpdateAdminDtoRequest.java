@@ -1,32 +1,32 @@
 package net.thumbtack.buscompany.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import javax.validation.constraints.NotEmpty;
 
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class UpdateAdminDtoRequest {
-    @NotEmpty
-    private String surname;
-    @NotEmpty
-    private String name;
 
-    private String middlename;
-    @NotEmpty
-    private String position;
+  @NotEmpty
+  private String surname;
+  @NotEmpty
+  private String name;
 
-    private String oldPassword;
+  private String middlename;
+  @NotEmpty
+  private String position;
 
-    private String newPassword;
+  private String oldPassword;
 
-    @JsonCreator
-    public UpdateAdminDtoRequest() {
-    }
+  private String newPassword;
+
+  @JsonCreator
+  public UpdateAdminDtoRequest() {
+  }
 }
