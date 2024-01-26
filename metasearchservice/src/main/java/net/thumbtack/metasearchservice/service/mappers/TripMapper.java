@@ -1,12 +1,13 @@
 package net.thumbtack.metasearchservice.service.mappers;
 
-import java.util.List;
 import net.thumbtack.metasearchservice.dto.TripDto;
 import net.thumbtack.metasearchservice.entity.Trip;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 
 @Mapper

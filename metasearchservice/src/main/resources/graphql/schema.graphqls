@@ -3,3 +3,8 @@ type Query{
     getSettings: GetSettingsResponse
     getPaths(request: GetPathsDtoRequest):GetPathsDtoResponse
 }
+
+type Mutation{
+    registerUser(request: RegisterClientDtoRequest):RegisterUserDtoResponse
+    loginUser(request: LoginDtoRequest):LoginDtoResponse
+}

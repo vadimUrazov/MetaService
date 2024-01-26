@@ -1,6 +1,5 @@
 package net.thumbtack.metasearchservice.controller;
 
-import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
 import net.thumbtack.metasearchservice.dto.response.GetPathDtoResponse;
@@ -11,6 +10,8 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
 
 @Controller
 @Validated

@@ -3,6 +3,7 @@ package net.thumbtack.metasearchservice.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.aexp.nodes.graphql.annotations.GraphQLProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 

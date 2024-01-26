@@ -1,9 +1,5 @@
 package net.thumbtack.metasearchservice.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 import net.thumbtack.metasearchservice.adapter.TripProvider;
 import net.thumbtack.metasearchservice.algoritm.Algorithm;
 import net.thumbtack.metasearchservice.dto.GetTripsDto;
@@ -14,6 +10,11 @@ import net.thumbtack.metasearchservice.entity.Trip;
 import net.thumbtack.metasearchservice.service.mappers.TripMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MetaSearchService {

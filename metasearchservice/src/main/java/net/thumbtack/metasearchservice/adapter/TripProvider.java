@@ -3,17 +3,18 @@ package net.thumbtack.metasearchservice.adapter;
 import io.aexp.nodes.graphql.GraphQLRequestEntity;
 import io.aexp.nodes.graphql.GraphQLTemplate;
 import io.aexp.nodes.graphql.Variable;
-import java.util.HashMap;
-import java.util.Map;
 import net.thumbtack.metasearchservice.dto.GetTripsDto;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class TripProvider {
 
     private static String requestQuery(GraphQLTemplate.GraphQLMethod method) {
         return method.getValue() +
-                "($fromStation: String,$toStation: String,){ " +
+                "($fromStation: String,$toStation: String){ " +
                 "getTrips(fromStation: $fromStation,toStation: $toStation){ " +
                 "fromBuses{" +
                 "id " +
