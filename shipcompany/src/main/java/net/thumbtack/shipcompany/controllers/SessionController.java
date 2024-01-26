@@ -2,6 +2,7 @@ package net.thumbtack.shipcompany.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.shipcompany.dto.request.LoginDto;
+import net.thumbtack.shipcompany.dto.request.UserDto;
 import net.thumbtack.shipcompany.dto.response.LoginDtoResponse;
 import net.thumbtack.shipcompany.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class SessionController {
     @Autowired
     public SessionController(SessionService service) {
         this.service = service;
+    }
+
+    @QueryMapping
+    public UserDto getUserByLogin(@Argument String login){
+        return service.getUserByLogin(login);
     }
 
     @MutationMapping

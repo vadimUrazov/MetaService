@@ -2,7 +2,9 @@ package net.thumbtack.shipcompany.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.shipcompany.dto.request.ChoosePlaceRequest;
+import net.thumbtack.shipcompany.dto.request.ChoosePlacesRequest;
 import net.thumbtack.shipcompany.dto.response.ChoosePlaceResponse;
+import net.thumbtack.shipcompany.dto.response.ChoosePlacesResponse;
 import net.thumbtack.shipcompany.dto.response.GetFreePlaceResponse;
 import net.thumbtack.shipcompany.exception.ServiceException;
 import net.thumbtack.shipcompany.service.ClientService;
@@ -33,6 +35,12 @@ public class PlaceController {
     @PreAuthorize("hasRole('CLIENT')")
     public ChoosePlaceResponse choosePlace(@Valid @Argument ChoosePlaceRequest request) throws ServiceException {
         return service.choosePlace(request);
+    }
+
+    @MutationMapping
+    @PreAuthorize("hasRole('CLIENT')")
+    public ChoosePlacesResponse choosePlaces(@Valid @Argument ChoosePlacesRequest request) throws ServiceException {
+        return service.choosePlaces(request);
     }
 
     @QueryMapping

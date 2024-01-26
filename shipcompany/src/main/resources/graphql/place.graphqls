@@ -5,7 +5,12 @@ input ChoosePlaceRequest{
     passport:Int!
     place:Int!
 }
-
+input ChoosePlacesRequest{
+    request:[ChoosePlaceRequest]
+}
+type ChoosePlacesResponse{
+    placeResponses:[ChoosePlaceResponse]
+}
 type PlaceDto{
     number: Int
 }

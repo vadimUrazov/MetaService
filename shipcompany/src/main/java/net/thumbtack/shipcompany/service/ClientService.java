@@ -2,9 +2,11 @@ package net.thumbtack.shipcompany.service;
 
 import net.thumbtack.shipcompany.dto.PlaceDto;
 import net.thumbtack.shipcompany.dto.request.ChoosePlaceRequest;
+import net.thumbtack.shipcompany.dto.request.ChoosePlacesRequest;
 import net.thumbtack.shipcompany.dto.request.RegisterClientDtoRequest;
 import net.thumbtack.shipcompany.dto.request.UpdateClientDtoRequest;
 import net.thumbtack.shipcompany.dto.response.ChoosePlaceResponse;
+import net.thumbtack.shipcompany.dto.response.ChoosePlacesResponse;
 import net.thumbtack.shipcompany.dto.response.GetFreePlaceResponse;
 import net.thumbtack.shipcompany.dto.response.RegisterClientDtoResponse;
 import net.thumbtack.shipcompany.dto.response.UpdateClientDtoResponse;
@@ -33,6 +35,7 @@ public class ClientService extends ServiceBase {
     public ClientService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
+
 
 
     private String parsePhone(String phone) {
@@ -117,6 +120,14 @@ public class ClientService extends ServiceBase {
         return new ChoosePlaceResponse(request.getOrderId(), ticket, request.getLastName(), request.getFirstName(), request.getPlace());
     }
 
+    public ChoosePlacesResponse choosePlaces(ChoosePlacesRequest request) throws ServiceException {
+        List<ChoosePlaceResponse> resp = new ArrayList<>();
+        for (ChoosePlaceRequest req : request.getRequest()) {
+            var buf = choosePlace(req);
+            resp.add(buf);
+        }
+        return new ChoosePlacesResponse(resp);
+    }
     public GetFreePlaceResponse getFreePlaces(long id) throws ServiceException {
 
 
