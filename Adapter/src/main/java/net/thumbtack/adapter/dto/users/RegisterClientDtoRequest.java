@@ -12,6 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterClientDtoRequest {
+    private long id;
     @NotEmpty
     private String surname;
     @NotEmpty

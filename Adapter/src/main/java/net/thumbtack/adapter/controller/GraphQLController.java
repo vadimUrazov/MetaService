@@ -1,10 +1,7 @@
 package net.thumbtack.adapter.controller;
 
 import net.thumbtack.adapter.dto.trips.GetTripsDto;
-import net.thumbtack.adapter.dto.users.LoginDtoRequest;
-import net.thumbtack.adapter.dto.users.LoginDtoResponse;
-import net.thumbtack.adapter.dto.users.RegisterClientDtoRequest;
-import net.thumbtack.adapter.dto.users.RegisterUserDtoResponse;
+import net.thumbtack.adapter.dto.users.*;
 import net.thumbtack.adapter.exceptions.ServiceException;
 import net.thumbtack.adapter.service.delivery.DeliveryProvider;
 import net.thumbtack.adapter.service.users.UserProvider;
@@ -25,6 +22,7 @@ public class GraphQLController {
     @Autowired
     private UserProvider userProvider;
 
+
     @QueryMapping
     public GetTripsDto getTrips(@Argument String fromStation, @Argument String toStation) throws Exception {
         return deliveryProvider.getTripsDelivery(fromStation, toStation);
@@ -38,6 +36,11 @@ public class GraphQLController {
     @MutationMapping
     public LoginDtoResponse login(@Argument @Valid LoginDtoRequest request) throws ServiceException {
         return userProvider.login(request);
+    }
+
+    @QueryMapping
+    public ClientDtoResponse getUserByLogin(@Argument String login){
+        return userProvider.getUserByLogin(login);
     }
 
 

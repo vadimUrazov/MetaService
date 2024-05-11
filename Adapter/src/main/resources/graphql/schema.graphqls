@@ -1,6 +1,6 @@
 type Query{
     getTrips(fromStation: String,toStation:String): GetTripsDto
-
+    getUserByLogin(login: String): ClientDtoResponse
 }
 
 type Mutation{

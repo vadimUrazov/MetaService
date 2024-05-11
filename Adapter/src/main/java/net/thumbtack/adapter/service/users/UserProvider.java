@@ -28,7 +28,6 @@ public class UserProvider {
     @Autowired
     private JwtUtils jwtUtils;
 
-//добавить реализацию  через Future в метод регистрации и обработка ошибок
     public RegisterUserDtoResponse registerUser(RegisterClientDtoRequest request) throws Exception {
         RegisterUserDtoResponse response = new RegisterUserDtoResponse();
         List<RegisterClientDtoResponse> resList = new ArrayList<>();
@@ -51,6 +50,14 @@ public class UserProvider {
         response.setPhone(res.getPhone());
         response.setUserType(res.getUserType());
         return response;
+    }
+
+  public ClientDtoResponse getUserByLogin(String login){
+      ClientDtoResponse user = null;
+      for (UserService<RegisterClientDtoResponse> s : beanList) {
+          user = s.getUserByLogin(login);
+      }
+        return user;
     }
 
     public UserDetails loadUserByUsername(String username)

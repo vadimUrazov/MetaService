@@ -1,4 +1,5 @@
 input RegisterClientDtoRequest{
+    id: ID
     surname:String!
     name:String!
     middlename:String
@@ -25,10 +26,23 @@ type RegisterClientDtoResponse{
     userType:String
 }
 type RegisterUserDtoResponse{
+    id: ID
     surname:String
     name:String
     middlename:String
     email:String
     phone:String
     userType:String
+}
+
+type ClientDtoResponse {
+    id: ID
+    surname: String
+    name: String
+    middlename: String
+    login: String
+    password: String
+    email: String
+    phone: String
+    userType: String
 }
