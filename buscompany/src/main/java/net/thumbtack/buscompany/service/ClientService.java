@@ -73,6 +73,7 @@ public class ClientService extends ServiceBase {
                 client.getMiddlename(), client.getEmail(), client.getPhone(), "CLIENT");
     }
 
+
     public ChoosePlacesResponse choosePlaces(ChoosePlacesRequest request) throws ServiceException {
         request=consumer.getDtoRequest();
         List<ChoosePlaceResponse> resp = new ArrayList<>();

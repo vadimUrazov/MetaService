@@ -8,7 +8,6 @@ import lombok.*;
 @Setter
 @ToString
 public class RegisterClientDtoResponse {
-
     private long id;
     private String surname;
     private String name;

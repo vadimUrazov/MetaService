@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CountDownLatch;
 
 @Component
-public class KafkaConsumerOrder {
+public class KafkaConsumerOrder{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerOrder.class);
 

@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 @Setter
 @ToString
 public class RegisterClientDtoRequest extends UserDto {
+
     private long id;
     @Email
     private String email;
