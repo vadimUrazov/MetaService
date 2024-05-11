@@ -4,7 +4,7 @@ type Query{
     getTrains: GetTrainsResponse
     getClients: GetClientsResponse
     getUser: UserDto
-    getUserByLogin: UserDto
+    getUserByLogin(login: String): UserDto
     getTrips: GetTripsResponse
     getCitiesByFromStation(fromStation: String): GetCitiesResponse
     getCitiesByToStation(toStation: String): GetCitiesResponse

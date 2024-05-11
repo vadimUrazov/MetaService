@@ -12,6 +12,7 @@ public interface ClientRegisterMapper {
     ClientRegisterMapper INSTANCE = Mappers.getMapper(ClientRegisterMapper.class);
 
     @Mappings({
+            @Mapping(target = "id", source = "id"),
             @Mapping(target = "surname", source = "surname"),
             @Mapping(target = "name", source = "name"),
             @Mapping(target = "middlename", source = "middlename"),

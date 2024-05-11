@@ -28,10 +28,10 @@ public class Order {
     @JoinColumn(name = "id_client")
     private Client client;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_order")
+    @JoinColumn(name = "id_order",nullable = true)
     private List<Passenger> passengers;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_order")
+    @JoinColumn(name = "id_order",nullable = true)
     private List<Cargo> cargos;
 
 

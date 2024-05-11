@@ -32,5 +32,4 @@ public class RegisterClientDtoRequest extends UserDto {
     @JsonCreator
     public RegisterClientDtoRequest() {
     }
-
 }

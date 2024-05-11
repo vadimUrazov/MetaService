@@ -12,15 +12,17 @@ import javax.validation.constraints.Email;
 @Setter
 @ToString
 public class RegisterClientDtoRequest extends UserDto {
+    private long id;
     @Email
     private String email;
     @Phone
     private String phone;
 
-    public RegisterClientDtoRequest(String surname, String name, String middlename, String email, String phone, String login, String password) {
+    public RegisterClientDtoRequest(long id,String surname, String name, String middlename, String email, String phone, String login, String password) {
         super(surname, name, middlename, login, password);
         this.email = email;
         this.phone = phone;
+        this.id=id;
     }
 
     @JsonCreator

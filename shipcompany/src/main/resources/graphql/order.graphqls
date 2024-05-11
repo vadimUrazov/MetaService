@@ -1,5 +1,4 @@
 input PassengerDto{
-
     firstName:  String
     lastName: String
     passport: ID!
@@ -18,10 +17,12 @@ type PassengerDtoResponse{
     passport: ID!
 }
 input CreateOrderRequest{
+    idOrder: ID
     idClient: ID!
-    tripId: ID!
     date: String!
-    passengers: [PassengerDto]!
+    fromStation: String
+    toStation: String
+    passengers: [PassengerDto]
     cardoDtos:[CargoDto]
     orderType:String
 }

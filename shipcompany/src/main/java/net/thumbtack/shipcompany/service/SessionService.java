@@ -13,6 +13,7 @@ import net.thumbtack.shipcompany.exception.ErrorCode;
 import net.thumbtack.shipcompany.exception.ServiceException;
 import net.thumbtack.shipcompany.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class SessionService extends ServiceBase {
     public SessionService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
-
+    @CacheEvict(value = "users", key = "#login")
     public UserDto getUserByLogin(String login){
         User user = userDao.getUserByLogin(login);
         if (user.getUserType() == UserType.ADMIN) {

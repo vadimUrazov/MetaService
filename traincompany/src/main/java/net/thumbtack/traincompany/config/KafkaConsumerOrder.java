@@ -1,6 +1,6 @@
-package net.thumbtack.buscompany.config;
+package net.thumbtack.traincompany.config;
 
-import net.thumbtack.buscompany.dto.request.CreateOrderRequest;
+import net.thumbtack.traincompany.dto.request.CreateOrderRequest;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CountDownLatch;
 
 @Component
-public class KafkaConsumerOrder{
+public class KafkaConsumerOrder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerOrder.class);
 
     private CountDownLatch latch = new CountDownLatch(1);
     private CreateOrderRequest dtoRequest = null;
 
-    @KafkaListener(topics = "getBus",groupId = "bus")
+    @KafkaListener(topics = "getTrain",groupId = "train")
     public void receive(ConsumerRecord<?, CreateOrderRequest> consumerRecord) {
         LOGGER.info("received payload='{}'", consumerRecord.toString());
         setDtoRequest(consumerRecord.value());
@@ -35,4 +35,5 @@ public class KafkaConsumerOrder{
     private void setDtoRequest(CreateOrderRequest dtoRequest) {
         this.dtoRequest = dtoRequest;
     }
+
 }

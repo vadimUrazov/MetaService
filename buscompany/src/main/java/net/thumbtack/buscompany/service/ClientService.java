@@ -75,6 +75,7 @@ public class ClientService extends ServiceBase {
 
 
     public ChoosePlacesResponse choosePlaces(ChoosePlacesRequest request) throws ServiceException {
+
         request=consumer.getDtoRequest();
         List<ChoosePlaceResponse> resp = new ArrayList<>();
         for (ChoosePlaceRequest req : request.getRequest()) {

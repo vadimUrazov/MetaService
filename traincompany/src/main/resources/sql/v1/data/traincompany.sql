@@ -67,6 +67,7 @@ CREATE TABLE traincompany.public.day_trip
 );
 
 
+
 CREATE TABLE traincompany.public."order"
 (
     id          SERIAL primary key,
@@ -84,30 +85,18 @@ CREATE TABLE traincompany.public.passenger
     first_name varchar(100) NOT NULL,
     last_name  varchar(100) NOT NULL,
     passport   int          NOT NULL,
-    id_order   int          NOT NULL,
+    id_order   int          DEFAULT NULL,
     CONSTRAINT orderFk FOREIGN KEY (id_order) REFERENCES "order" (id) ON DELETE CASCADE
 );
-
 CREATE TABLE traincompany.public.cargo
 (
     id         SERIAL primary key,
     cargo_type varchar(100) NOT NULL,
     id_client  int          NOT NULL,
-    id_order   int          NOT NULL,
+    id_order   int          DEFAULT NULL,
     CONSTRAINT clnFk FOREIGN KEY (id_client) REFERENCES client (id) ON DELETE CASCADE,
     CONSTRAINT ordFk FOREIGN KEY (id_order) REFERENCES "order" (id) ON DELETE CASCADE
 );
-
-CREATE TABLE traincompany.public."order_passengers"
-(
-    id           SERIAL primary key,
-    "order_id"     int NOT NULL,
-    passengers_id int DEFAULT NULL,
-    CONSTRAINT ordFk FOREIGN KEY ("order_id") REFERENCES "order" (id) ON DELETE CASCADE,
-    CONSTRAINT pasFk FOREIGN KEY (passengers_id) REFERENCES passenger (id) ON DELETE CASCADE
-
-);
-
 
 CREATE TABLE traincompany.public.place
 (
@@ -133,4 +122,5 @@ INSERT INTO traincompany.public.train(train_name, place_count, car)
 VALUES ('Lada', 1, 1);
 INSERT INTO traincompany.public.train(train_name, place_count, car)
 VALUES ('Audi', 3, 1);
+
 

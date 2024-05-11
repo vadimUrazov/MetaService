@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class CreateOrderRequest {
-
     private long idOrder;
     private long idClient;
     private String fromStation;

@@ -1,10 +1,10 @@
-package net.thumbtack.buscompany.testcontainer;
+package net.thumbtack.shipcompany.testcontainer;
 
-import net.thumbtack.buscompany.Application;
-import net.thumbtack.buscompany.config.KafkaConsumerOrder;
-import net.thumbtack.buscompany.dto.request.CreateOrderRequest;
+
+import net.thumbtack.shipcompany.Application;
+import net.thumbtack.shipcompany.config.KafkaConsumerOrder;
+import net.thumbtack.shipcompany.dto.request.CreateOrderRequest;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -23,17 +23,17 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.utility.DockerImageName;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@Import(net.thumbtack.buscompany.testcontainer.KafkaTestContainersLiveTest.KafkaTestContainersConfiguration.class)
+@Import(KafkaTestContainersLiveTest.KafkaTestContainersConfiguration.class)
 @SpringBootTest(classes = Application.class)
 @DirtiesContext
 public class KafkaTestContainersLiveTest {
@@ -83,7 +83,7 @@ public class KafkaTestContainersLiveTest {
             Map<String, Object> props = new HashMap<>();
             props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafka.getBootstrapServers());
             props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-            props.put(ConsumerConfig.GROUP_ID_CONFIG, "baeldung");
+            props.put(ConsumerConfig.GROUP_ID_CONFIG, "ship");
             props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
             props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
             return props;

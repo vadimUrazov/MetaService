@@ -54,13 +54,13 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrder() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+        getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(),  "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
         CreateOrderResponse response = orderService.createOrder(request);
 
@@ -84,14 +84,14 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testDeleteOrder() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
 
-        var tripId = getTrip();
+         getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(),  "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
         CreateOrderResponse response = orderService.createOrder(request);
 
@@ -103,14 +103,14 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testGetOrders() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
 
-        var tripId = getTrip();
+         getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
         orderService.createOrder(request);
 
@@ -123,13 +123,13 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrderNotClient() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Сидоров", "Георгий", "Александрович", "ivanob@mail.ru", "8-917-681-32-65", "ivanboIvanv6", "12s2893dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Сидоров", "Георгий", "Александрович", "ivanob@mail.ru", "8-917-681-32-65", "ivanboIvanv6", "12s2893dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+         getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(0, tripId, "2022-01-02", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(0,  "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
         assertThrows(ServiceException.class, () -> orderService.createOrder(request));
 
@@ -138,13 +138,13 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrderFailNotFoundTrip() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
         var tripId = 125;
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(),  "2022-01-02","Omsk", "Surgut",  list,new ArrayList<>(),"PASS");
 
 
         set();
@@ -158,13 +158,13 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrderFailIncorrectDate() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+        getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-02-32", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(),  "2022-19-31","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
 
         set();
@@ -177,13 +177,13 @@ public class TestOrderOperations extends AbstractControllerTest {
     @Test
     public void testCreateOrderFailNoDate() throws Exception {
 
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+        getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "rgtyuy", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(),  "","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
 
         set();
@@ -195,12 +195,12 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrderFailEmptyPassengers() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+         getTrip();
         List<PassengerDto> list = new ArrayList<>();
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(),  "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
 
         set();
@@ -212,13 +212,13 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrderFailPassengerLastName() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+        getTrip();
         var list = List.of(new PassengerDto("Иванов", null, 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
 
         set();
@@ -231,13 +231,13 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrderFailPassengerFirstName() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+         getTrip();
         var list = List.of(new PassengerDto("", "Иван", 23456), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
 
         set();
@@ -250,13 +250,13 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testCreateOrderFailPassengerPassport() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
-        var tripId = getTrip();
+         getTrip();
         var list = List.of(new PassengerDto("Иванов", "Иван", -2), new PassengerDto("Пётров", "Пётр", 153468));
 
-        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "Omsk", "Moskow", "2022-01-02", list);
+        CreateOrderRequest request = new CreateOrderRequest(cl.getId(), "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
 
         set();
@@ -267,7 +267,7 @@ public class TestOrderOperations extends AbstractControllerTest {
 
     @Test
     public void testDeleteOrderFail() throws Exception {
-        RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
         var cl = clientService.registerClient(client);
 
         set();

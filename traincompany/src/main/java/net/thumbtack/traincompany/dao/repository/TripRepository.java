@@ -15,8 +15,6 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     Trip getTripById(long id);
 
-    List<Trip> getTripsByFromStation(String fromStation);
-
-    List<Trip> getTripsByToStation(String toStation);
+   Trip getTripByFromStationAndToStation(String fromStation,String toStation);
 
 }

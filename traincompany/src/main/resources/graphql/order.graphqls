@@ -21,9 +21,12 @@ type PassengerDtoResponse{
 }
 
 input CreateOrderRequest{
-    tripId: ID!
+    idOrder:ID
+    idClient:ID
     date: String!
-    passengers: [PassengerDto]!
+    fromStation: String
+    toStation: String
+    passengers: [PassengerDto]
     cardoDtos:[CargoDto]
     orderType:String
 }
@@ -34,7 +37,7 @@ type CreateOrderResponse{
     date: String
     fromStation: String
     toStation: String
-    busName: String
+    trainName: String
     start: String
     duration: String
     price: Int
@@ -49,7 +52,7 @@ type OrderDto {
     date: String
     fromStation: String
     toStation: String
-    busName: String
+    trainName: String
     start: String
     duration: String
     price: Int

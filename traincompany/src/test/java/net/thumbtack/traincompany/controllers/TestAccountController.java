@@ -30,7 +30,7 @@ public class TestAccountController extends AbstractControllerTest {
 
     @Test
     public void testGetUser() throws Exception {
-        RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
+        RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович", "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
 
 
         var res = service.registerClient(request);

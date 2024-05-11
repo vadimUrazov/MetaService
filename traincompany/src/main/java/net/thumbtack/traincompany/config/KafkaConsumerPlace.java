@@ -1,6 +1,7 @@
-package net.thumbtack.buscompany.config;
+package net.thumbtack.traincompany.config;
 
-import net.thumbtack.buscompany.dto.request.CreateOrderRequest;
+
+import net.thumbtack.traincompany.dto.request.ChoosePlacesRequest;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,15 +11,15 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CountDownLatch;
 
 @Component
-public class KafkaConsumerOrder{
+public class KafkaConsumerPlace {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerOrder.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerPlace.class);
 
     private CountDownLatch latch = new CountDownLatch(1);
-    private CreateOrderRequest dtoRequest = null;
+    private ChoosePlacesRequest dtoRequest = null;
 
-    @KafkaListener(topics = "getBus",groupId = "bus")
-    public void receive(ConsumerRecord<?, CreateOrderRequest> consumerRecord) {
+    @KafkaListener(topics = "getTrain",groupId = "train")
+    public void receive(ConsumerRecord<?, ChoosePlacesRequest> consumerRecord) {
         LOGGER.info("received payload='{}'", consumerRecord.toString());
         setDtoRequest(consumerRecord.value());
         latch.countDown();
@@ -28,11 +29,12 @@ public class KafkaConsumerOrder{
         return latch;
     }
 
-    public CreateOrderRequest getDtoRequest() {
+    public ChoosePlacesRequest getDtoRequest() {
         return dtoRequest;
     }
 
-    private void setDtoRequest(CreateOrderRequest dtoRequest) {
+    private void setDtoRequest(ChoosePlacesRequest dtoRequest) {
         this.dtoRequest = dtoRequest;
     }
+
 }

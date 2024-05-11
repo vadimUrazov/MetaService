@@ -3,6 +3,7 @@ package net.thumbtack.shipcompany.dao.impl;
 
 import net.thumbtack.shipcompany.dao.TripDao;
 import net.thumbtack.shipcompany.entity.DayTrip;
+import net.thumbtack.shipcompany.entity.Place;
 import net.thumbtack.shipcompany.entity.Trip;
 import net.thumbtack.shipcompany.exception.ServiceException;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("SQLTripDao")
@@ -73,12 +75,34 @@ public class TripDaoImpl extends BaseDaoImpl implements TripDao {
         return res;
     }
 
+    @Override
+    public List<Place> getFreePlacesByTrip(long idTrip) {
+        List<Place> places = new ArrayList<>();
+        var trip = tripRepository.getTripById(idTrip);
+        var list = placeRepository.getPlacesByPassengerNull();
+        for (Place place : list) {
+            var id = place.getIdDayTrip();
+            var day = dayTripRepository.getDayTripById(id);
+            for (DayTrip d : trip.getDayTrips()) {
+                if (d.getDate().equals(day.getDate())) {
+                    places.add(place);
+                }
+            }
+
+        }
+        return places;
+    }
 
     @Override
     @Transactional
     public DayTrip findDayTrip(Trip trip, LocalDate date) throws ServiceException {
         return dayTripRepository.getDayTripByDateAndAndTrip(date, trip);
 
+    }
+
+    @Override
+    public Trip getTripByFromStationAndAndToStation(String fromStation, String toStation) {
+        return tripRepository.getTripByFromStationAndAndToStation(fromStation, toStation);
     }
 
 }

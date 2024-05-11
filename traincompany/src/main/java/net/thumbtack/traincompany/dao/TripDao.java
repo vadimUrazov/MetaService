@@ -1,6 +1,7 @@
 package net.thumbtack.traincompany.dao;
 
 import net.thumbtack.traincompany.entity.DayTrip;
+import net.thumbtack.traincompany.entity.Place;
 import net.thumbtack.traincompany.entity.Trip;
 import net.thumbtack.traincompany.exception.ServiceException;
 
@@ -17,5 +18,8 @@ public interface TripDao {
 
     List<Trip> getCitiesByToStation(String toStation);
 
+    List<Place> getFreePlacesByTrip(long idTrip);
     DayTrip findDayTrip(Trip trip, LocalDate date) throws ServiceException;
+
+   Trip getTripByFromStationAndToStation(String fromStation,String toStation);
 }

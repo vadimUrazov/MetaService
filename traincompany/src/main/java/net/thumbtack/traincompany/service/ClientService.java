@@ -1,5 +1,6 @@
 package net.thumbtack.traincompany.service;
 
+import net.thumbtack.traincompany.config.KafkaConsumerPlace;
 import net.thumbtack.traincompany.dto.PlaceDto;
 import net.thumbtack.traincompany.dto.request.ChoosePlaceRequest;
 import net.thumbtack.traincompany.dto.request.ChoosePlacesRequest;
@@ -29,7 +30,8 @@ import java.util.List;
 @Service
 public class ClientService extends ServiceBase {
     private final PasswordEncoder passwordEncoder;
-
+    @Autowired
+    KafkaConsumerPlace consumer;
 
     @Autowired
     public ClientService(PasswordEncoder passwordEncoder) {
@@ -119,6 +121,7 @@ public class ClientService extends ServiceBase {
     }
 
     public ChoosePlacesResponse choosePlaces(ChoosePlacesRequest request) throws ServiceException {
+        request=consumer.getDtoRequest();
         List<ChoosePlaceResponse> resp = new ArrayList<>();
         for (ChoosePlaceRequest req : request.getRequest()) {
             var buf = choosePlace(req);

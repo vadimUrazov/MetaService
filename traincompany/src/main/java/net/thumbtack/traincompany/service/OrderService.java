@@ -1,5 +1,6 @@
 package net.thumbtack.traincompany.service;
 
+import net.thumbtack.traincompany.config.KafkaConsumerOrder;
 import net.thumbtack.traincompany.dto.OrderDto;
 import net.thumbtack.traincompany.dto.request.CargoDto;
 import net.thumbtack.traincompany.dto.request.CreateOrderRequest;
@@ -11,6 +12,7 @@ import net.thumbtack.traincompany.dto.response.PassengerDtoResponse;
 import net.thumbtack.traincompany.entity.*;
 import net.thumbtack.traincompany.exception.ErrorCode;
 import net.thumbtack.traincompany.exception.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -20,7 +22,8 @@ import java.util.List;
 
 @Service
 public class OrderService extends ServiceBase {
-
+    @Autowired
+    KafkaConsumerOrder consumer;
     private List<Passenger> createPassengersFromRequest(List<PassengerDto> list) throws ServiceException {
         List<Passenger> passengers = new ArrayList<>();
         for (PassengerDto passengerDto : list) {
@@ -87,22 +90,45 @@ public class OrderService extends ServiceBase {
         }
         return res;
     }
+    private Trip findTrip(String fromStation,String toStation,List<Trip> trips){
+       Trip tr=null;
+       for(Trip t: trips){
+           var st=getStations(t.getDurationStations());
+           if(st.contains(toStation) && t.getFromStation().equals(fromStation)){
+               tr=t;
+           }
+           if(t.getToStation().equals(toStation) && st.contains(fromStation)){
+              tr=t;
+           }
+           if(st.contains(fromStation) && st.contains(toStation)){
+              tr=t;
+           }
+       }
+        return tr;
+    }
 
     public CreateOrderResponse createOrder(CreateOrderRequest request) throws ServiceException {
+        request=consumer.getDtoRequest();
         Client client = (Client) userDao.getUserById(request.getIdClient());
         checkDate(request.getDate());
         var passengers = createPassengersFromRequest(request.getPassengers());
         var cargos = createCargoFromRequest(request.getCargoDtos());
-        if (passengers.isEmpty()) {
+        if (passengers.isEmpty() && cargos.isEmpty()) {
             throw new ServiceException(ErrorCode.INCORRECT_PASSENGERS);
         }
         if (client == null) {
             throw new ServiceException(ErrorCode.ORDER_IS_STRANGER);
         }
+        Trip trip=null;
+         trip = tripDao.getTripByFromStationAndToStation(request.getFromStation(),request.getToStation());
 
-        Trip trip = tripDao.getTripById(request.getTripId());
+
         if (trip == null) {
-            throw new ServiceException(ErrorCode.TRIP_NOT_FOUND);
+            var trips=tripDao.getTrips();
+           trip=findTrip(request.getFromStation(),request.getToStation(),trips);
+            if(trip==null){
+                throw new ServiceException(ErrorCode.TRIP_NOT_FOUND);
+            }
         }
         if (!trip.isApproved()) {
             throw new ServiceException(ErrorCode.NO_APPROVED_TRIP);
@@ -110,6 +136,7 @@ public class OrderService extends ServiceBase {
 
         Order order = new Order(findDayTrip(trip, LocalDate.parse(request.getDate())), passengers, client);
         order.setTotalPrice(trip.getPrice());
+        order.setId(request.getIdOrder());
         order.setCargos(cargos);
         var type = request.getOrderType();
 
@@ -120,13 +147,13 @@ public class OrderService extends ServiceBase {
         var passengersDto = createPassengersDto(result.getPassengers());
         var cargoDto = createCargoDto(result.getCargos());
         if (type.equals("CARGO")) {
-            return new CreateOrderResponse(result.getId(), request.getTripId(), trip.getFromStation(),
+            return new CreateOrderResponse(result.getId(), trip.getId(), trip.getFromStation(),
                     trip.getToStation(), trip.getTrain().getTrainName(),
                     convertDateFromGMT(result.getDayTrip().getDate()).toString(), trip.getStart().toString(),
                     trip.getDuration().toString(), trip.getPrice(), result.getTotalPrice(), new ArrayList<>(), cargoDto);
         }
 
-        return new CreateOrderResponse(result.getId(), request.getTripId(), trip.getFromStation(),
+        return new CreateOrderResponse(result.getId(), trip.getId(), trip.getFromStation(),
                 trip.getToStation(), trip.getTrain().getTrainName(),
                 convertDateFromGMT(result.getDayTrip().getDate()).toString(), trip.getStart().toString(), trip.getDuration().toString(), trip.getPrice(), result.getTotalPrice(), passengersDto, new ArrayList<>());
     }

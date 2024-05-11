@@ -1,5 +1,6 @@
 package net.thumbtack.shipcompany.service;
 
+import net.thumbtack.shipcompany.config.KafkaConsumerOrder;
 import net.thumbtack.shipcompany.dto.OrderDto;
 import net.thumbtack.shipcompany.dto.request.CargoDto;
 import net.thumbtack.shipcompany.dto.request.CreateOrderRequest;
@@ -11,6 +12,7 @@ import net.thumbtack.shipcompany.dto.response.PassengerDtoResponse;
 import net.thumbtack.shipcompany.entity.*;
 import net.thumbtack.shipcompany.exception.ErrorCode;
 import net.thumbtack.shipcompany.exception.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -20,7 +22,8 @@ import java.util.List;
 
 @Service
 public class OrderService extends ServiceBase {
-
+    @Autowired
+    KafkaConsumerOrder consumer;
     private List<Passenger> createPassengersFromRequest(List<PassengerDto> list) throws ServiceException {
         List<Passenger> passengers = new ArrayList<>();
         for (PassengerDto passengerDto : list) {
@@ -79,18 +82,19 @@ public class OrderService extends ServiceBase {
     }
 
     public CreateOrderResponse createOrder(CreateOrderRequest request) throws ServiceException {
+        request=consumer.getDtoRequest();
         Client client = (Client) userDao.getUserById(request.getIdClient());
         checkDate(request.getDate());
         var passengers = createPassengersFromRequest(request.getPassengers());
         var cargos = createCargoFromRequest(request.getCargoDtos());
-        if (passengers.isEmpty()) {
+        if (passengers.isEmpty() && cargos.isEmpty()) {
             throw new ServiceException(ErrorCode.INCORRECT_PASSENGERS);
         }
         if (client == null) {
             throw new ServiceException(ErrorCode.ORDER_IS_STRANGER);
         }
 
-        Trip trip = tripDao.getTripById(request.getTripId());
+        Trip trip = tripDao.getTripByFromStationAndAndToStation(request.getFromStation(),request.getToStation());
         if (trip == null) {
             throw new ServiceException(ErrorCode.TRIP_NOT_FOUND);
         }
@@ -101,6 +105,7 @@ public class OrderService extends ServiceBase {
         Order order = new Order(findDayTrip(trip, LocalDate.parse(request.getDate())), passengers, client);
         order.setTotalPrice(trip.getPrice());
         order.setCargos(cargos);
+        order.setId(request.getIdOrder());
         var type = request.getOrderType();
 
         if (!type.equals("PASS") && !type.equals("CARGO")) {
@@ -110,13 +115,13 @@ public class OrderService extends ServiceBase {
         var passengersDto = createPassengersDto(result.getPassengers());
         var cargoDto = createCargoDto(result.getCargos());
         if (type.equals("CARGO")) {
-            return new CreateOrderResponse(result.getId(), request.getTripId(), trip.getFromStation(),
+            return new CreateOrderResponse(result.getId(), trip.getId(), trip.getFromStation(),
                     trip.getToStation(), trip.getShip().getShipName(),
                     convertDateFromGMT(result.getDayTrip().getDate()).toString(), trip.getStart().toString(),
                     trip.getDuration().toString(), trip.getPrice(), result.getTotalPrice(), new ArrayList<>(), cargoDto);
         }
 
-        return new CreateOrderResponse(result.getId(), request.getTripId(), trip.getFromStation(),
+        return new CreateOrderResponse(result.getId(), trip.getId(), trip.getFromStation(),
                 trip.getToStation(), trip.getShip().getShipName(),
                 convertDateFromGMT(result.getDayTrip().getDate()).toString(), trip.getStart().toString(), trip.getDuration().toString(), trip.getPrice(), result.getTotalPrice(), passengersDto, new ArrayList<>());
     }

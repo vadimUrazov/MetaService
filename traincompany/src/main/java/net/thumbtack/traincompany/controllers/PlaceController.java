@@ -32,13 +32,11 @@ public class PlaceController {
     }
 
     @MutationMapping
-    @PreAuthorize("hasRole('CLIENT')")
     public ChoosePlaceResponse choosePlace(@Valid @Argument ChoosePlaceRequest request) throws ServiceException {
         return service.choosePlace(request);
     }
 
     @MutationMapping
-    @PreAuthorize("hasRole('CLIENT')")
     public ChoosePlacesResponse choosePlaces(@Valid @Argument ChoosePlacesRequest request) throws ServiceException {
         return service.choosePlaces(request);
     }

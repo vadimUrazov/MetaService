@@ -13,6 +13,7 @@ import net.thumbtack.shipcompany.exception.ServiceException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,13 +25,9 @@ import java.util.List;
 @Service
 public class TripService extends ServiceBase {
 
-    @Autowired
-    private CacheManager cacheManager;
 
-    @Autowired
-    public TripService() {
 
-    }
+
 
     public GetTripResponse getTripById(long id) throws ServiceException {
 
@@ -64,32 +61,36 @@ public class TripService extends ServiceBase {
 
         return dates;
     }
-
+    @CacheEvict(value = "get_cities_to", key = "#toStation")
     public GetCitiesResponse getCitiesByToStation(String toStation) throws ServiceException {
         if (StringUtils.isBlank(toStation)) {
             throw new ServiceException(ErrorCode.ERROR_FIELD);
         }
-        if (cacheManager.getCache("get_cities_to").get(toStation) != null) {
-            var res = (List<Trip>) cacheManager.getCache("get_cities_to").get(toStation).get();
-            return new GetCitiesResponse(TripMapper.getTripDtoForClient(res));
-        }
+
         var trips = tripDao.getCitiesByToStation(toStation);
-        cacheManager.getCache("get_cities_to").put(toStation, trips);
-        return new GetCitiesResponse(TripMapper.getTripDtoForClient(trips));
+        List<Trip> resTrips = new ArrayList<>();
+        for (Trip t : trips) {
+            if (!tripDao.getFreePlacesByTrip(t.getId()).isEmpty()) {
+                resTrips.add(t);
+            }
+        }
+        return new GetCitiesResponse(TripMapper.getTripDtoForClient(resTrips));
     }
 
-
+    @CacheEvict(value = "get_cities_from", key = "#fromStation")
     public GetCitiesResponse getCitiesByFromStation(String fromStation) throws ServiceException {
         if (StringUtils.isBlank(fromStation)) {
             throw new ServiceException(ErrorCode.ERROR_FIELD);
         }
-        if (cacheManager.getCache("get_cities_from").get(fromStation) != null) {
-            var res = (List<Trip>) cacheManager.getCache("get_cities_from").get(fromStation).get();
-            return new GetCitiesResponse(TripMapper.getTripDtoForClient(res));
+      var trips = tripDao.getCitiesByFromStation(fromStation);
+        List<Trip> resTrips = new ArrayList<>();
+        for (Trip t : trips) {
+            if (!tripDao.getFreePlacesByTrip(t.getId()).isEmpty()) {
+                resTrips.add(t);
+            }
         }
-        var trips = tripDao.getCitiesByFromStation(fromStation);
-        cacheManager.getCache("get_cities_from").put(fromStation, trips);
-        return new GetCitiesResponse(TripMapper.getTripDtoForClient(trips));
+
+        return new GetCitiesResponse(TripMapper.getTripDtoForClient(resTrips));
     }
 
     public void addShip(AddShipDtoRequest shipDto) throws ServiceException {

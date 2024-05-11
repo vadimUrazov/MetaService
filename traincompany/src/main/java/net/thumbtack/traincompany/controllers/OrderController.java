@@ -30,7 +30,6 @@ public class OrderController {
     }
 
     @MutationMapping
-    @PreAuthorize("hasRole('CLIENT')")
     public CreateOrderResponse createOrder(@Valid @Argument CreateOrderRequest request) throws ServiceException {
         return service.createOrder(request);
     }

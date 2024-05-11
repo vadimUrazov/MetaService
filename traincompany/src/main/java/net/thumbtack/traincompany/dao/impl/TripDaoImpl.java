@@ -3,6 +3,7 @@ package net.thumbtack.traincompany.dao.impl;
 
 import net.thumbtack.traincompany.dao.TripDao;
 import net.thumbtack.traincompany.entity.DayTrip;
+import net.thumbtack.traincompany.entity.Place;
 import net.thumbtack.traincompany.entity.Trip;
 import net.thumbtack.traincompany.exception.ServiceException;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("SQLTripDao")
@@ -35,6 +37,31 @@ public class TripDaoImpl extends BaseDaoImpl implements TripDao {
     public Trip getTripById(long id) throws ServiceException {
         LOGGER.debug("DAO get Trip By Id { }");
         return tripRepository.getTripById(id);
+    }
+
+    @Override
+    @Transactional
+    public Trip getTripByFromStationAndToStation(String fromStation,String toStation)  {
+        LOGGER.debug("DAO get Trip By Id { }");
+        return tripRepository.getTripByFromStationAndToStation(fromStation, toStation);
+    }
+
+    @Override
+    public List<Place> getFreePlacesByTrip(long idTrip) {
+        List<Place> places = new ArrayList<>();
+        var trip = tripRepository.getTripById(idTrip);
+        var list = placeRepository.getPlacesByPassengerNull();
+        for (Place place : list) {
+            var id = place.getIdDayTrip();
+            var day = dayTripRepository.getDayTripById(id);
+            for (DayTrip d : trip.getDayTrips()) {
+                if (d.getDate().equals(day.getDate())) {
+                    places.add(place);
+                }
+            }
+
+        }
+        return places;
     }
 
     @Override

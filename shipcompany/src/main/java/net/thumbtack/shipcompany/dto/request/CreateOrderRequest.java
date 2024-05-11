@@ -6,28 +6,38 @@ import lombok.Data;
 import net.thumbtack.shipcompany.validate.Date;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 public class CreateOrderRequest {
+    private long idOrder;
     private long idClient;
-    private long tripId;
     @NotEmpty
     @Date
     private String date;
+    private String fromStation;
+    private String toStation;
     private List<PassengerDto> passengers;
     private List<CargoDto> cargoDtos;
-    private String orderType = "CARGO";
+    private String orderType = "PASS";
 
-    public CreateOrderRequest(long idClient, long tripId, String date, List<PassengerDto> passengers) {
+    public CreateOrderRequest(long idClient,  String date, String fromStation, String toStation, List<PassengerDto> passengers,List<CargoDto> cargoDtos, String orderType) {
         this.idClient = idClient;
-        this.tripId = tripId;
         this.date = date;
-        this.passengers = passengers;
-        this.orderType = "PASS";
+        this.fromStation=fromStation;
+        this.toStation=toStation;
+        if(orderType.equals("CARGO")){
+            passengers = new ArrayList<>();
+            this.cargoDtos = cargoDtos;
+        }
+        if(orderType.equals("PASS")){
+            this.cargoDtos = new ArrayList<>();
+            this.passengers = passengers;
+        }
+        this.orderType = orderType;
     }
-
     @JsonCreator
     public CreateOrderRequest() {
     }

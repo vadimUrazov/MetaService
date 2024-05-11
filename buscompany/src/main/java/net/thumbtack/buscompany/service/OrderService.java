@@ -87,6 +87,7 @@ public class OrderService extends ServiceBase {
 
 
     public CreateOrderResponse createOrder(CreateOrderRequest request) throws Exception {
+
         request=consumer.getDtoRequest();
         Client client = (Client) userDao.getUserById(request.getIdClient());
         checkDate(request.getDate());
