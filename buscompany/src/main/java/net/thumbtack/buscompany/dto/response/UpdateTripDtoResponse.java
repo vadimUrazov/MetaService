@@ -1,14 +1,11 @@
 package net.thumbtack.buscompany.dto.response;
 
-import java.math.BigDecimal;
-import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import net.thumbtack.buscompany.dto.BusDto;
 import net.thumbtack.buscompany.dto.DayTripDto;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,13 +14,13 @@ import net.thumbtack.buscompany.dto.DayTripDto;
 @ToString
 public class UpdateTripDtoResponse {
 
-  private long id;
-  private String fromStation;
-  private String toStation;
-  private BusDto bus;
-  private BigDecimal price;
-  private String start;
-  private String duration;
-  private List<DayTripDto> dayTrips;
-  private boolean approved;
+    private long id;
+    private String fromStation;
+    private String toStation;
+    private BusDto bus;
+    private BigDecimal price;
+    private String start;
+    private String duration;
+    private List<DayTripDto> dayTrips;
+    private boolean approved;
 }

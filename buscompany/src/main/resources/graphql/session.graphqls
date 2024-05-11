@@ -1,4 +1,5 @@
 type UserDto {
+    id: ID
     surname: String
     name: String
     middlename: String

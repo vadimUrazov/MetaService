@@ -5,13 +5,13 @@ import net.thumbtack.buscompany.exception.ServiceException;
 
 public interface UserDao {
 
-  User registerUser(User user) throws ServiceException;
+    User registerUser(User user) throws ServiceException;
 
-  User getUserById(long id);
+    User getUserById(long id);
 
-  void updateUser(User user) throws ServiceException;
+    void updateUser(User user) throws ServiceException;
 
-  User getUserByLogin(String login);
+    User getUserByLogin(String login);
 
 
 }

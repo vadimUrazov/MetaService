@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ChoosePlaceResponse {
 
-  private long orderId;
-  private String ticket;
-  private String lastName;
-  private String firstName;
-  private int place;
+    private long orderId;
+    private String ticket;
+    private String lastName;
+    private String firstName;
+    private int place;
 }

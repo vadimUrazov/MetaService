@@ -1,13 +1,14 @@
 package net.thumbtack.buscompany.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.math.BigDecimal;
-import java.util.Set;
-import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.validation.constraints.NotEmpty;
+import java.math.BigDecimal;
+import java.util.Set;
 
 @AllArgsConstructor
 @Getter
@@ -15,20 +16,20 @@ import lombok.ToString;
 @ToString
 public class UpdateTripDtoRequest {
 
-  @NotEmpty
-  private String fromStation;
-  @NotEmpty
-  private String toStation;
-  @NotEmpty
-  private String busName;
-  @NotEmpty
-  private String start;
-  @NotEmpty
-  private String duration;
-  private BigDecimal price;
-  private Set<String> dates;
+    @NotEmpty
+    private String fromStation;
+    @NotEmpty
+    private String toStation;
+    @NotEmpty
+    private String busName;
+    @NotEmpty
+    private String start;
+    @NotEmpty
+    private String duration;
+    private BigDecimal price;
+    private Set<String> dates;
 
-  @JsonCreator
-  public UpdateTripDtoRequest() {
-  }
+    @JsonCreator
+    public UpdateTripDtoRequest() {
+    }
 }

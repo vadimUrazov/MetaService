@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import net.thumbtack.buscompany.dto.request.AddTripRequest;
 import net.thumbtack.buscompany.dto.request.ChoosePlaceRequest;
@@ -58,15 +59,14 @@ public class TestPlaceOperations extends AbstractControllerTest {
 
   @Test
   public void testChoosePlace() throws Exception {
-    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
     var cl = clientService.registerClient(client);
 
-    var tripId = getTrip();
     var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
         new PassengerDto("Пётров", "Пётр", 153468));
 
-    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), "2022-01-02","Omsk", "Moskow", list,new ArrayList<>(),"PASS");
 
     CreateOrderResponse response = orderService.createOrder(request);
 
@@ -84,15 +84,14 @@ public class TestPlaceOperations extends AbstractControllerTest {
 
   @Test
   public void testChangeChoosePlace() throws Exception {
-    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvav1", "12s2286df8hj");
     var cl = clientService.registerClient(client);
 
-    var tripId = getTrip();
     var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
         new PassengerDto("Пётров", "Пётр", 153468));
 
-    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), "2022-01-02","Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
     CreateOrderResponse response = orderService.createOrder(request);
 
@@ -116,15 +115,14 @@ public class TestPlaceOperations extends AbstractControllerTest {
 
   @Test
   public void testGetFreePlaces() throws Exception {
-    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv34", "12s2206dfghj");
     var cl = clientService.registerClient(client);
 
-    var tripId = getTrip();
     var list = List.of(new PassengerDto("Иванов", "Иван", 23456),
         new PassengerDto("Пётров", "Пётр", 153468));
 
-    CreateOrderRequest request = new CreateOrderRequest(cl.getId(), tripId, "2022-01-02", list);
+    CreateOrderRequest request = new CreateOrderRequest(cl.getId(),  "2022-01-02", "Omsk", "Moskow",  list,new ArrayList<>(),"PASS");
 
     CreateOrderResponse response = orderService.createOrder(request);
 
@@ -137,7 +135,7 @@ public class TestPlaceOperations extends AbstractControllerTest {
 
   @Test
   public void testGetFreePlacesFail() throws Exception {
-    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv87", "12s2278dfghj");
     var cl = clientService.registerClient(client);
 
@@ -149,7 +147,7 @@ public class TestPlaceOperations extends AbstractControllerTest {
 
   @Test
   public void testChoosePlaceFailNotFoundOrder() throws Exception {
-    RegisterClientDtoRequest client = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest client = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv96", "12s223dfhuihj");
     var cl = clientService.registerClient(client);
 

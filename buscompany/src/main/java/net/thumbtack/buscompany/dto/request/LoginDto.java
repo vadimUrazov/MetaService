@@ -1,11 +1,12 @@
 package net.thumbtack.buscompany.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.validation.constraints.NotEmpty;
 
 @AllArgsConstructor
 @Getter
@@ -13,13 +14,13 @@ import lombok.ToString;
 @ToString
 public class LoginDto {
 
-  @NotEmpty
-  private String login;
-  @NotEmpty
-  private String password;
+    @NotEmpty
+    private String login;
+    @NotEmpty
+    private String password;
 
-  @JsonCreator
-  public LoginDto() {
-  }
+    @JsonCreator
+    public LoginDto() {
+    }
 
 }

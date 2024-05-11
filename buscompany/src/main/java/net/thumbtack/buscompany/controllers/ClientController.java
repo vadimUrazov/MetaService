@@ -1,6 +1,7 @@
 package net.thumbtack.buscompany.controllers;
 
 import javax.validation.Valid;
+
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.buscompany.dto.request.RegisterClientDtoRequest;
 import net.thumbtack.buscompany.dto.request.UpdateClientDtoRequest;
@@ -23,35 +24,35 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 public class ClientController {
 
-  private final ClientService service;
-  private final AdminService adminService;
+    private final ClientService service;
+    private final AdminService adminService;
 
 
-  @Autowired
-  public ClientController(ClientService service, AdminService adminService) {
-    this.service = service;
-    this.adminService = adminService;
-  }
+    @Autowired
+    public ClientController(ClientService service, AdminService adminService) {
+        this.service = service;
+        this.adminService = adminService;
+    }
 
-  @MutationMapping
-  public RegisterClientDtoResponse registerClient(@Argument @Valid RegisterClientDtoRequest request)
-      throws Exception {
-    return service.registerClient(request);
-  }
+    @MutationMapping
+    public RegisterClientDtoResponse registerClient(@Argument @Valid RegisterClientDtoRequest request)
+            throws Exception {
+        return service.registerClient(request);
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasRole('CLIENT')")
-  public UpdateClientDtoResponse updateClient(@Argument long id,
-      @Argument @Valid UpdateClientDtoRequest request) throws Exception {
+    @MutationMapping
+    @PreAuthorize("hasRole('CLIENT')")
+    public UpdateClientDtoResponse updateClient(@Argument long id,
+                                                @Argument @Valid UpdateClientDtoRequest request) throws Exception {
 
-    return service.updateClient(id, request);
-  }
+        return service.updateClient(id, request);
+    }
 
-  @QueryMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public GetClientsResponse getClients() throws ServiceException {
-    return adminService.getClients();
-  }
+    @QueryMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public GetClientsResponse getClients() throws ServiceException {
+        return adminService.getClients();
+    }
 
 
 }

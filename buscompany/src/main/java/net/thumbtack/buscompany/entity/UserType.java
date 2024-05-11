@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum UserType {
-  ADMIN("Admin"),
-  CLIENT("Client");
-  private final String value;
+    ADMIN("Admin"),
+    CLIENT("Client");
+    private final String value;
 }

@@ -1,4 +1,5 @@
 input RegisterClientDtoRequest{
+    id: ID
     surname: String!
     name: String!
     middlename: String

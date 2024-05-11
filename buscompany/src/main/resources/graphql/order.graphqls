@@ -17,12 +17,12 @@ type PassengerDtoResponse{
     passport: ID!
 }
 input CreateOrderRequest{
-    idClient: ID!
-    tripId: ID!
-    date: String!
-    passengers: [PassengerDto]!
-    cardoDtos:[CargoDto]
-    orderType:String
+    idOrder:ID
+    idClient: ID
+    date: String
+    fromStation: String
+    toStation: String
+    passengers: [PassengerDto]
 }
 
 type CreateOrderResponse{

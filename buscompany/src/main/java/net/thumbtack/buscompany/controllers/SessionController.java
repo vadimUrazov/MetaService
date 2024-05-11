@@ -1,6 +1,7 @@
 package net.thumbtack.buscompany.controllers;
 
 import javax.validation.Valid;
+
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.buscompany.dto.request.LoginDto;
 import net.thumbtack.buscompany.dto.request.UserDto;
@@ -19,25 +20,26 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 public class SessionController {
 
-  private final SessionService service;
+    private final SessionService service;
 
-  @Autowired
-  public SessionController(SessionService service) {
-    this.service = service;
-  }
+    @Autowired
+    public SessionController(SessionService service) {
+        this.service = service;
+    }
 
-  @MutationMapping
-  public LoginDtoResponse login(@Valid @Argument LoginDto loginDto) throws Exception {
-    return service.login(loginDto);
-  }
-  @QueryMapping
-  public UserDto getUserByLogin(@Argument String login){
-    return service.getUserByLogin(login);
-  }
+    @MutationMapping
+    public LoginDtoResponse login(@Valid @Argument LoginDto loginDto) throws Exception {
+        return service.login(loginDto);
+    }
 
-  @QueryMapping
-  @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
-  public String healthCheck() {
-    return "Hello user";
-  }
+    @QueryMapping
+    public UserDto getUserByLogin(@Argument String login) {
+        return service.getUserByLogin(login);
+    }
+
+    @QueryMapping
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
+    public String healthCheck() {
+        return "Hello user";
+    }
 }

@@ -1,6 +1,7 @@
 package net.thumbtack.buscompany.controllers;
 
 import javax.validation.Valid;
+
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.buscompany.dto.request.AddTripRequest;
 import net.thumbtack.buscompany.dto.request.UpdateTripDtoRequest;
@@ -26,70 +27,70 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 public class TripController {
 
-  private final TripService service;
-  private final TripValidator validator;
+    private final TripService service;
+    private final TripValidator validator;
 
 
-  @Autowired
-  public TripController(TripService service, TripValidator validator) {
+    @Autowired
+    public TripController(TripService service, TripValidator validator) {
 
-    this.service = service;
-    this.validator = validator;
-  }
+        this.service = service;
+        this.validator = validator;
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public AddTripResponse addTrip(@Valid @Argument AddTripRequest request) throws ServiceException {
-    validator.validate(request);
-    return service.addTrip(request);
-  }
+    @MutationMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public AddTripResponse addTrip(@Valid @Argument AddTripRequest request) throws ServiceException {
+        validator.validate(request);
+        return service.addTrip(request);
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public UpdateTripDtoResponse updateTrip(@Valid @Argument long id,
-      @Valid @Argument UpdateTripDtoRequest request) throws ServiceException {
-    validator.validate(request);
-    return service.updateTrip(id, request);
-  }
+    @MutationMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public UpdateTripDtoResponse updateTrip(@Valid @Argument long id,
+                                            @Valid @Argument UpdateTripDtoRequest request) throws ServiceException {
+        validator.validate(request);
+        return service.updateTrip(id, request);
+    }
 
-  @QueryMapping
-  @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
-  public GetTripsResponse getTrips(@Argument long id) throws ServiceException {
+    @QueryMapping
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
+    public GetTripsResponse getTrips(@Argument long id) throws ServiceException {
 
-    return service.getTrips(id);
-  }
+        return service.getTrips(id);
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public int deleteTrip(@Validated @Argument long id) throws ServiceException {
+    @MutationMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public int deleteTrip(@Validated @Argument long id) throws ServiceException {
 
-    service.deleteTrip(id);
-    return 0;
-  }
+        service.deleteTrip(id);
+        return 0;
+    }
 
-  @QueryMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public GetTripResponse getTripById(@Validated @Argument long id) throws ServiceException {
+    @QueryMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public GetTripResponse getTripById(@Validated @Argument long id) throws ServiceException {
 
-    return service.getTripById(id);
-  }
+        return service.getTripById(id);
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public ApprovedTripResponse approvedTrip(@Validated @Argument long id) throws ServiceException {
-    return service.approvedTrip(id);
-  }
+    @MutationMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public ApprovedTripResponse approvedTrip(@Validated @Argument long id) throws ServiceException {
+        return service.approvedTrip(id);
+    }
 
-  @QueryMapping
-  public GetCitiesResponse getCitiesByFromStation(@Validated @Argument String fromStation)
-      throws ServiceException {
-    return service.getCitiesByFromStation(fromStation);
-  }
+    @QueryMapping
+    public GetCitiesResponse getCitiesByFromStation(@Validated @Argument String fromStation)
+            throws ServiceException {
+        return service.getCitiesByFromStation(fromStation);
+    }
 
-  @QueryMapping
-  public GetCitiesResponse getCitiesByToStation(@Validated @Argument String toStation)
-      throws ServiceException {
-    return service.getCitiesByToStation(toStation);
-  }
+    @QueryMapping
+    public GetCitiesResponse getCitiesByToStation(@Validated @Argument String toStation)
+            throws ServiceException {
+        return service.getCitiesByToStation(toStation);
+    }
 
 }

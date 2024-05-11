@@ -17,26 +17,26 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 public class AccountController {
 
-  private final AccountService service;
+    private final AccountService service;
 
 
-  @Autowired
-  public AccountController(AccountService service) {
-    this.service = service;
+    @Autowired
+    public AccountController(AccountService service) {
+        this.service = service;
 
-  }
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
-  public int deleteUser(@Argument long id) throws ServiceException {
-    service.deleteUser(id);
-    return 0;
-  }
+    @MutationMapping
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
+    public int deleteUser(@Argument long id) throws ServiceException {
+        service.deleteUser(id);
+        return 0;
+    }
 
-  @QueryMapping
-  @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
-  public UserDto getUser(@Argument long id) throws ServiceException {
+    @QueryMapping
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENT')")
+    public UserDto getUser(@Argument long id) throws ServiceException {
 
-    return service.getUser(id);
-  }
+        return service.getUser(id);
+    }
 }

@@ -1,6 +1,7 @@
 package net.thumbtack.buscompany.controllers;
 
 import javax.validation.Valid;
+
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.buscompany.dto.request.AddBusDtoRequest;
 import net.thumbtack.buscompany.dto.response.GetBusesResponse;
@@ -19,29 +20,29 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 public class BusController {
 
-  private final TripService service;
+    private final TripService service;
 
 
-  @Autowired
-  public BusController(TripService service) {
+    @Autowired
+    public BusController(TripService service) {
 
-    this.service = service;
-  }
+        this.service = service;
+    }
 
-  @QueryMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public GetBusesResponse getBuses() throws ServiceException {
+    @QueryMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public GetBusesResponse getBuses() throws ServiceException {
 
-    return service.getBuses();
-  }
+        return service.getBuses();
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasRole('ADMIN')")
-  public int addBus(@Argument @Valid AddBusDtoRequest busDto) throws ServiceException {
+    @MutationMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public int addBus(@Argument @Valid AddBusDtoRequest busDto) throws ServiceException {
 
-    service.addBus(busDto);
-    return 0;
-  }
+        service.addBus(busDto);
+        return 0;
+    }
 
 
 }

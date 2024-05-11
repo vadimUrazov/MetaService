@@ -1,6 +1,7 @@
 package net.thumbtack.buscompany.controllers;
 
 import javax.validation.Valid;
+
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.buscompany.dto.request.ChoosePlaceRequest;
 import net.thumbtack.buscompany.dto.request.ChoosePlacesRequest;
@@ -22,30 +23,29 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 public class PlaceController {
 
-  private final ClientService service;
+    private final ClientService service;
 
 
-  @Autowired
-  public PlaceController(ClientService service) {
+    @Autowired
+    public PlaceController(ClientService service) {
 
-    this.service = service;
-  }
+        this.service = service;
+    }
 
-  @MutationMapping
-  @PreAuthorize("hasRole('CLIENT')")
-  public ChoosePlaceResponse choosePlace(@Valid @Argument ChoosePlaceRequest request)
-      throws ServiceException {
-    return service.choosePlace(request);
-  }
+    @MutationMapping
+    public ChoosePlaceResponse choosePlace(@Valid @Argument ChoosePlaceRequest request)
+            throws ServiceException {
+        return service.choosePlace(request);
+    }
 
-  @QueryMapping
-  @PreAuthorize("hasRole('CLIENT')")
-  public GetFreePlaceResponse getFreePlaces(@Valid @Argument long id) throws ServiceException {
-    return service.getFreePlaces(id);
-  }
-  @MutationMapping
-  @PreAuthorize("hasRole('CLIENT')")
-  public ChoosePlacesResponse choosePlaces(@Valid @Argument ChoosePlacesRequest request) throws ServiceException{
-    return service.choosePlaces(request);
-  }
+    @QueryMapping
+    @PreAuthorize("hasRole('CLIENT')")
+    public GetFreePlaceResponse getFreePlaces(@Valid @Argument long id) throws ServiceException {
+        return service.getFreePlaces(id);
+    }
+
+    @MutationMapping
+    public ChoosePlacesResponse choosePlaces(@Valid @Argument ChoosePlacesRequest request) throws ServiceException {
+        return service.choosePlaces(request);
+    }
 }

@@ -36,7 +36,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClient() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
     var result = given()
         .contentType(ContentType.JSON)
@@ -50,7 +50,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailEmail() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanomail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
     var result = given()
         .contentType(ContentType.JSON)
@@ -67,7 +67,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailPhone() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "-6cdr6789", "ivanovIvanv", "12s223dfghj");
     var result = given()
         .contentType(ContentType.JSON)
@@ -83,7 +83,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailSurname() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"", "Иван", "Иванович",
         "ivanoм@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
     var result = given()
         .contentType(ContentType.JSON)
@@ -100,7 +100,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailName() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "", "Иванович",
         "ivano@mail.ru", "8-916-621-32-64", "ivanovIvanv", "12s223dfghj");
     var result = given()
         .contentType(ContentType.JSON)
@@ -117,7 +117,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailLoginSize() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivan", "12s223dfghj");
     var result = given()
         .contentType(ContentType.JSON)
@@ -134,7 +134,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailLogin() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "", "12s223dfghj");
     var result = given()
         .contentType(ContentType.JSON)
@@ -151,7 +151,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailPassword() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", null);
     var result = given()
         .contentType(ContentType.JSON)
@@ -168,7 +168,7 @@ public class TestUserValidator extends AbstractControllerTest {
 
   @Test
   public void testRegisterClientFailPasswordSize() throws Exception {
-    RegisterClientDtoRequest request = new RegisterClientDtoRequest("Иванов", "Иван", "Иванович",
+    RegisterClientDtoRequest request = new RegisterClientDtoRequest(0,"Иванов", "Иван", "Иванович",
         "ivanov@mail.ru", "8-916-621-32-64", "ivanovIvanv", "1234");
     var result = given()
         .contentType(ContentType.JSON)

@@ -4,5 +4,5 @@ import net.thumbtack.buscompany.exception.ServiceException;
 
 public interface AccountDao {
 
-  void deleteUser(long id) throws ServiceException;
+    void deleteUser(long id) throws ServiceException;
 }
