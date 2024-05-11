@@ -1,0 +1,23 @@
+input ChoosePlaceRequest{
+    orderId: ID!
+    lastName: String!
+    firstName: String!
+    passport:Int!
+    place:Int!
+}
+input ChoosePlaceDtoRequest{
+    idPath: ID
+    places:[ChoosePlaceRequest]
+}
+type ChoosePlaceResponse{
+    orderId: ID
+    ticket: String
+    firstName: String
+    lastName: String
+    place:Int
+}
+type ChoosePlacesResponse{
+    placeResponses:[ChoosePlaceResponse]
+}
+
+

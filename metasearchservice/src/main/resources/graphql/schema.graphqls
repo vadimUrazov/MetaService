@@ -1,10 +1,11 @@
 type Query{
-
     getSettings: GetSettingsResponse
-    getPaths(request: GetPathsDtoRequest):GetPathsDtoResponse
+    getPaths(request: GetPathsDtoRequest):GetFullPathsResponse
 }
 
 type Mutation{
     registerUser(request: RegisterClientDtoRequest):RegisterUserDtoResponse
     loginUser(request: LoginDtoRequest):LoginDtoResponse
+    createOrder(request: CreateOrderDtoRequest):CreateOrderDtoResponse
+    choosePlace(request: ChoosePlaceDtoRequest):ChoosePlacesResponse
 }

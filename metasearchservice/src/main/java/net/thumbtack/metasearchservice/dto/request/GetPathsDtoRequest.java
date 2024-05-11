@@ -18,4 +18,10 @@ public class GetPathsDtoRequest {
 
     @NotEmpty
     private String criteria;
+
+    @NotEmpty
+    private String transport;
+
+    @NotEmpty
+    private String dateFrom;
 }

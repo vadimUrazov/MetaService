@@ -28,6 +28,24 @@
                 required
             ></v-text-field>
           </v-col>
+          <v-col
+              cols="12"
+              md="4">
+            <v-text-field
+                v-model="transport"
+                label="Transport"
+                required
+            ></v-text-field>
+          </v-col>
+          <v-col
+              cols="12"
+              md="4">
+            <v-text-field
+                v-model="dateFrom"
+                label="Date"
+                required
+            ></v-text-field>
+          </v-col>
         </v-row>
       </v-container>
       <v-btn class="mr-4" color="blue" height="50px" left="900px" width="150px" @click="getPath">
@@ -75,7 +93,7 @@
       <tr v-for="subjects in trips">
         <ol type='I'>
           <li v-for="q in subjects">
-
+            <td> {{ q.idPath }}</td>
             <td> {{ q.fromStation }}</td>
             <td>
               {{
@@ -132,6 +150,8 @@ export default {
     fromStation: "",
     toStation: "",
     criteria: "",
+    transport:"",
+    dateFrom:"",
     trips: [[]]
   }),
   methods: {
@@ -145,13 +165,13 @@ export default {
       this.$refs.form.resetValidation()
     },
     create(transport) {
-      if (transport == 'BUS') {
+      if (transport === 'BUS') {
         alert("BUS")
         location.href = 'http://192.168.0.109:3003/'
-      } else if (transport == 'TRAIN') {
+      } else if (transport === 'TRAIN') {
         alert("TRAIN")
         location.href = 'http://192.168.0.109:3004/'
-      } else if (transport == 'SHIP') {
+      } else if (transport === 'SHIP') {
         alert("SHIP")
         location.href = 'http://192.168.0.109:3005/'
       }
@@ -166,15 +186,20 @@ export default {
                   "      fromStation: \"" + this.fromStation + "\",\n" +
                   "      toStation: \"" + this.toStation + "\"\n" +
                   "      criteria: \"" + this.criteria + "\"\n" +
+                  "      transport: \"" + this.transport + "\"\n" +
+                  "      dateFrom: \"" + this.dateFrom+ "\"\n" +
                   "    }){\n" +
                   "       paths{\n" +
+                  "       idPath\n "+
+                  "       tripPath{ \n" +
                   "       fromStation\n" +
                   "       toStation\n" +
                   "       transport\n" +
                   "       price\n" +
                   "       duration\n" +
                   "      \n" +
-                  "    }" +
+                  "    }\n" +
+                  " }"+
                   "}}", "variables": null
             },
 

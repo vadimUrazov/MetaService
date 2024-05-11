@@ -8,8 +8,8 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@GraphQLProperty(name = "registerUser")
-public class RegisterUserDtoResponse {
+@GraphQLProperty(name = "registerClient")
+public class RegisterClientDtoResponse {
     private long id;
     private String surname;
     private String name;
@@ -17,4 +17,5 @@ public class RegisterUserDtoResponse {
     private String email;
     private String phone;
     private String userType;
+
 }

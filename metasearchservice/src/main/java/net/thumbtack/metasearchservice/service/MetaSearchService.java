@@ -5,7 +5,9 @@ import net.thumbtack.metasearchservice.algoritm.Algorithm;
 import net.thumbtack.metasearchservice.dto.GetTripsDto;
 import net.thumbtack.metasearchservice.dto.TripDto;
 import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
+import net.thumbtack.metasearchservice.dto.response.GetFullPathResponse;
 import net.thumbtack.metasearchservice.dto.response.GetPathDtoResponse;
+import net.thumbtack.metasearchservice.dto.response.PathResponse;
 import net.thumbtack.metasearchservice.entity.Trip;
 import net.thumbtack.metasearchservice.service.mappers.TripMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
-public class MetaSearchService {
+public class MetaSearchService extends BaseService{
     @Autowired
     private TripProvider provider;
 
@@ -86,18 +89,38 @@ public class MetaSearchService {
         for (List<Trip> s : resComboTrips) {
             Collections.reverse(s);
         }
-        if (resComboTrips.size() > 0) {
+        if (!resComboTrips.isEmpty()) {
             resComboTrips.remove(resComboTrips.size() - 1);
         }
         return resComboTrips;
     }
-
+    private long generateNumberPath(){
+        return new Random().ints(1, 21).
+                distinct().limit(1).findAny().getAsInt();
+    }
+    public GetFullPathResponse getFullPaths(GetPathsDtoRequest request) throws Exception{
+       if( cacheManager.getCache("get_full_path").get(request)!=null){
+           var res=(GetFullPathResponse) cacheManager.getCache("get_full_path").get(request).get();
+           return res;
+       }
+        List<PathResponse> paths=new ArrayList<>();
+        var buf=getPath(request);
+        for (List<TripDto> tr: buf.getPaths()){
+            long id=generateNumberPath();
+            cacheManager.getCache("get_paths").put(id,tr);
+            paths.add(new PathResponse(id,tr));
+        }
+        GetFullPathResponse response=new GetFullPathResponse(paths);
+        cacheManager.getCache("get_full_path").put(request,response);
+        return response;
+    }
     public GetPathDtoResponse getPath(GetPathsDtoRequest request) throws Exception {
+
         if (request.getFromStation().equals(request.getToStation())) {
             throw new IllegalArgumentException("From and To station must not be equals");
         }
 
-        var criteria = request.getCriteria().split(",");
+        var criteria = request.getCriteria();
 
         var trips = getTrips(request.getFromStation(), request.getToStation());
 
@@ -125,66 +148,90 @@ public class MetaSearchService {
         List<List<Trip>> resBuses = new ArrayList<>();
         List<List<Trip>> resTrains = new ArrayList<>();
         List<List<Trip>> resShips = new ArrayList<>();
-        if (criteria.length > 1) {
-            if (criteria[1].equals("BUS")) {
+        List<List<Trip>> resBusesForDate = new ArrayList<>();
+        List<List<Trip>> resTrainsForDate = new ArrayList<>();
+        List<List<Trip>> resShipsForDate = new ArrayList<>();
+        List<List<Trip>> res=new ArrayList<>();
+        var transport=request.getTransport();
+            if (transport.equals("BUS")) {
                 if (checkTrips(toBuses, request.getToStation())) {
-                    resBuses = algorithm.getPath(fromBuses, toBuses, request.getFromStation(), request.getToStation(), criteria[0]);
+                    resBuses = algorithm.getPath(fromBuses, toBuses, request.getFromStation(), request.getToStation(), criteria);
                 }
-                var pathBus = correctPath(request.getFromStation(), resBuses);
+                for (int i = 0; i < resBuses.size(); i++) {
+                    var bufBus=resBuses.get(i);
+                    if(bufBus.get(0).getDayTrips().contains(request.getDateFrom())){
+                        resBusesForDate.add(bufBus);
+                    }
+                }
+                var pathBus = correctPath(request.getFromStation(), resBusesForDate);
 
                 return new GetPathDtoResponse(convertEntityForDtoAll(pathBus));
-            } else if (criteria[1].equals("TRAIN")) {
+            } else if (transport.equals("TRAIN")) {
                 if (checkTrips(toTrains, request.getToStation())) {
-                    resTrains = algorithm.getPath(fromTrains, toTrains, request.getFromStation(), request.getToStation(), criteria[0]);
+                    resTrains = algorithm.getPath(fromTrains, toTrains, request.getFromStation(), request.getToStation(), criteria);
                 }
-                var pathTrain = correctPath(request.getFromStation(), resTrains);
+                for (int i = 0; i < resTrains.size(); i++) {
+                    var bufTrains=resTrains.get(i);
+                    if(bufTrains.get(0).getDayTrips().contains(request.getDateFrom())){
+                        resTrainsForDate.add(bufTrains);
+                    }
+                }
+                var pathTrain = correctPath(request.getFromStation(), resTrainsForDate);
 
                 return new GetPathDtoResponse(convertEntityForDtoAll(pathTrain));
-            } else if (criteria[1].equals("SHIP")) {
-                if (checkTrips(toTrains, request.getToStation())) {
-                    resShips = algorithm.getPath(fromTrains, toTrains, request.getFromStation(), request.getToStation(), criteria[0]);
+            } else if (transport.equals("SHIP")) {
+                if (checkTrips(toShips, request.getToStation())) {
+                    resShips = algorithm.getPath(fromShips, toShips, request.getFromStation(), request.getToStation(), criteria);
                 }
-                var pathShip = correctPath(request.getFromStation(), resShips);
+                for (int i = 0; i < resShips.size(); i++) {
+                    var bufShips=resShips.get(i);
+                    if(bufShips.get(0).getDayTrips().contains(request.getDateFrom())){
+                        resShipsForDate.add(bufShips);
+                    }
+                }
+                var pathShip = correctPath(request.getFromStation(), resShipsForDate);
 
                 return new GetPathDtoResponse(convertEntityForDtoAll(pathShip));
+            } else if (transport.equals("ALL")) {
+                if (checkTrips(toBuses, request.getToStation())) {
+                    resBuses = algorithm.getPath(fromBuses, toBuses, request.getFromStation(), request.getToStation(), criteria);
+                }
+
+                if (checkTrips(toTrains, request.getToStation())) {
+                    resTrains = algorithm.getPath(fromTrains, toTrains, request.getFromStation(), request.getToStation(), criteria);
+
+                    if (resTrains.isEmpty()) {
+                        resTrains.add(toTrains);
+                    }
+                }
+
+                if (checkTrips(toShips, request.getToStation())) {
+                    resShips = algorithm.getPath(fromShips, toShips, request.getFromStation(), request.getToStation(),criteria);
+
+                    if (resShips.isEmpty()) {
+                        resShips.add(toShips);
+                    }
+                }
+
+                if (resBuses.isEmpty() && resTrains.isEmpty() && resShips.isEmpty()) {
+                    return new GetPathDtoResponse(new ArrayList<>());
+                }
+                var resComboTrips = algorithm.getPath(combineTripsFrom, combineTripsTo, request.getFromStation(), request.getToStation(), criteria);
+
+                List<List<Trip>> tripsAll = new ArrayList<>();
+                tripsAll.addAll(correctPath(request.getFromStation(), resBuses));
+                tripsAll.addAll(correctPath(request.getFromStation(), resTrains));
+                tripsAll.addAll(correctPath(request.getFromStation(), resShips));
+                tripsAll.addAll(correctPath(request.getFromStation(), getComboTrips(resComboTrips)));
+                res = algorithm.calculateOptionalAll(tripsAll, criteria, request.getFromStation());
             }
-        }
-
-        if (checkTrips(toBuses, request.getToStation())) {
-            resBuses = algorithm.getPath(fromBuses, toBuses, request.getFromStation(), request.getToStation(), criteria[0]);
-        }
-
-        if (checkTrips(toTrains, request.getToStation())) {
-            resTrains = algorithm.getPath(fromTrains, toTrains, request.getFromStation(), request.getToStation(), criteria[0]);
-
-            if (resTrains.isEmpty()) {
-                resTrains.add(toTrains);
-            }
-        }
-
-        if (checkTrips(toShips, request.getToStation())) {
-            resShips = algorithm.getPath(fromShips, toShips, request.getFromStation(), request.getToStation(), criteria[0]);
-
-            if (resShips.isEmpty()) {
-                resShips.add(toShips);
-            }
-        }
-
-        if (resBuses.isEmpty() && resTrains.isEmpty() && resShips.isEmpty()) {
-            return new GetPathDtoResponse(new ArrayList<>());
-        }
-        var resComboTrips = algorithm.getPath(combineTripsFrom, combineTripsTo, request.getFromStation(), request.getToStation(), criteria[0]);
-
-        List<List<Trip>> tripsAll = new ArrayList<>();
-        tripsAll.addAll(correctPath(request.getFromStation(), resBuses));
-        tripsAll.addAll(correctPath(request.getFromStation(), resTrains));
-        tripsAll.addAll(correctPath(request.getFromStation(), resShips));
-        tripsAll.addAll(correctPath(request.getFromStation(), getComboTrips(resComboTrips)));
 
 
-        var res = algorithm.calculateOptionalAll(tripsAll, criteria[0], request.getFromStation());
+
 
         var resultPaths = convertEntityForDtoAll(res);
+
+
 
         return new GetPathDtoResponse(resultPaths);
     }

@@ -2,6 +2,7 @@ package net.thumbtack.metasearchservice.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
+import net.thumbtack.metasearchservice.dto.response.GetFullPathResponse;
 import net.thumbtack.metasearchservice.dto.response.GetPathDtoResponse;
 import net.thumbtack.metasearchservice.service.MetaSearchService;
 import net.thumbtack.metasearchservice.validate.Path;
@@ -28,8 +29,8 @@ public class ServiceController {
 
     @QueryMapping
     @Path
-    public GetPathDtoResponse getPaths(@Valid @Argument GetPathsDtoRequest request) throws Exception {
-        return transportService.getPath(request);
+    public GetFullPathResponse getPaths(@Valid @Argument GetPathsDtoRequest request) throws Exception {
+        return transportService.getFullPaths(request);
     }
 
 

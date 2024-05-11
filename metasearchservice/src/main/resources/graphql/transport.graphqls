@@ -2,10 +2,19 @@ input GetPathsDtoRequest{
     fromStation: String!
     toStation: String!
     criteria: String!
+    transport: String!
+    date: String!
 }
 
 type GetPathsDtoResponse{
     paths: [[TripDto]]
+}
+type GetFullPathResponse{
+    paths:[PathResponse]
+}
+type PathResponse{
+  idPath: ID
+  paths: [TripDto]
 }
 
 type TripDto{

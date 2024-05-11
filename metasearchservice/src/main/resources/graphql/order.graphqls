@@ -1,0 +1,53 @@
+input PassengerDto{
+    firstName:  String
+    lastName: String
+    passport: ID!
+}
+input PassengerDtoRequest{
+    firstName:  String
+    lastName: String
+    passport: ID!
+    place: Int
+}
+input CargoDto{
+    cargoType:String
+    idClient:ID
+}
+type CargoDtoResponse{
+    cargoType:String
+    idClient:ID
+}
+type PassengerDtoResponse{
+    firstName:  String
+    lastName: String
+    passport: ID!
+}
+input CreateOrderDtoRequest{
+    idOrder: ID
+    idClient: ID
+    date: String
+    idPath: ID
+    price: Int
+    passengers: [PassengerDtoRequest]
+    orderType: String
+}
+type CreateOrderRequest{
+    idOrder: ID
+    idClient: ID
+    date: String
+    fromStation: String
+    toStation: String
+    price: Int
+    passengers: [PassengerDto]
+    cargoDtos: CargoDto
+}
+type CreateOrderResponse{
+    idOrder: ID
+    idClient: ID
+    date: String
+    path: [TripDto]
+    price: Int
+    passengers: [PassengerDtoResponse]
+    cardoDtos:[CargoDtoResponse]
+}
+
