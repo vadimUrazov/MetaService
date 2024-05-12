@@ -10,7 +10,6 @@ import java.util.List;
 
 @Data
 @ToString
-@AllArgsConstructor
 public class CreateOrderRequest {
     private long idOrder;
     private long idClient;
@@ -31,7 +30,8 @@ public class CreateOrderRequest {
         this.idClient = idClient;
         this.date = date;
         this.price = price;
-
+        this.fromStation=fromStation;
+        this.toStation=toStation;
         if(orderType.equals("PASS")){
             this.cargoDtos = new ArrayList<>();
             this.passengers = passengers;

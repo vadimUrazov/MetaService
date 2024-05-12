@@ -1,12 +1,5 @@
 package net.thumbtack.metasearchservice.path;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.eq;
-
-import java.util.ArrayList;
-import java.util.List;
 import net.thumbtack.metasearchservice.dto.GetTripsDto;
 import net.thumbtack.metasearchservice.dto.TripDto;
 import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
@@ -16,6 +9,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.eq;
 
 @ExtendWith(SpringExtension.class)
 public class TestGetPaths {
@@ -38,7 +37,7 @@ public class TestGetPaths {
                         new TripDto(1, "Omsk", "Moskow", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
                 new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Taraz"))).thenReturn(getTripsDto);
-        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Taraz", "PRICE"));
+        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Taraz", "PRICE","ALL","2012-01-01"));
         assertTrue(res.getPaths().isEmpty());
     }
 
@@ -60,7 +59,7 @@ public class TestGetPaths {
                         new TripDto(1, "Omsk", "Samara", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
                 new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Abc"))).thenReturn(getTripsDto);
-        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Abc", "TIME"));
+        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Abc", "TIME","ALL","2012-01-01"));
         var path = res.getPaths().get(0);
 
         assertFalse(res.getPaths().isEmpty());
@@ -89,7 +88,7 @@ public class TestGetPaths {
                 new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Anapa"))).thenReturn(getTripsDto);
 
-        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Anapa", "PRICE"));
+        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Anapa", "PRICE","ALL","2012-01-01"));
         var path = res.getPaths().get(0);
 
         assertFalse(res.getPaths().isEmpty());
@@ -119,7 +118,7 @@ public class TestGetPaths {
                 new ArrayList<>(), new ArrayList<>());
         Mockito.when(service.getTrips(eq("Omsk"), eq("Moskow"))).thenReturn(getTripsDto);
 
-        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Moskow", "TIME"));
+        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Moskow", "TIME","ALL","2012-01-01"));
         var path = res.getPaths().get(0);
         var trip = path.get(0);
         assertFalse(res.getPaths().isEmpty());
@@ -157,7 +156,7 @@ public class TestGetPaths {
 
 
         Mockito.when(service.getTrips(eq("Omsk"), eq("Abc"))).thenReturn(getTripsDto);
-        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Abc", "PRICE"));
+        var res = service.getPath(new GetPathsDtoRequest("Omsk", "Abc", "PRICE","ALL","2012-01-01"));
         var path = res.getPaths().get(0);
         assertFalse(res.getPaths().isEmpty());
         assertFalse(res.getPaths().get(0).isEmpty());

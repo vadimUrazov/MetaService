@@ -14,11 +14,11 @@ public class PathValidator implements ConstraintValidator<Path, GetPathsDtoReque
     public boolean isValid(GetPathsDtoRequest s, ConstraintValidatorContext constraintValidatorContext) {
 
         if (s.getFromStation().equals(s.getToStation())) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("Stations cannot be equals");
         }
-        var criteria = List.of("PRICE", "TIME", "PRICE,BUS", "PRICE,TRAIN", "PRICE,SHIP", "TIME,BUS", "TIME,TRAIN", "TIME,SHIP");
+        var criteria = List.of("PRICE", "TIME");
         if (!criteria.contains(s.getCriteria())) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("Incorrect criteria");
         }
 
         return true;
