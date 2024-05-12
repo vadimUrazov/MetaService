@@ -25,10 +25,6 @@ import java.util.List;
 @Service
 public class TripService extends ServiceBase {
 
-
-
-
-
     public GetTripResponse getTripById(long id) throws ServiceException {
 
 

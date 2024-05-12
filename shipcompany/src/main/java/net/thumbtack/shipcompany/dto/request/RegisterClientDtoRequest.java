@@ -12,6 +12,7 @@ import javax.validation.constraints.Email;
 @Setter
 @ToString
 public class RegisterClientDtoRequest extends UserDto {
+
     private long id;
     @Email
     private String email;

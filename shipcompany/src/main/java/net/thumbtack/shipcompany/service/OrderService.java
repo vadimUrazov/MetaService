@@ -35,7 +35,6 @@ public class OrderService extends ServiceBase {
         return passengers;
     }
 
-
     private List<PassengerDtoResponse> createPassengersDto(List<Passenger> list) {
         List<PassengerDtoResponse> passengers = new ArrayList<>();
         for (Passenger passenger : list) {

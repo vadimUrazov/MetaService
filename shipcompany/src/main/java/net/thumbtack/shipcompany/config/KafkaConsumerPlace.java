@@ -14,7 +14,6 @@ import java.util.concurrent.CountDownLatch;
 public class KafkaConsumerPlace {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerPlace.class);
-
     private CountDownLatch latch = new CountDownLatch(1);
     private ChoosePlacesRequest dtoRequest = null;
 

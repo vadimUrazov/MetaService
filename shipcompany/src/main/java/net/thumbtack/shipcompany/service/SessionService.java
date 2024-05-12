@@ -41,6 +41,7 @@ public class SessionService extends ServiceBase {
                     user.getMiddlename(), client.getEmail(), client.getPassword(), client.getPhone(), "CLIENT");
         }
     }
+
     public LoginDtoResponse login(LoginDto loginDto) throws ServiceException {
 
         User user = userDao.getUserByLogin(loginDto.getLogin());

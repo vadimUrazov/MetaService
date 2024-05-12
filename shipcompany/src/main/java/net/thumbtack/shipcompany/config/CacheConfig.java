@@ -32,5 +32,4 @@ public RedisCacheConfiguration cacheConfiguration() {
                 .withCacheConfiguration("customerCache",
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(5)));
     }
-
 }

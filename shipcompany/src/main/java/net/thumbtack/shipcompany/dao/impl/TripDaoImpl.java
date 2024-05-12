@@ -104,5 +104,4 @@ public class TripDaoImpl extends BaseDaoImpl implements TripDao {
     public Trip getTripByFromStationAndAndToStation(String fromStation, String toStation) {
         return tripRepository.getTripByFromStationAndAndToStation(fromStation, toStation);
     }
-
 }

@@ -47,8 +47,6 @@ public class KafkaTestContainersLiveTest {
     @Autowired
     private KafkaConsumerOrder consumer;
 
-
-
     @Value("${test.topic}")
     private String topic;
 
