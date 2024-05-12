@@ -53,7 +53,6 @@ public class ClientService extends ServiceBase {
         RegisterClientDtoResponse registerClientDtoResponse = new RegisterClientDtoResponse(res.getId(), res.getSurname(),
                 res.getName(), res.getMiddlename(), res.getEmail(), res.getPhone(), "CLIENT");
 
-
         return registerClientDtoResponse;
     }
 

@@ -51,7 +51,6 @@ public class KafkaTestContainersLiveTest {
     private KafkaConsumerOrder consumer;
 
 
-
     @Value("${test.topic}")
     private String topic;
 

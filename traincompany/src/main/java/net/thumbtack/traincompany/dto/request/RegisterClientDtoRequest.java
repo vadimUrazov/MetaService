@@ -13,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @ToString
 public class RegisterClientDtoRequest extends UserDto {
+
     private long id;
     @NotEmpty
     @Email

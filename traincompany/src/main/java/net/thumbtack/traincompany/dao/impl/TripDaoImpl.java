@@ -103,5 +103,4 @@ public class TripDaoImpl extends BaseDaoImpl implements TripDao {
         return dayTripRepository.getDayTripByDateAndAndTrip(date, trip);
 
     }
-
 }

@@ -13,7 +13,6 @@ import java.util.concurrent.CountDownLatch;
 public class KafkaConsumerOrder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerOrder.class);
-
     private CountDownLatch latch = new CountDownLatch(1);
     private CreateOrderRequest dtoRequest = null;
 

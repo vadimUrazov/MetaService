@@ -22,8 +22,7 @@ public class CreateOrderRequest {
     private List<CargoDto> cargoDtos;
     private List<PassengerDto> passengers;
     private String orderType = "PASS";
-
-
+    
     public CreateOrderRequest(long idClient,  String date, String fromStation, String toStation, List<PassengerDto> passengers,List<CargoDto> cargoDtos, String orderType) {
         this.idClient = idClient;
         this.date = date;
