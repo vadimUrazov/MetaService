@@ -40,7 +40,6 @@ public class CreateOrderRequest {
         this.orderType = orderType;
     }
 
-
     @JsonCreator
     public CreateOrderRequest() {
     }

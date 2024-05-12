@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class SessionService extends ServiceBase {
 
     private final PasswordEncoder passwordEncoder;
+
     @Autowired
     private JwtUtils jwtUtils;
 

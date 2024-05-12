@@ -36,4 +36,5 @@ public class KafkaConsumerPlace{
     private void setDtoRequest(ChoosePlacesRequest dtoRequest) {
         this.dtoRequest = dtoRequest;
     }
+
 }

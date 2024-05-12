@@ -37,7 +37,6 @@ public class ClientService extends ServiceBase {
         this.passwordEncoder = passwordEncoder;
     }
 
-
     private String parsePhone(String phone) {
         return phone.replace("-", "");
     }

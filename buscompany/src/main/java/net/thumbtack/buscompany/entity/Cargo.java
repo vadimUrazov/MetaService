@@ -32,4 +32,5 @@ public class Cargo {
     public Cargo(String cargoType, Client client) {
         this(0, cargoType, 0, client);
     }
+
 }

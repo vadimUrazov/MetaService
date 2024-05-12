@@ -22,6 +22,7 @@ import java.util.List;
 
 @Service
 public class OrderService extends ServiceBase {
+
     @Autowired
     KafkaConsumerOrder consumer;
 
