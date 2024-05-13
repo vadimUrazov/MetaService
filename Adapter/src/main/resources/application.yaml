@@ -18,7 +18,7 @@ management:
 app:
   jwtSecret: secretKey
 delivery:
-  type: getBus
+  type: getBus,getTrain,getShip
 retry:
   maxAttempts: 3
   maxDelay: 100
