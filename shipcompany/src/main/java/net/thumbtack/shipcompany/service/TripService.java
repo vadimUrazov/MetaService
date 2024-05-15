@@ -94,6 +94,7 @@ public class TripService extends ServiceBase {
         if (StringUtils.isBlank(shipDto.getShipName()) || shipDto.getPlaceCount() <= 0) {
             throw new ServiceException(ErrorCode.ERROR_FIELD);
         }
+        adminDao.addShip(new Ship(shipDto.getShipName(),shipDto.getPlaceCount()));
     }
 
     public GetShipsResponse getShips() throws ServiceException {

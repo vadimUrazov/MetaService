@@ -17,7 +17,7 @@ public class RegisterAdminDtoRequest extends UserDto {
 
     public RegisterAdminDtoRequest(String surname, String name, String middlename, String position,
                                    String login, String password) {
-        super(0,surname, name, middlename, login, password);
+        super(surname, name, middlename, login, password);
         this.position = position;
     }
 

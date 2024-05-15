@@ -111,16 +111,16 @@ CREATE TABLE traincompany.public.place
 );
 
 INSERT INTO traincompany.public.train(train_name, place_count, car)
-VALUES ('Renault', 40, 3);
+VALUES ('Mir', 40, 3);
 INSERT INTO traincompany.public.train(train_name, place_count, car)
-VALUES ('Pazik', 25, 3);
+VALUES ('Paz', 25, 3);
 INSERT INTO traincompany.public.train(train_name, place_count, car)
-VALUES ('Honday', 30, 3);
+VALUES ('Hen', 30, 3);
 INSERT INTO traincompany.public.train(train_name, place_count, car)
 VALUES ('Toyota', 35, 1);
 INSERT INTO traincompany.public.train(train_name, place_count, car)
-VALUES ('Lada', 1, 1);
+VALUES ('Rick', 1, 1);
 INSERT INTO traincompany.public.train(train_name, place_count, car)
-VALUES ('Audi', 3, 1);
+VALUES ('Trans', 3, 1);
 
 

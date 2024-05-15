@@ -119,5 +119,8 @@ INSERT INTO buscompany.public.bus(bus_name, place_count)
 VALUES ('Lada', 1);
 INSERT INTO buscompany.public.bus(bus_name, place_count)
 VALUES ('Audi', 3);
+INSERT INTO buscompany.public.bus(bus_name, place_count)
+VALUES ('Truck', 30);
+
 
 

@@ -108,16 +108,16 @@ CREATE TABLE shipcompany.public.place
 );
 
 INSERT INTO shipcompany.public.ship(ship_name, place_count)
-VALUES ('Renault', 40);
+VALUES ('Step', 40);
 INSERT INTO shipcompany.public.ship(ship_name, place_count)
-VALUES ('Pazik', 25);
+VALUES ('Avrora', 25);
 INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Honday', 30);
 INSERT INTO shipcompany.public.ship(ship_name, place_count)
 VALUES ('Toyota', 35);
 INSERT INTO shipcompany.public.ship(ship_name, place_count)
-VALUES ('Lada', 1);
+VALUES ('Samara', 1);
 INSERT INTO shipcompany.public.ship(ship_name, place_count)
-VALUES ('Audi', 3);
+VALUES ('Riga', 3);
 
 

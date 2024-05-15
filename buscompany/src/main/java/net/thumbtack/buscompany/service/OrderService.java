@@ -108,6 +108,10 @@ public class OrderService extends ServiceBase {
         if (!trip.isApproved()) {
             throw new ServiceException(ErrorCode.NO_APPROVED_TRIP);
         }
+        if(request.getOrderType().equals("CARGO")){
+            trip.setBus(new Bus("Truck"));
+            adminDao.updateTrip(trip);
+        }
 
         Order order = new Order(findDayTrip(trip, LocalDate.parse(request.getDate())), passengers,
                 client);

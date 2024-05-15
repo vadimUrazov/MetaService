@@ -94,6 +94,7 @@ public class TripService extends ServiceBase {
         if (StringUtils.isBlank(busDto.getBusName()) || busDto.getPlaceCount() <= 0) {
             throw new ServiceException(ErrorCode.ERROR_FIELD);
         }
+        adminDao.addBus(new Bus(busDto.getBusName(),busDto.getPlaceCount()));
     }
 
     public GetBusesResponse getBuses() throws ServiceException {
