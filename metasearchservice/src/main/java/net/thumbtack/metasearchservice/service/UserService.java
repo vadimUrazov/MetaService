@@ -65,13 +65,17 @@ public class UserService extends BaseService{
         List<TripDto> path= (List<TripDto>) cacheManager.getCache("get_paths").get(request.getIdPath());
      var pass=convertPassengersRequest(request.getPassengers());
     var idOrder=generateId();
-    if(!checkPlace(request.getPassengers(), request.getIdClient())){
+    var idClient=getIdClientByLogin(request.getLogin()).getId();
+    for(CargoDto cargoDto: request.getCargoDtos()){
+        cargoDto.setIdClient(idClient);
+    }
+    if(!checkPlace(request.getPassengers(), idClient)){
         throw new IllegalArgumentException("This place is not free");
     }
        for (TripDto t: path){
 
            CreateOrderRequest orderRequest=new CreateOrderRequest(idOrder,
-                   request.getIdClient(),t.getFromStation(),t.getToStation(),
+                   idClient,t.getFromStation(),t.getToStation(),
                    request.getDate(),request.getPrice(),pass,request.getCargoDtos(),request.getOrderType());
 
              switch (t.getTransport()){
@@ -81,10 +85,10 @@ public class UserService extends BaseService{
              }
 
        }
-        CreateOrderDtoResponse response=new CreateOrderDtoResponse(idOrder,request.getIdClient(),request.getDate(),path,request.getPrice(),
+        CreateOrderDtoResponse response=new CreateOrderDtoResponse(idOrder,idClient,request.getDate(),path,request.getPrice(),
                 convertPassengers(pass), convertCargos(request.getCargoDtos()));
  for (PassengerDtoRequest p: request.getPassengers()){
-   cacheManager.getCache("get_places").put(p.getPlace(),new PlaceDto(request.getIdClient(),p));
+   cacheManager.getCache("get_places").put(p.getPlace(),new PlaceDto(idClient,p));
  }
 
         return response;
@@ -92,9 +96,11 @@ public class UserService extends BaseService{
 
     public  synchronized ChoosePlacesResponse choosePlace(ChoosePlaceDtoRequest request){
         List<TripDto> path= (List<TripDto>) cacheManager.getCache("get_paths").get(request.getIdPath());
-     List<ChoosePlaceResponse> responses=new ArrayList<>();
+        List<ChoosePlaceResponse> responses=new ArrayList<>();
+        var idClient=getIdClientByLogin(request.getLogin()).getId();
         for (TripDto t: path){
             for (ChoosePlaceRequest r: request.getPlaces()){
+                r.setClientId(idClient);
             switch (t.getTransport()){
                 case "BUS": provider.choosePlace(r,"getBus");break;
                 case "TRAIN": provider.choosePlace(r,"getTrain");break;

@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f248629c-b883-4940-9ccd-101dde47a761" name="Changes" comment="Add orders and kafka">
+      <change afterPath="$PROJECT_DIR$/../.idea/MetaService.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Adapter/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/dataSources/b9976207-dc69-4aa9-9947-4c9f9512f594.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/dataSources/b9976207-dc69-4aa9-9947-4c9f9512f594/storage_v2/_src_/database/buscompany._W0yKg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/dataSources/b9976207-dc69-4aa9-9947-4c9f9512f594/storage_v2/_src_/database/buscompany._W0yKg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/dataSources/b9976207-dc69-4aa9-9947-4c9f9512f594/storage_v2/_src_/database/buscompany._W0yKg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/dataSources/b9976207-dc69-4aa9-9947-4c9f9512f594/storage_v2/_src_/database/buscompany._W0yKg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/buscompany.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/admin.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/bus.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/client.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/order.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/place.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/schema.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/session.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/settings.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/graphql/trip.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/liquibase.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/Application$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/Application.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/config/CacheConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/config/LiquibaseConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/config/SqlDaoConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/AccountController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/AdminController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/BusController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/ClientController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/DebugController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/OrderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/PlaceController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/SessionController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/SettingsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/controllers/TripController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/AccountDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/AdminDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/ClientDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/DebugDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/OrderDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/TripDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/UserDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/AccountDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/AdminDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/BaseDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/ClientDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/DebugDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/OrderDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/TripDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/UserDaoImpl$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/impl/UserDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/AdminRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/BusRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/CargoRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/ClientRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/DayTripRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/OrderRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/PassengerRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/PlaceRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/TripRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dao/repository/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/BusDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/DayTripDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/OrderDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/PlaceDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/TripDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/TripMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/AddBusDtoRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/AddTripRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/CargoDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/ChoosePlaceRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/ChoosePlacesRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/CreateOrderRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/LoginDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/PassengerDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/RegisterAdminDtoRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/RegisterClientDtoRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/UpdateAdminDtoRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/UpdateClientDtoRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/UpdateTripDtoRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/request/UserDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/AddTripResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/AdminDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/ApprovedTripResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/CargoDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/ChoosePlaceResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/ChoosePlacesResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/ClientDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/ConfigDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/CreateOrderResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/GetBusesResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/GetCitiesResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/GetClientsResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/GetFreePlaceResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/GetOrderResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/GetTripResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/GetTripsResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/LoginDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/PassengerDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/RegisterAdminDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/RegisterClientDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/UpdateAdminDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/UpdateClientDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/dto/response/UpdateTripDtoResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Admin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Bus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Cargo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Client.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/DayTrip.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Order.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/OrderType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Passenger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Place.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/Trip.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/entity/UserType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/exception/ErrorCode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/exception/ServiceException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/security/AuthEntryPointJwt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/security/AuthTokenFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/security/BcCryptWorkFactorService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/security/BcryptWorkFactor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/security/JwtUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/security/SecurityConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/AccountService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/AdminService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/ClientService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/DatabaseUserDetailsService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/DebugService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/OrderService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/ServiceBase.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/SessionService$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/SessionService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/TripService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/mappers/AdminRegisterMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/mappers/AdminRegisterMapperImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/mappers/ClientRegisterMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/service/mappers/ClientRegisterMapperImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/validate/Date.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/validate/DateValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/validate/Phone.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/validate/PhoneValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/net/thumbtack/buscompany/validate/TripValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/postgres.jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/sql/databaseChangeLog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/sql/v1/data/buscompany.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/sql/v1/package.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/generated-sources/annotations/net/thumbtack/buscompany/service/mappers/AdminRegisterMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../buscompany/target/generated-sources/annotations/net/thumbtack/buscompany/service/mappers/ClientRegisterMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/app.config.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/components.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/dist/server/client.manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/dist/server/client.manifest.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/imports.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/manifest/latest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/manifest/meta/test.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/nuxt.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/nuxt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/schema/nuxt.schema.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/schema/nuxt.schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/tsconfig.server.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/app.config.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/imports.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/layouts.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/middleware.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/nitro-config.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/nitro-imports.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/nitro-nuxt.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/nitro-routes.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/nitro.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/plugins.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/schema.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/vue-shim.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.nuxt/vue-router-stub.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/images/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/pages/Order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/pages/Place.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/pages/login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/pages/registerClient.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/styles/basic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meta-search.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/net/thumbtack/metasearchservice/adapter/UserProvider.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/net/thumbtack/metasearchservice/controller/SettingsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.1.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.2.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.3.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shipcompany/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/admin.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/client.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/order.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/place.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/schema.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/session.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/settings.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/train.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/graphql/trip.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/liquibase.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/postgres.jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/sql/databaseChangeLog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/sql/v1/data/traincompany.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/classes/sql/v1/package.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/generated-sources/annotations/net/thumbtack/traincompany/service/mappers/AdminRegisterMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/generated-sources/annotations/net/thumbtack/traincompany/service/mappers/ClientRegisterMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/application-test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/liquibase.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/AbstractDaoTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/AbstractTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/config/RestClientConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/config/TestJdbcConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/AbstractControllerTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/TestGetSettings.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/TestOrderOperations.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/TestPlaceOperations.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/TestRoles.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/TestTrip.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/TestTripOperations.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/controllers/TestUserValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/dao/TestAccountDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/dao/TestAdminDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/dao/TestGetDayTrips.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/dao/TestUserDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/postgres.jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/sql/switch-mode.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/graph.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/graph.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/order.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/place.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/registerAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/registerAdmin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/registerClient.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/users.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/plugins/vuetify.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../buscompany/src/main/resources/graphql/order.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/src/main/resources/graphql/order.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/layouts/authenticated.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/layouts/authenticated.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/paths.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/paths.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/plugins/vuetify.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/controller/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/controller/ServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/ChoosePlaceDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/ChoosePlaceDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/CreateOrderDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/CreateOrderDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/BaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/MetaSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/MetaSearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/Path.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/PathValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/PathValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/order.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/order.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/place.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/place.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/schema.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/schema.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/transport.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/transport.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/users/TestUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/users/TestUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/layouts/authenticated.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/layouts/authenticated.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/graph.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/graph.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/order.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/place.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/registerAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/registerAdmin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/registerClient.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/users.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/layouts/authenticated.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/layouts/authenticated.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/pages/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/order.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/place.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/registerAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/pages/registerAdmin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/registerClient.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/users.vue" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="GraphQL File" />
+        <option value="Class" />
+        <option value="AnnotationType" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;vadimUrazov&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/vadimUrazov/MetaService.git&quot;,
+    &quot;accountId&quot;: &quot;61cdd6c7-0a71-46d6-923f-947f6e485de3&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2HU7ioYgoSwovpIqo957aUJR9Cd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.TTT.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.metasearchservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/vadim/Projects/MetaService/metasearchservice&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2281106&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;415a2e6a39c647dac16c9b921bc02afc&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/vadim/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
+    ]
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="net.thumbtack.metasearchservice.entity" />
+      <recent name="net.thumbtack.metasearchservice.controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response" />
+      <recent name="$PROJECT_DIR$/src/main/resources/graphql" />
+      <recent name="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice" />
+      <recent name="$PROJECT_DIR$/src/main/java/userservice/dto/response" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.thumbtack.metasearchservice.config" />
+      <recent name="net.thumbtack.metasearchservice.adapter" />
+      <recent name="net.thumbtack.metasearchservice.dto.response" />
+      <recent name="net.thumbtack.metasearchservice.dto.request" />
+      <recent name="userservice.dto.request" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="metasearchservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.thumbtack.metasearchservice.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f248629c-b883-4940-9ccd-101dde47a761" name="Changes" comment="" />
+      <created>1668327940980</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668327940980</updated>
+      <workItem from="1668327943168" duration="237000" />
+      <workItem from="1668328215805" duration="1577000" />
+      <workItem from="1668343371499" duration="172000" />
+      <workItem from="1670557799645" duration="236000" />
+      <workItem from="1671962133360" duration="379000" />
+      <workItem from="1672120134245" duration="1572000" />
+      <workItem from="1672121732802" duration="3078000" />
+      <workItem from="1672291813166" duration="3147000" />
+      <workItem from="1676883545135" duration="161000" />
+      <workItem from="1677304270058" duration="2102000" />
+      <workItem from="1677319739787" duration="318000" />
+      <workItem from="1677515976947" duration="38000" />
+      <workItem from="1679221938763" duration="2599000" />
+      <workItem from="1679842575615" duration="51000" />
+      <workItem from="1680612215709" duration="605000" />
+      <workItem from="1691511287538" duration="125000" />
+      <workItem from="1691511435990" duration="370000" />
+      <workItem from="1691511825775" duration="1139000" />
+      <workItem from="1691589212360" duration="952000" />
+      <workItem from="1691816614779" duration="713000" />
+      <workItem from="1691829068632" duration="966000" />
+      <workItem from="1691830069374" duration="3027000" />
+      <workItem from="1692008263309" duration="1464000" />
+      <workItem from="1692013063984" duration="65000" />
+      <workItem from="1692014291708" duration="22000" />
+      <workItem from="1692015989540" duration="2560000" />
+      <workItem from="1692242890615" duration="116000" />
+      <workItem from="1693741921717" duration="599000" />
+      <workItem from="1693806260026" duration="2151000" />
+      <workItem from="1694247537110" duration="4071000" />
+      <workItem from="1694264599912" duration="7788000" />
+      <workItem from="1694281311208" duration="100000" />
+      <workItem from="1694281813384" duration="402000" />
+      <workItem from="1694283641345" duration="92000" />
+      <workItem from="1694283959495" duration="1731000" />
+      <workItem from="1694351796045" duration="1913000" />
+      <workItem from="1694358376406" duration="693000" />
+      <workItem from="1694359574162" duration="296000" />
+      <workItem from="1694359890439" duration="32000" />
+      <workItem from="1694359967747" duration="1023000" />
+      <workItem from="1694361893008" duration="584000" />
+      <workItem from="1694365161529" duration="166000" />
+      <workItem from="1696954769221" duration="941000" />
+      <workItem from="1699248006174" duration="913000" />
+      <workItem from="1706288071491" duration="602000" />
+      <workItem from="1706289462378" duration="2000" />
+      <workItem from="1706425186001" duration="267000" />
+      <workItem from="1706425543958" duration="1000" />
+      <workItem from="1708231502890" duration="554000" />
+      <workItem from="1709652900773" duration="28000" />
+      <workItem from="1709652969228" duration="1472000" />
+      <workItem from="1709654680339" duration="11000" />
+      <workItem from="1709818371094" duration="465000" />
+      <workItem from="1709818852467" duration="2855000" />
+      <workItem from="1710074465771" duration="1958000" />
+      <workItem from="1710136470630" duration="69000" />
+      <workItem from="1710136566556" duration="614000" />
+      <workItem from="1710147879415" duration="1604000" />
+      <workItem from="1710152751390" duration="2040000" />
+      <workItem from="1710596772788" duration="797000" />
+      <workItem from="1710847723653" duration="881000" />
+      <workItem from="1710857984855" duration="1515000" />
+      <workItem from="1710864717040" duration="39000" />
+      <workItem from="1710864798046" duration="4000" />
+      <workItem from="1711040743537" duration="26000" />
+      <workItem from="1711043157331" duration="8000" />
+      <workItem from="1711899384214" duration="14000" />
+      <workItem from="1711899505727" duration="841000" />
+      <workItem from="1711900361764" duration="42000" />
+      <workItem from="1711900417037" duration="461000" />
+      <workItem from="1711900903163" duration="428000" />
+      <workItem from="1711901416499" duration="1000" />
+      <workItem from="1711901496186" duration="727000" />
+      <workItem from="1711902246346" duration="1183000" />
+      <workItem from="1712382349886" duration="207000" />
+      <workItem from="1712382814102" duration="2937000" />
+      <workItem from="1712582330399" duration="4734000" />
+      <workItem from="1712590785494" duration="8000" />
+      <workItem from="1712636555956" duration="194000" />
+      <workItem from="1712985154283" duration="1096000" />
+      <workItem from="1712988078911" duration="1767000" />
+      <workItem from="1713195986620" duration="2349000" />
+      <workItem from="1714473196448" duration="395000" />
+      <workItem from="1714474269275" duration="335000" />
+      <workItem from="1714474676219" duration="2780000" />
+      <workItem from="1714485064855" duration="2480000" />
+      <workItem from="1714556739306" duration="1596000" />
+      <workItem from="1714559628185" duration="2972000" />
+      <workItem from="1714567023091" duration="1408000" />
+      <workItem from="1714568607172" duration="3056000" />
+      <workItem from="1714572915578" duration="2439000" />
+      <workItem from="1714583345114" duration="2234000" />
+      <workItem from="1714755117438" duration="6339000" />
+      <workItem from="1714823198105" duration="1628000" />
+      <workItem from="1714838181245" duration="4261000" />
+      <workItem from="1715089493738" duration="3457000" />
+      <workItem from="1715152677775" duration="338000" />
+      <workItem from="1715158792157" duration="4700000" />
+      <workItem from="1715232783995" duration="2188000" />
+      <workItem from="1715316237285" duration="8184000" />
+      <workItem from="1715327799535" duration="3000" />
+      <workItem from="1715352396419" duration="3770000" />
+      <workItem from="1715404394585" duration="880000" />
+      <workItem from="1715444287692" duration="2148000" />
+      <workItem from="1715448082963" duration="5000" />
+      <workItem from="1715454444921" duration="2000" />
+      <workItem from="1715531573382" duration="1980000" />
+      <workItem from="1715534659871" duration="1000" />
+      <workItem from="1715706726582" duration="214000" />
+      <workItem from="1715795779258" duration="2042000" />
+      <workItem from="1716296511682" duration="1761000" />
+      <workItem from="1716298285010" duration="11000" />
+      <workItem from="1716464090577" duration="751000" />
+      <workItem from="1716466206340" duration="9000" />
+      <workItem from="1716711788634" duration="5652000" />
+      <workItem from="1716718302338" duration="1622000" />
+      <workItem from="1716726617144" duration="219000" />
+      <workItem from="1716727582068" duration="284000" />
+      <workItem from="1716728341259" duration="248000" />
+      <workItem from="1716729214314" duration="748000" />
+      <workItem from="1716731688531" duration="1174000" />
+      <workItem from="1716733169610" duration="200000" />
+      <workItem from="1716733809228" duration="433000" />
+      <workItem from="1716734649706" duration="377000" />
+      <workItem from="1716735339589" duration="324000" />
+      <workItem from="1716736354858" duration="447000" />
+      <workItem from="1716737768492" duration="325000" />
+      <workItem from="1716738507599" duration="779000" />
+      <workItem from="1716739433932" duration="484000" />
+      <workItem from="1716746887519" duration="3000" />
+      <workItem from="1716828797139" duration="622000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add Shipcompany">
+      <created>1668343518127</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668343518127</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add user classes">
+      <created>1679222416567</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679222416567</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add user classes">
+      <created>1679224607184</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679224607184</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Change classes">
+      <option name="closed" value="true" />
+      <created>1706288646704</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706288646704</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add orders and kafka">
+      <option name="closed" value="true" />
+      <created>1715445645187</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715445645187</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add orders and kafka">
+      <option name="closed" value="true" />
+      <created>1715538153336</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715538153336</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add orders and kafka">
+      <option name="closed" value="true" />
+      <created>1715798045140</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715798045140</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add Shipcompany" />
+    <MESSAGE value="Add user classes" />
+    <MESSAGE value="Change classes" />
+    <MESSAGE value="Add orders and kafka" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add orders and kafka" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

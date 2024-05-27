@@ -7,6 +7,7 @@ input ChoosePlaceRequest{
 }
 input ChoosePlaceDtoRequest{
     idPath: ID
+    login: String
     places:[ChoosePlaceRequest]
 }
 type ChoosePlaceResponse{

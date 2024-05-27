@@ -1,27 +1,31 @@
 package net.thumbtack.metasearchservice.validate;
 
-import lombok.SneakyThrows;
-import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
 
-import javax.validation.ConstraintValidator;
+import net.thumbtack.metasearchservice.dto.request.GetPathsDtoRequest;
+import org.springframework.stereotype.Component;
+
+
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;
+import java.util.Optional;
 
-public class PathValidator implements ConstraintValidator<Path, GetPathsDtoRequest> {
+@Component
+public class PathValidator  {
 
-    @SneakyThrows
-    @Override
-    public boolean isValid(GetPathsDtoRequest s, ConstraintValidatorContext constraintValidatorContext) {
+    public Optional<GetPathsDtoRequest> validate(final GetPathsDtoRequest request) throws Exception {
 
-        if (s.getFromStation().equals(s.getToStation())) {
+        if (request.getFromStation().equals(request.getToStation())) {
             throw new IllegalArgumentException("Stations cannot be equals");
         }
         var criteria = List.of("PRICE", "TIME");
-        if (!criteria.contains(s.getCriteria())) {
+        if (!criteria.contains(request.getCriteria())) {
             throw new IllegalArgumentException("Incorrect criteria");
         }
-
-        return true;
+        var transports=List.of("BUS","TRAIN","SHIP","ALL");
+        if (!transports.contains(request.getTransport())) {
+            throw new IllegalArgumentException("Incorrect transport");
+        }
+        return Optional.of(request);
     }
 
 }

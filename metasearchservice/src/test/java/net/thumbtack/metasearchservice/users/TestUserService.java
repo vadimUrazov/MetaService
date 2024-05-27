@@ -1,9 +1,6 @@
 package net.thumbtack.metasearchservice.users;
 
-import net.thumbtack.metasearchservice.dto.request.CreateOrderDtoRequest;
-import net.thumbtack.metasearchservice.dto.request.CreateOrderRequest;
-import net.thumbtack.metasearchservice.dto.request.PassengerDto;
-import net.thumbtack.metasearchservice.dto.request.PassengerDtoRequest;
+import net.thumbtack.metasearchservice.dto.request.*;
 import net.thumbtack.metasearchservice.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,14 +20,17 @@ public class TestUserService {
 
     @Test
     public void testCreateOrder() throws Exception {
-
+        RegisterClientDtoRequest ivanov=new RegisterClientDtoRequest("Ivanov", "Ivan","Ivanovich","ivan.ivanov@mail.ru","89132455645","ivan200","knckjcn");
+        RegisterClientDtoRequest petrov=new RegisterClientDtoRequest("Petrov", "Ivan","Petrovich","petr.petnrov@mail.ru","8913343456","petr800","kjefvnjfv");
+        service.registerUser(ivanov);
+        service.registerUser(petrov);
         CreateOrderDtoRequest requestIvanov =
                 new CreateOrderDtoRequest(
-                        1, 1, "2024-03-02",  245,List.of(
+                        ivanov.getLogin(), 1, "2024-03-02",  245,List.of(
                         new PassengerDtoRequest("Ivanov", "Ivan", 222,1)),new ArrayList<>(),"PASS");
         CreateOrderDtoRequest requestPetrov =
                 new CreateOrderDtoRequest(
-                        2,  2,"2024-03-02",245  ,List.of(
+                        petrov.getLogin(),  2,"2024-03-02",245  ,List.of(
                         new PassengerDtoRequest("Petrov", "Ivan", 223,2)),new ArrayList<>(),"PASS");
         var resIvanov = service.createOrder(requestIvanov);
         var resPetrov = service.createOrder(requestPetrov);
@@ -41,13 +41,17 @@ public class TestUserService {
 
     @Test
     public void testCreateOrderFail() throws Exception {
+        RegisterClientDtoRequest ivanov=new RegisterClientDtoRequest("Ivanov", "Ivan","Ivanovich","ivan.ivanov@mail.ru","89132455645","ivan200","knckjcn");
+        RegisterClientDtoRequest petrov=new RegisterClientDtoRequest("Petrov", "Ivan","Petrovich","petr.petnrov@mail.ru","8913343456","petr800","kjefvnjfv");
+        service.registerUser(ivanov);
+        service.registerUser(petrov);
         CreateOrderDtoRequest requestIvanov =
                 new CreateOrderDtoRequest(
-                        1, 1, "2024-03-02",  245,List.of(
+                        ivanov.getLogin(), 1, "2024-03-02",  245,List.of(
                         new PassengerDtoRequest("Ivanov", "Ivan", 222,1)),new ArrayList<>(),"PASS");
         CreateOrderDtoRequest requestPetrov =
                 new CreateOrderDtoRequest(
-                        2,  0,"2024-03-02",245  ,List.of(
+                        petrov.getLogin(),  2,"2024-03-02",245  ,List.of(
                         new PassengerDtoRequest("Petrov", "Ivan", 223,1)),new ArrayList<>(),"PASS");
         var resIvanov = service.createOrder(requestIvanov);
         var resPetrov = service.createOrder(requestPetrov);

@@ -10,6 +10,7 @@ import net.thumbtack.metasearchservice.dto.response.GetPathDtoResponse;
 import net.thumbtack.metasearchservice.dto.response.PathResponse;
 import net.thumbtack.metasearchservice.entity.Trip;
 import net.thumbtack.metasearchservice.service.mappers.TripMapper;
+import net.thumbtack.metasearchservice.validate.PathValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,28 +27,12 @@ public class MetaSearchService extends BaseService{
     private TripProvider provider;
 
     @Autowired
+    private PathValidator pathValidator;
+    @Autowired
     private Algorithm algorithm;
 
 
     public GetTripsDto getTrips(String from, String to) throws Exception {
-
-//        GetTripsDto getTripsDto = new GetTripsDto(
-//                List.of(new TripDto(1, "Omsk", "Samara", "BUS", 500, "00:00", "15:00", List.of("2012-01-01")),
-//                        new TripDto(2, "Omsk", "Moskow", "BUS", 100, "00:00", "15:00", List.of("2012-01-01")),
-//                        new TripDto(3, "Samara", "Anapa", "BUS", 3500, "00:00", "15:00", List.of("2012-01-01"))),
-//
-//                List.of(new TripDto(1, "Omsk", "Samara", "BUS", 500, "00:00", "15:00", List.of("2012-01-01")),
-//                        new TripDto(3, "Samara", "Anapa", "BUS", 3500, "00:00", "15:00", List.of("2012-01-01"))),
-//
-//                List.of(new TripDto(1, "Omsk", "Anapa", "TRAIN", 3500, "00:00", "05:00", List.of("2012-01-01")),
-//                        new TripDto(2, "Omsk", "Lipew", "TRAIN", 1500, "00:00", "05:00", List.of("2012-01-01")),
-//                        new TripDto(3, "Moskow", "Anapa", "TRAIN", 500, "00:00", "05:00", List.of("2012-01-01"))),
-//
-//                List.of(new TripDto(1, "Omsk", "Anapa", "TRAIN", 3500, "00:00", "05:00", List.of("2012-01-01"))),
-//                 new ArrayList<>(),new ArrayList<>());
-
-
-        //     return getTripsDto;
         return provider.getTripsAdapter(from, to);
     }
 
@@ -74,7 +59,6 @@ public class MetaSearchService extends BaseService{
                         })
                 .collect(Collectors.toList());
 
-
         return res;
     }
 
@@ -99,7 +83,9 @@ public class MetaSearchService extends BaseService{
         return new Random().ints(1, 21).
                 distinct().limit(1).findAny().getAsInt();
     }
+  
     public GetFullPathResponse getFullPaths(GetPathsDtoRequest request) throws Exception{
+         pathValidator.validate(request);
         if( cacheManager.getCache("get_full_path").get(request)!=null){
            var res=(GetFullPathResponse) cacheManager.getCache("get_full_path").get(request).get();
            return res;

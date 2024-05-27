@@ -3,7 +3,7 @@ input GetPathsDtoRequest{
     toStation: String!
     criteria: String!
     transport: String!
-    date: String!
+    dateFrom: String!
 }
 
 type GetPathsDtoResponse{
@@ -14,7 +14,7 @@ type GetFullPathResponse{
 }
 type PathResponse{
   idPath: ID
-  paths: [TripDto]
+  tripPath: [TripDto]
 }
 
 type TripDto{

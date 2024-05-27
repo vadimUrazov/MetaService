@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 public class CreateOrderDtoRequest {
-    private long idClient;
+    private String login;
     private long idPath;
     private String date;
     private  int price;
@@ -17,14 +17,14 @@ public class CreateOrderDtoRequest {
     private List<CargoDto> cargoDtos;
     private String orderType="PASS";
 
-    public CreateOrderDtoRequest(long idClient, long idPath, String date, int price,
+    public CreateOrderDtoRequest(String login, long idPath, String date, int price,
                                  List<PassengerDtoRequest> passengers,
                                  List<CargoDto> cargoDtos, String orderType) {
         if(orderType.equals("CARGO")){
             passengers = new ArrayList<>();
             this.cargoDtos = cargoDtos;
         }
-        this.idClient = idClient;
+        this.login = login;
         this.idPath = idPath;
         this.date = date;
         this.price = price;

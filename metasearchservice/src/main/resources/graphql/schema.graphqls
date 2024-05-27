@@ -1,6 +1,6 @@
 type Query{
     getSettings: GetSettingsResponse
-    getPaths(request: GetPathsDtoRequest):GetFullPathsResponse
+    getPaths(request: GetPathsDtoRequest):GetFullPathResponse
 }
 
 type Mutation{

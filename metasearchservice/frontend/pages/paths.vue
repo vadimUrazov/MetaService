@@ -2,144 +2,85 @@
   <NuxtLayout name="authenticated">
     <v-form v-model="valid">
       <v-container>
+        <v-card class="card">
         <v-row>
-          <v-col
-              cols="12"
-              md="4">
-            <v-text-field
-                v-model="fromStation"
-                label="From station"
-                required
-            ></v-text-field>
+          <v-col cols="5"
+                 md="2">
+            <v-text-field v-model="from"
+                          label="From station"
+                          required>
+            </v-text-field>
           </v-col>
-          <v-col
-              cols="12"
-              md="4">
-            <v-text-field
-                v-model="toStation"
-                label="To station"
-                required
-            ></v-text-field>
+          <v-col cols="5"
+                 md="2">
+            <v-text-field v-model="to"
+                          label="To station"
+                          required>
+            </v-text-field>
           </v-col>
-          <v-col>
-            <v-text-field
+          <v-col cols="12"
+                 md="2">
+            <v-select
+                :items="criteriaItems"
                 v-model="criteria"
                 label="Criteria"
-                required
-            ></v-text-field>
+            ></v-select>
           </v-col>
           <v-col
               cols="12"
-              md="4">
-            <v-text-field
+              md="2">
+            <v-select
+                :items="items"
                 v-model="transport"
                 label="Transport"
-                required
-            ></v-text-field>
+            ></v-select>
           </v-col>
           <v-col
               cols="12"
-              md="4">
+              md="2">
             <v-text-field
                 v-model="dateFrom"
                 label="Date"
                 required
             ></v-text-field>
+
           </v-col>
+          <v-col
+              cols="12"
+              md="2">
+            <v-btn class="mr-4" color="blue" @click="getP"  v-slot:default>
+              Get
+            </v-btn>
+          </v-col>
+
+          <v-data-table :items="tripRes">
+          </v-data-table>
         </v-row>
+        </v-card>
       </v-container>
-      <v-btn class="mr-4" color="blue" height="50px" left="900px" width="150px" @click="getPath">
-        Get
+      <br><br>
+      <v-btn  class="mr-4" color="blue" height="50px" width="150px"   location="center"
+              @click="create()">
+        Create Order
       </v-btn>
     </v-form>
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-    &nbsp &nbsp &nbsp
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-    &nbsp &nbsp &nbsp
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 
-    <v-table>
-      <thead>
-      <tr>
-        <th class="text-left">
-          From Station
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          To Station
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          Transport
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          Price
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          Duration Time
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          Tickets
-        </th>
 
-      </tr>
-      </thead>
-      <tbody>
-
-      <tr v-for="subjects in trips">
-        <ol type='I'>
-          <li v-for="q in subjects">
-            <td> {{ q.idPath }}</td>
-            <td> {{ q.fromStation }}</td>
-            <td>
-              {{
-                "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp "
-              }}
-            </td>
-            <td> {{ q.toStation }}</td>
-            <td>
-              {{
-                "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp "
-              }}
-            </td>
-            <td>{{ q.transport }}</td>
-            <td>
-              {{
-                "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp "
-              }}
-            </td>
-            <td>{{ q.price }}</td>
-            <td>
-              {{
-                "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp "
-              }}
-            </td>
-            <td>{{ q.duration }}</td>
-            <td>
-              {{
-                "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp "
-              }}
-            </td>
-            <td>
-              <v-btn class="mr-4" color="blue" height="50px" width="150px"
-                     @click="create(q.transport)">
-                Create Order
-              </v-btn>
-            </td>
-          </li>
-        </ol>
-      </tr>
-      </tbody>
-    </v-table>
+      <div class="footer">
+        <p>Author</p>
+        <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
+        <p>Metasearch platform that interacts with the search services of transport companies.
+          The platform gathers ranked search results for a specific query from several search engines of companies,
+          using linking algorithms, builds possible routes taking into account the parameters of transport trips,
+          and finds among the received routes the optimal one in terms of time and cost.
+          In addition, it is possible to purchase tickets for trips on the route selected by the user.</p>
+      </div>
   </NuxtLayout>
 
 </template>
 <script>
 import {mdiEye, mdiEyeOff} from '@mdi/js'
+
 
 export default {
 
@@ -147,12 +88,15 @@ export default {
     mdiEye,
     mdiEyeOff,
     valid: false,
-    fromStation: "",
-    toStation: "",
+    idPath: 0,
+    from: "",
+    to: "",
     criteria: "",
     transport:"",
     dateFrom:"",
-    trips: [[]]
+    tripRes:[],
+    items: ['BUS', 'TRAIN', 'SHIP', 'ALL'],
+    criteriaItems: ['PRICE','TIME']
   }),
   methods: {
     validate() {
@@ -164,17 +108,56 @@ export default {
     resetValidation() {
       this.$refs.form.resetValidation()
     },
-    create(transport) {
-      if (transport === 'BUS') {
-        alert("BUS")
-        location.href = 'http://192.168.0.109:3003/'
-      } else if (transport === 'TRAIN') {
-        alert("TRAIN")
-        location.href = 'http://192.168.0.109:3004/'
-      } else if (transport === 'SHIP') {
-        alert("SHIP")
-        location.href = 'http://192.168.0.109:3005/'
-      }
+    create() {
+      this.$router.push('/login');
+    },
+    async getP(){
+      this.tripRes=[
+
+        {
+          id:1,
+          fromStation: 'Omsk',
+          toStation: 'Moskow',
+          transport: 'BUS',
+          price: '200',
+          duration: '05:00',
+        },
+        {
+          fromStation: 'Moskow',
+          toStation: 'Anapa',
+          transport: 'BUS',
+          price: '200',
+          duration: '05:00'
+
+        },
+        {
+          id:2,
+          fromStation: 'Omsk',
+          toStation: 'Anapa',
+          transport: 'BUS',
+          price: '500',
+          duration: '08:00',
+        },
+        {
+          id:3,
+          fromStation: 'Omsk',
+          toStation: 'Samara',
+          transport: 'BUS',
+          price: '700',
+          duration: '08:00',
+        },
+        {
+          fromStation: 'Samara',
+          toStation: 'Anapa',
+          transport: 'Train',
+          price: '900',
+          duration: '02:00'
+        },
+
+      ];
+
+
+
     },
     async getPath() {
       var response = await $fetch('http://127.0.0.1:9080/graphql',
@@ -204,17 +187,41 @@ export default {
             },
 
           })
-      this.trips = response.data.getPaths.paths;
-
+      var trips = response.data.getPaths.paths;
+      for (let i = 0; i < trips.length; i++) {
+        var id=trips[i].idPath;
+        var pat=trips[i].tripPath;
+        for (let j = 0; j <pat.length; j++) {
+          var fr=pat[j].fromStation;
+          var t=pat[j].toStation;
+          var tr=pat[j].transport;
+          var pr=pat[j].price;
+          var d=pat[j].duration;
+          this.tripRes.push({id,fr,t,tr,pr,d});
+        }
+      }
     }
   },
 }
 
 </script>
 <style>
+.card{
+  padding: 2.5%;
+}
 td {
   padding: 10px;
   padding-left: 20px;
 }
-
+.footer {
+  background-color: #9aa9e3;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  width: 99%;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fafaff;
+}
 </style>

@@ -1,8 +1,3 @@
-input PassengerDto{
-    firstName:  String
-    lastName: String
-    passport: ID!
-}
 input PassengerDtoRequest{
     firstName:  String
     lastName: String
@@ -20,28 +15,20 @@ type CargoDtoResponse{
 type PassengerDtoResponse{
     firstName:  String
     lastName: String
-    passport: ID!
+    passport: ID
 }
 input CreateOrderDtoRequest{
     idOrder: ID
-    idClient: ID
+    login: String
     date: String
     idPath: ID
     price: Int
     passengers: [PassengerDtoRequest]
+    cargoDtos: [CargoDto]
     orderType: String
 }
-type CreateOrderRequest{
-    idOrder: ID
-    idClient: ID
-    date: String
-    fromStation: String
-    toStation: String
-    price: Int
-    passengers: [PassengerDto]
-    cargoDtos: CargoDto
-}
-type CreateOrderResponse{
+
+type CreateOrderDtoResponse{
     idOrder: ID
     idClient: ID
     date: String

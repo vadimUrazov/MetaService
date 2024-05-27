@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ChoosePlaceDtoRequest {
     private long idPath;
+    private String login;
     private List<ChoosePlaceRequest> places;
 
     @JsonCreator
