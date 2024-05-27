@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 const router = useRouter();
-const users = await $fetch('http://127.0.0.1:9050/graphql',
+const users = await $fetch('http://127.0.0.1:8090/graphql',
     {
       method: 'POST',
       body: {"query": "query healthCheck {healthCheck}", "variables": null, "operationName": "healthCheck"},

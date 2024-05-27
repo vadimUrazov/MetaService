@@ -2,12 +2,13 @@
   <v-app :theme="theme">
     <v-app-bar app>
       <v-btn flat to="/" nuxt> Home</v-btn>
-      <v-btn flat to="/users" nuxt> Users</v-btn>
-      <v-btn flat to="/graph" nuxt> Graph</v-btn>
+      <v-btn flat to="/login" nuxt> Login</v-btn>
       <v-switch hide-details inset v-model="model"></v-switch>
     </v-app-bar>
-    <v-main>
+    <v-main class="img">
+      <v-container>
       <slot/>
+       </v-container>
     </v-main>
   </v-app>
 </template>
@@ -15,7 +16,14 @@
 <script setup>
 const model = useState('model', () => 0)
 </script>
-
+<style>
+.img{
+  background-image: url('../images/img.png');
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+</style>
 <script>
 
 export default {
