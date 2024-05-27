@@ -1,9 +1,12 @@
 <template>
-  <div class="d-flex align-center flex-column">
-    <v-card width="400">
+  <NuxtLayout name="authenticated">
+    <div class="d-flex align-center flex-column">
+    <v-card width="400"  location="center" position="fixed">
       <v-card-header>
         <v-card-header-text>
-          <v-card-title>Login</v-card-title>
+          <v-card-title align="middle">
+           <b> Login </b>
+          </v-card-title>
         </v-card-header-text>
       </v-card-header>
 
@@ -12,23 +15,65 @@
           <v-text-field v-model="username" :rules="nameRules" label="Username"
                         required></v-text-field>
 
-          <v-text-field v-model="password" :append-icon="show1 ? mdiEyeOff : mdiEye"
-                        :type="show1 ? 'text' : 'password'" label="Normal with hint text"
+          <v-text-field v-model="password" :rules="passRules" :append-icon="show1 ? mdiEyeOff : mdiEye"
+                        :type="show1 ? 'text' : 'password'"  label="Password"
                         name="input-10-1"
-                        @click:append="show1 = !show1">
+                        @click:append="show1 = !show1" required>
           </v-text-field>
 
 
-          <v-btn class="mr-4" color="success" @click="login">
-            Login
+          <v-btn class="mr-4 bt" color="success" @click="login" location="center" >
+            Sign in
           </v-btn>
-        </v-form>
+          <font size="5" >
 
+         <a class="hyp lin"  href="/registerAdmin" >Sign up</a>
+
+          </font>
+        </v-form>
       </v-card-text>
     </v-card>
   </div>
-</template>
 
+  <div class="footer">
+  <section>
+    <p>Author</p>
+    <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
+  </section>
+  </div>
+    </NuxtLayout>
+</template>
+<style>
+form {
+
+}
+.lin{
+  margin-bottom: 300px;
+}
+.hyp{
+  margin-left: 170px;
+}
+.bt{
+  margin-top: 10px;
+}
+.img{
+  background-image: url('../images/img.png');
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+.footer {
+  background-color: #6fc095;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fafaff;
+}
+</style>
 <script>
 import {mdiEye, mdiEyeOff} from '@mdi/js'
 
@@ -46,6 +91,10 @@ export default {
     nameRules: [
       v => !!v || 'Name is required',
       v => v.length <= 50 || 'Name must be less than 50 characters',
+    ],
+    passRules: [
+      v => !!v || 'Name is required',
+      v => v.length >= 8 || 'Min 8 characters'
     ],
 
     rules: {
@@ -66,7 +115,7 @@ export default {
     },
 
     async login() {
-      var response = await $fetch('http://127.0.0.1:9090/graphql',
+      var response = await $fetch('http://127.0.0.1:9080/graphql',
           {
             method: 'POST',
             body: {
@@ -86,10 +135,12 @@ export default {
           })
       console.log(response.data.login.jwtToken)
       localStorage.setItem('Authorization', "Bearer " + response.data.login.jwtToken)
-      //   const router = useRouter();
-      //  await router.push('/bus')
+if(!response.data.login.jwtToken.equals('')){
+  window.location='http://localhost:63342/untitled/metaservice/pages/Order.html?_ijt=dot915jpivb9l69aqsk1b3vjqg';
+}
+
     }
-  },
+  }
 
 }
 

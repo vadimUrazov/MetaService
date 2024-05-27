@@ -23,6 +23,7 @@ input CreateOrderRequest{
     fromStation: String
     toStation: String
     passengers: [PassengerDto]
+    cardoDtos:[CargoDto]
 }
 
 type CreateOrderResponse{

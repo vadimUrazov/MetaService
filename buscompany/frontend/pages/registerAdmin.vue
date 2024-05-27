@@ -1,5 +1,11 @@
 <template>
+<NuxtLayout name="authenticated">
   <v-form v-model="valid">
+  <p align="middle">
+      <font size="5" color="#23218b" face="Arial">
+       <b>Register Admin</b>
+      </font>
+      </p>
     <v-container>
       <v-row>
         <v-col
@@ -8,8 +14,8 @@
         >
           <v-text-field
               v-model="firstname"
-              :counter="50"
               :rules="nameRules"
+              :counter="50"
               label="First name"
               required
           ></v-text-field>
@@ -21,8 +27,8 @@
         >
           <v-text-field
               v-model="lastname"
-              :counter="50"
               :rules="nameRules"
+              :counter="50"
               label="Last name"
               required
           ></v-text-field>
@@ -43,8 +49,8 @@
         >
           <v-text-field
               v-model="login"
-              :rules="authRules"
               label="Login"
+              :rules="authRules"
               required
           ></v-text-field>
         </v-col>
@@ -83,6 +89,11 @@
       </v-row>
     </v-container>
   </v-form>
+   <div class="footer">
+      <p>Author</p>
+      <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
+    </div>
+  </NuxtLayout>
 </template>
 
 <script>
@@ -110,21 +121,21 @@ export default {
       v => v.length <= 50 || 'Position must be less than 50 characters',
     ],
   }),
-  methods: {
+  methods:{
     async registerAdm() {
-      var response = await $fetch('http://127.0.0.1:9090/graphql',
+      var response = await $fetch('http://127.0.0.1:8090/graphql',
           {
             method: 'POST',
             body: {
               "query": "mutation{  " +
                   "registerAdmin(\n" +
                   "    request: {" +
-                  " surname: " + this.firstname + "\",\n" +
-                  "name: " + this.lastname + "\",\n" +
-                  " middlename: " + this.middlename + "\",\n" +
-                  " login: " + this.login + "\",\n" +
-                  "      password: " + this.password + "\",\n" +
-                  " position:" + this.position +
+                  " surname: "+this.firstname + "\",\n" +
+                      "name: "+this.lastname + "\",\n" +
+                  " middlename: "+this.middlename + "\",\n" +
+                  " login: "+this.login + "\",\n" +
+                  "      password: "+this.password + "\",\n" +
+                  " position:"+this.position +
                   "}\n" +
                   "  ) {\n" +
                   "    id\n" +
@@ -133,14 +144,24 @@ export default {
                   "  }"
             },
           })
-      if (response.data.registerAdmin.id > 0) {
+      if(response.data.registerAdmin.id>0){
         this.$router.push('/login');
       }
-    }
   }
+}
 }
 </script>
 
 <style scoped>
-
+.footer {
+    background-color: #9aa9e3;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    width: 99%;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fafaff;
+}
 </style>
