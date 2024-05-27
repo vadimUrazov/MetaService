@@ -3,8 +3,6 @@
 
     <v-card width="800" height="400" class="td"  location="center" position="fixed">
       <div class="text-center">
-
-
      Metasearch platform that interacts with the search services of transport companies.<br>
       The platform gathers ranked search results for a specific query from several search engines of companies,
       using linking algorithms, builds possible routes taking into account the parameters of transport trips,
