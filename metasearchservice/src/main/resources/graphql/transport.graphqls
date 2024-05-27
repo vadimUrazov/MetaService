@@ -12,6 +12,7 @@ type GetPathsDtoResponse{
 type GetFullPathResponse{
     paths:[PathResponse]
 }
+
 type PathResponse{
   idPath: ID
   tripPath: [TripDto]

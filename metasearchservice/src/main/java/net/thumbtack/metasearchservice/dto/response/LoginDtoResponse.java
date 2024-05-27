@@ -18,4 +18,5 @@ public class LoginDtoResponse {
     @JsonCreator
     public LoginDtoResponse() {
     }
+
 }

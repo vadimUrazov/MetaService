@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import net.thumbtack.metasearchservice.dto.TripDto;
-import net.thumbtack.metasearchservice.dto.request.PassengerDto;
-
 import java.util.List;
 
 @Data

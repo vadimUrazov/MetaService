@@ -12,4 +12,5 @@ import net.thumbtack.metasearchservice.dto.request.PassengerDtoRequest;
 public class PlaceDto {
    private long idClient;
    private PassengerDtoRequest passenger;
+
 }

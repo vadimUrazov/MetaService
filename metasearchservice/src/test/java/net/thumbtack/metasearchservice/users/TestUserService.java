@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @ExtendWith(SpringExtension.class)
 public class TestUserService {
+
     @SpyBean
     private UserService service;
 

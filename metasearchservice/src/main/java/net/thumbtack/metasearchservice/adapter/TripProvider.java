@@ -5,7 +5,6 @@ import io.aexp.nodes.graphql.GraphQLTemplate;
 import io.aexp.nodes.graphql.Variable;
 import net.thumbtack.metasearchservice.dto.GetTripsDto;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
 

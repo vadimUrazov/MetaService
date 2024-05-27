@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChoosePlaceResponse {
-
     private long orderId;
     private String ticket;
     private String lastName;

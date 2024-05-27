@@ -3,6 +3,7 @@ type Query{
     getPaths(request: GetPathsDtoRequest):GetFullPathResponse
 }
 
+
 type Mutation{
     registerUser(request: RegisterClientDtoRequest):RegisterUserDtoResponse
     loginUser(request: LoginDtoRequest):LoginDtoResponse

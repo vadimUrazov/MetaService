@@ -13,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @ToString
 public class LoginDtoRequest {
+
     @NotEmpty
     private String login;
     @NotEmpty

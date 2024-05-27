@@ -19,7 +19,6 @@
                             <groupId>org.projectlombok</groupId>
                             <version>0.2.0</version>
                         </path>
-
                         <path>
                             <artifactId>mapstruct-processor</artifactId>
                             <groupId>org.mapstruct</groupId>

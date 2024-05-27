@@ -27,5 +27,4 @@ public class PathValidator  {
         }
         return Optional.of(request);
     }
-
 }

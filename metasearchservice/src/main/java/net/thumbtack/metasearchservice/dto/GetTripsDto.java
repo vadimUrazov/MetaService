@@ -20,7 +20,6 @@ public class GetTripsDto {
     public GetTripsDto() {
     }
 
-
     @JsonCreator
     public GetTripsDto(@JsonProperty("fromBuses") List<TripDto> fromBuses, @JsonProperty("toBuses") List<TripDto> toBuses,
                        @JsonProperty("fromTrains") List<TripDto> fromTrains, @JsonProperty("toTrains") List<TripDto> toTrains,

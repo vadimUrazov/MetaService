@@ -1,0 +1,179 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="rating" content="General">
+  <link rel="stylesheet" href="../styles/basic.css">
+  <title>Order</title>
+</head>
+<body>
+<p align="middle">
+    <font size="5" color=blue face="Arial">
+        Create Order
+    </font>
+</p>
+<div align="middle">
+<p>Username</p>
+<input type="text" id="username"  name="username" required/>
+<p>Route id</p>
+<input type="text" id="route_id" name="Route id" required/>
+<p>Price</p>
+<input type="text" id="price" name="price" required/>
+<p>Date</p>
+<input type="date" id="date" name="date"/>
+    <p>Order Type</p>
+    <form>
+        <p><select name="order_type" id="ortp">
+                <option value="PASS">PASS</option>
+                <option value="CARGO">CARGO</option>
+        </select></p>
+    </form>
+<button id="fv" @click="createOrder">CREATE</button>
+</div>
+<div id="app">
+  <bullshit-form
+          v-for="(n, i) in items"
+          v-model="n.data"
+          @del="items.splice(i, 1)"
+  ></bullshit-form>
+  <div>
+    <button @click="addItem">addPass</button>
+  </div>
+</div>
+<br>
+<div id="car">
+    <bullshit-form
+            v-for="(n, i) in cargo"
+            v-model="n.data"
+            @del="cargo.splice(i, 1)"
+    ></bullshit-form>
+    <div>
+        <button @click="addCargo">addCargo</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+  Vue.component('bullshit-form', {
+    template: `
+<div class="form">
+  <div v-for="(v, k) in formData">
+    {{ k }}:
+    <input v-model="formData[k]">
+  </div>
+  <button @click="$emit('del')">delete</button>
+</div>`,
+    props: [ 'value' ],
+    computed: {
+      formData() {
+        return new Proxy(this.value, {
+          set: (target, prop, val) => {
+            this.$emit('input', { ...target, [prop]: val });
+            return true;
+          },
+        });
+      },
+    },
+  });
+new Vue({
+  el: "#fv",
+  methods: {
+      async createOrder() {
+          var pass=v._data.items;
+          var  car=carg._data.cargo;
+          var reqCar="[";
+var reqPass="[";
+          for (let j = 0; j < car.length; j++) {
+              reqCar="{"+"cargoType: "+car[j].data.cargoType+" "+car[j].data.weight+"\"\n"
+                  + "},";
+          }
+          var resCar=reqCar.substring(0,reqCar.length-1)+"]";
+          for (let i = 0; i <pass.length; i++) {
+reqPass="{"+"firstname: "+pass[i].data.firstname+"\",\n"
+           +"lastname: "+pass[i].data.lastname+"\",\n"
+           +"passport: "+pass[i].data.passport+"\",\n"
+           +"place: "+pass[i].data.place
+           + "},";
+          }
+         var resPass=reqPass.substring(0,reqPass.length-1)+"]";
+          var response = await $fetch('http://127.0.0.1:9080/graphql',
+              {
+                  method: 'POST',
+                  body: {
+                      "query": "mutation{  " +
+                          "createOrder(\n" +
+                          "    request: {" +
+                          "login: " + document.getElementById('username').value  + "\",\n" +
+                          "idPath: " + document.getElementById('route_id').value  + "\",\n" +
+                          "date: " + document.getElementById('date').value + "\",\n" +
+                          "price: " + document.getElementById('price').value + "\",\n" +
+                          "orderType:" + document.getElementById('ortp').value + "\",\n" +
+                          "passengers:"+resPass+"\",\n"+
+                          "cargoDtos:"+resCar+"\"\n"+
+                          "}\n" +
+                          "  ) {\n" +
+                          "    id\n" +
+                          "}}", "variables": null,
+                      "headers": + localStorage.getItem('Authorization')
+                  },
+
+              })
+          var type=document.getElementById('ortp').value;
+if(type.equals("CARGO") && response.data.createOrder.id>0){
+    this.$router.push('/');
+}else if(type.equals("PASS") && response.data.createOrder.id>0) {
+    window.location='http://localhost:63342/untitled/metaservice/pages/Place.html?_ijt=5174ecj34rmbkpvad2md5clpd1';
+}
+
+
+      }
+  }
+});
+ var v= new Vue({
+    el: '#app',
+    data: {
+      items: [],
+    },
+    methods: {
+      addItem() {
+        this.items.push({
+          data: {
+              firstname: '',
+              lastname: '',
+              passport: '',
+              place: '',
+          },
+        });
+      }
+    },
+    created() {
+      this.addItem();
+    }
+  });
+  var carg= new Vue({
+      el: '#car',
+      data: {
+          cargo: [],
+      },
+      methods: {
+          addCargo() {
+              this.cargo.push({
+                  data: {
+                     cargoType: '',
+                      weight: '',
+                  },
+              });
+          }
+      },
+      created() {
+          this.addItem();
+      }
+  });
+</script>
+<footer>
+    <section>
+        <p>Author</p>
+        <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
+    </section>
+</footer>
+</body>
+</html>

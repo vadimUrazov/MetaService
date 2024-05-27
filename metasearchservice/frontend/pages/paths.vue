@@ -1,4 +1,5 @@
 <template>
+
   <NuxtLayout name="authenticated">
     <v-form v-model="valid">
       <v-container>

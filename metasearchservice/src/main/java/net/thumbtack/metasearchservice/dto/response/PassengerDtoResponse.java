@@ -12,7 +12,6 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @ToString
 public class PassengerDtoResponse {
-
   @NotEmpty
   private String firstName;
   @NotEmpty

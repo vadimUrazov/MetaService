@@ -12,4 +12,5 @@ import java.util.List;
 public class PathResponse {
     private long idPath;
     private List<TripDto> tripPath;
+
 }

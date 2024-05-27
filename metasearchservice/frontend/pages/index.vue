@@ -1,7 +1,6 @@
 <template>
   <NuxtLayout name="authenticated">
 
-
     <v-card width="800" height="400" class="td"  location="center" position="fixed">
       <div class="text-center">
 

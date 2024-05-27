@@ -17,6 +17,7 @@ import java.util.concurrent.CountDownLatch;
 
 @Service
 public class UserProvider {
+
     @Autowired
     private KafkaProducer producer;
 

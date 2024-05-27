@@ -12,5 +12,4 @@ import java.util.List;
 @NoArgsConstructor
 public class GetPathDtoResponse {
     private List<List<TripDto>> paths;
-
 }

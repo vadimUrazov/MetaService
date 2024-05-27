@@ -10,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PassengerDtoRequest {
+
     private String firstName;
     private String lastName;
     private long passport;

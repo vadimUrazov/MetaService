@@ -17,5 +17,4 @@ public class ClientDtoResponse {
     private String email;
     private String phone;
     private String type;
-
 }

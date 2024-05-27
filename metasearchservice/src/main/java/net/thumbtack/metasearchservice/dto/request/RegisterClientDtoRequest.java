@@ -7,6 +7,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 public class RegisterClientDtoRequest {
+
     private long id;
     private String surname;
     private String name;

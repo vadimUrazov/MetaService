@@ -31,7 +31,6 @@ public class MetaSearchService extends BaseService{
     @Autowired
     private Algorithm algorithm;
 
-
     public GetTripsDto getTrips(String from, String to) throws Exception {
         return provider.getTripsAdapter(from, to);
     }

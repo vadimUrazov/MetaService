@@ -9,6 +9,3 @@ const router = useRouter();
 await router.push('/paths')
 
 </script>
-<style scoped>
-
-</style>

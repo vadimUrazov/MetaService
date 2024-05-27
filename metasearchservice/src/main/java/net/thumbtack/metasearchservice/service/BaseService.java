@@ -12,8 +12,6 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
 @Component
 public class BaseService {
     @Autowired

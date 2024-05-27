@@ -128,7 +128,6 @@ export default {
     phone: '',
     nameRules: [
       v => !!v || 'Name is required',
-
     ],
     authRules: [
       v => !!v || 'Field is required',

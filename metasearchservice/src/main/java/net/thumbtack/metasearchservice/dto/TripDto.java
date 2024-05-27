@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class TripDto {
+
     private long id;
 
     private String fromStation;

@@ -18,7 +18,6 @@ public class ChoosePlaceRequest {
     @NotEmpty
     private String firstName;
 
-
     private long passport;
 
     private int place;

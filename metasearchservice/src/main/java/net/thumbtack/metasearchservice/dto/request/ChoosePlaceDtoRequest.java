@@ -16,4 +16,5 @@ public class ChoosePlaceDtoRequest {
     @JsonCreator
     public ChoosePlaceDtoRequest() {
     }
+
 }

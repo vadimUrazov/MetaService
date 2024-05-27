@@ -175,15 +175,6 @@
       <change afterPath="$PROJECT_DIR$/../buscompany/target/classes/sql/v1/package.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../buscompany/target/generated-sources/annotations/net/thumbtack/buscompany/service/mappers/AdminRegisterMapperImpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../buscompany/target/generated-sources/annotations/net/thumbtack/buscompany/service/mappers/ClientRegisterMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/.nuxt/app.config.mjs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/.nuxt/components.d.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/.nuxt/dist/server/client.manifest.json" afterDir="false" />
@@ -210,12 +201,9 @@
       <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/schema.d.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/.nuxt/types/vue-shim.d.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/.nuxt/vue-router-stub.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/images/img.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/pages/Order.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/pages/Place.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pages/login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pages/registerClient.vue" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/styles/basic.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/meta-search.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/net/thumbtack/metasearchservice/adapter/UserProvider.class" afterDir="false" />
@@ -282,52 +270,52 @@
       <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/net/thumbtack/traincompany/dao/TestUserDao.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/postgres.jdbc.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../traincompany/target/test-classes/sql/switch-mode.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/graph.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/graph.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/order.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/place.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/registerAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/pages/registerAdmin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/registerClient.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/pages/users.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/frontend/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/frontend/plugins/vuetify.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buscompany/src/main/resources/graphql/order.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/../buscompany/src/main/resources/graphql/order.graphqls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/layouts/authenticated.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/layouts/authenticated.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/paths.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/paths.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/plugins/vuetify.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/adapter/KafkaProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/adapter/KafkaProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/adapter/TripProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/adapter/TripProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/adapter/UserProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/adapter/UserProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/CacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/CacheConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/MetaSearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/config/MetaSearchConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/controller/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/controller/ServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/GetTripsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/GetTripsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/PlaceDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/PlaceDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/TripDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/TripDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/ChoosePlaceDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/ChoosePlaceDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/ChoosePlaceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/ChoosePlaceRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/CreateOrderDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/CreateOrderDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/CreateOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/CreateOrderRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/GetPathsDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/GetPathsDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/LoginDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/LoginDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/PassengerDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/PassengerDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/RegisterClientDtoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/request/RegisterClientDtoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/CargoDtoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/CargoDtoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/ChoosePlacesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/ChoosePlacesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/ClientDtoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/ClientDtoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/GetFullPathResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/GetFullPathResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/GetPathDtoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/GetPathDtoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/LoginDtoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/LoginDtoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/PassengerDtoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/PassengerDtoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/PathResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/PathResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/RegisterClientDtoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/RegisterClientDtoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/RegisterUserDtoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/dto/response/RegisterUserDtoResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/BaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/MetaSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/MetaSearchService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/Path.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/mappers/TripMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/service/mappers/TripMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/CargoValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/CargoValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/PathValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/thumbtack/metasearchservice/validate/PathValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/order.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/order.graphqls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/place.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/place.graphqls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/schema.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/schema.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/settings.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/settings.graphqls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/transport.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/transport.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/user.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/user.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/config/TestMetaSearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/config/TestMetaSearchConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/path/TestGetPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/path/TestGetPaths.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/users/TestUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/thumbtack/metasearchservice/users/TestUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/layouts/authenticated.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/layouts/authenticated.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/graph.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/graph.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/order.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/place.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/registerAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../shipcompany/frontend/pages/registerAdmin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/registerClient.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shipcompany/frontend/pages/users.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/layouts/authenticated.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/layouts/authenticated.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/pages/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/order.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/place.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/registerAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../traincompany/frontend/pages/registerAdmin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/registerClient.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../traincompany/frontend/pages/users.vue" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -448,14 +436,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

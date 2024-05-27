@@ -22,7 +22,6 @@ public class KafkaProducerConfig {
     @Value(value = "${kafka.bootstrapAddress}")
     private String bootstrapAddress;
 
-
     @Bean
     public ProducerFactory<String, CreateOrderRequest> greetingProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();

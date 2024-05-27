@@ -1,0 +1,21 @@
+* {
+    font-family: monospace;
+}
+
+.form {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid silver;
+    display: inline-block;
+}
+
+footer{
+    background-color:  lightblue;
+    height: 200px;
+    width: 100%;
+
+
+}
+.form button {
+    margin-top: 10px;
+}

@@ -17,5 +17,4 @@ public class RegisterClientDtoResponse {
     private String email;
     private String phone;
     private String userType;
-
 }

@@ -14,4 +14,5 @@ public @interface CargoRule {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
 }

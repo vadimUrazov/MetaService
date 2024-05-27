@@ -17,6 +17,7 @@ type PassengerDtoResponse{
     lastName: String
     passport: ID
 }
+
 input CreateOrderDtoRequest{
     idOrder: ID
     login: String

@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetPathsDtoRequest {
+
     @NotEmpty
     private String fromStation;
     @NotEmpty

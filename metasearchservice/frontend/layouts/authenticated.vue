@@ -10,7 +10,6 @@
       <slot/>
       </v-container>
     </v-main>
-
   </v-app>
 
 </template>

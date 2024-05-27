@@ -7,4 +7,5 @@ import org.springframework.boot.test.context.TestConfiguration;
 @TestConfiguration
 @SpringBootTest(properties = "spring.main.allow-bean-definition-overriding=true", classes = {Application.class})
 public class TestMetaSearchConfig {
+
 }

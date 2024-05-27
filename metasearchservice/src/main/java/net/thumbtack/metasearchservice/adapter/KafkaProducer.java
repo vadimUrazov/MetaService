@@ -29,4 +29,5 @@ public class KafkaProducer {
         LOGGER.info("sending choose place payload='{}' to topic='{}'", request, topic);
         kafkaTemplatePlace.send(topic, request);
     }
+
 }

@@ -30,6 +30,4 @@ public class ServiceController {
     public GetFullPathResponse getPaths(@Valid @Argument GetPathsDtoRequest request) throws Exception {
         return transportService.getFullPaths(request);
     }
-
-
 }

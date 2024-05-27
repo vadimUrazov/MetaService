@@ -14,6 +14,7 @@ import java.util.Random;
 
 @Service
 public class UserService extends BaseService{
+
     @Autowired
     private UserProvider provider;
     private long generateId(){

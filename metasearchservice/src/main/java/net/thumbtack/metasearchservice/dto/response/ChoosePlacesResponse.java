@@ -11,5 +11,4 @@ import java.util.List;
 @NoArgsConstructor
 public class ChoosePlacesResponse {
     private List<ChoosePlaceResponse> placeResponses;
-
 }

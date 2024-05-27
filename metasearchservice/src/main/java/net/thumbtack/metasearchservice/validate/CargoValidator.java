@@ -16,4 +16,5 @@ public class CargoValidator implements ConstraintValidator<CargoRule, CargoDto> 
        }
         return true;
     }
+
 }

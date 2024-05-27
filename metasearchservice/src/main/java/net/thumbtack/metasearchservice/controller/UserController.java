@@ -50,4 +50,5 @@ public class UserController {
     public ChoosePlacesResponse choosePlace(ChoosePlaceDtoRequest request){
         return service.choosePlace(request);
   }
+
 }
