@@ -1,13 +1,17 @@
 <template>
   <NuxtLayout name="authenticated">
 
-    <v-card width="800" height="400" class="td"  location="center" position="fixed">
+
+    <v-card width="900" height="560" class="td"  location="center" position="fixed">
       <div class="text-center">
+        <font size="5"  face="Arial" >
+
      Metasearch platform that interacts with the search services of transport companies.<br>
       The platform gathers ranked search results for a specific query from several search engines of companies,
       using linking algorithms, builds possible routes taking into account the parameters of transport trips,
       and finds among the received routes the optimal one in terms of time and cost.<br>
-      In addition, it is possible to purchase tickets for trips on the route selected by the user.<br>
+      In addition, it is possible to purchase tickets for trips on the route selected by the user.
+        </font>
       </div>
 
     </v-card>

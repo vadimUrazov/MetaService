@@ -2,7 +2,7 @@
   <NuxtLayout name="authenticated">
   <v-form v-model="valid">
     <p align="middle">
-      <font size="5" color="#23218b" face="Arial">
+      <font size="8" color="#7fffd4" face="Arial">
        <b>Register Client</b>
       </font>
       </p>
@@ -101,7 +101,11 @@
           color="purple darken-2"
       @click="registerCl"
      location="center" >
+        <font size="5">
+
+
         Sign Up
+        </font>
       </v-btn>
         </v-card>
     </v-container>
@@ -128,6 +132,7 @@ export default {
     phone: '',
     nameRules: [
       v => !!v || 'Name is required',
+
     ],
     authRules: [
       v => !!v || 'Field is required',

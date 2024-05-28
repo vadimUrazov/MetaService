@@ -1,8 +1,17 @@
 <template>
   <v-app :theme="theme">
     <v-app-bar app>
-      <v-btn flat to="/" nuxt> Home</v-btn>
-      <v-btn flat to="/login" nuxt> Login</v-btn>
+      <v-btn flat to="/" nuxt>
+      <font size="3"  >
+       Home
+       </font>
+       </v-btn>
+    
+      <v-btn flat to="/login" nuxt> 
+      <font size="3"  >
+      Login
+      </font>
+      </v-btn>
       <v-switch hide-details inset v-model="model"></v-switch>
     </v-app-bar>
     <v-main class="img">

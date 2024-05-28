@@ -6,30 +6,55 @@
   <link rel="stylesheet" href="../styles/basic.css">
   <title>Order</title>
 </head>
-<body>
+<body class="img">
 <p align="middle">
-    <font size="5" color=blue face="Arial">
-        Create Order
+    <font size="12" color="#7fffd4" face="Arial">
+      <b>  Create Order </b>
     </font>
 </p>
-<div align="middle">
-<p>Username</p>
+<div align="center" class="usn">
+    <font size="5"  >
+        <p>Username</p>
+    </font>
 <input type="text" id="username"  name="username" required/>
-<p>Route id</p>
+    <font size="5"  >
+        <p>Route id</p>
+    </font>
 <input type="text" id="route_id" name="Route id" required/>
+    <font size="5"  >
 <p>Price</p>
+    </font>
 <input type="text" id="price" name="price" required/>
+    <font size="5"  >
 <p>Date</p>
+    </font>
 <input type="date" id="date" name="date"/>
+    <font size="5"  >
     <p>Order Type</p>
+    </font>
+
     <form>
-        <p><select name="order_type" id="ortp">
-                <option value="PASS">PASS</option>
-                <option value="CARGO">CARGO</option>
+        <p>
+            <select name="order_type" id="ortp" >
+
+                <option  value="PASS">
+                        PASS
+                </option>
+                <option value="CARGO">
+                    CARGO
+                </option>
+
         </select></p>
+
     </form>
-<button id="fv" @click="createOrder">CREATE</button>
+<button id="fv" @click="createOrder">
+    <font size="5"  >
+    CREATE
+    </font>
+</button>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div id="app">
   <bullshit-form
           v-for="(n, i) in items"
@@ -37,7 +62,11 @@
           @del="items.splice(i, 1)"
   ></bullshit-form>
   <div>
-    <button @click="addItem">addPass</button>
+    <button @click="addItem">
+        <font size="5"  >
+        addPass
+        </font>
+    </button>
   </div>
 </div>
 <br>
@@ -48,7 +77,11 @@
             @del="cargo.splice(i, 1)"
     ></bullshit-form>
     <div>
-        <button @click="addCargo">addCargo</button>
+        <button @click="addCargo">
+            <font size="5"  >
+            addCargo
+            </font>
+        </button>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
@@ -57,10 +90,16 @@
     template: `
 <div class="form">
   <div v-for="(v, k) in formData">
-    {{ k }}:
-    <input v-model="formData[k]">
+    <font size="5"  >
+    {{ k }}
+    </font>
+   <br> <input v-model="formData[k]">
   </div>
-  <button @click="$emit('del')">delete</button>
+  <button @click="$emit('del')">
+    <font size="5"  >
+    delete
+    </font>
+  </button>
 </div>`,
     props: [ 'value' ],
     computed: {
@@ -169,11 +208,12 @@ if(type.equals("CARGO") && response.data.createOrder.id>0){
       }
   });
 </script>
-<footer>
+<br><br><br><br><br><br>
+<div class="footer">
     <section>
         <p>Author</p>
         <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
     </section>
-</footer>
+</div>
 </body>
 </html>

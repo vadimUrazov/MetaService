@@ -6,46 +6,71 @@
     <link rel="stylesheet" href="../styles/basic.css">
     <title>Сhoose Place</title>
 </head>
-<body>
-<p align="middle">
-    <font size="5" color=blue face="Arial">
-        Choose Place
+<body class="img">
+
+<div align="center">
+    <font size="12" color="#7fffd4" face="Arial" >
+       <b> Choose Place</b>
     </font>
-</p>
-<div align="middle">
+    </div>
+
+<div align="center" class="usn">
+    <font size="5"  >
     <p>Username</p>
+    </font>
     <input type="text" id="username"  name="username" required/>
+    <font size="5"  >
     <p>Route id</p>
+    </font>
     <input type="text" id="route_id" name="Route id" required/>
     <br>
     <br>
-    <button id="chb" @click="cv">CHOOSE</button>
+    <button id="chb" @click="choosePlaces">
+        <font size="5"  >
+        CHOOSE
+        </font>
+    </button>
+
 <div id="app">
+    <div>
+        <br>
+        <button @click="addItem">
+            <font size="5"  >
+            addPass
+            </font>
+        </button>
+    </div>
     <br>
     <bullshit-form
             v-for="(n, i) in items"
             v-model="n.data"
             @del="items.splice(i, 1)"
     ></bullshit-form>
-    <div>
-        <br>
-        <button @click="addItem">addPass</button>
-    </div>
+
 </div>
+
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script>
     Vue.component('bullshit-form', {
         template: `
-<div class="form">
-  <div v-for="(v, k) in formData">
+<div class="form" >
+  <div   v-for="(v, k) in formData">
+    <font size="5" >
+      <br>
     {{ k }}
-    <br>
+
+    </font>
     <input v-model="formData[k]">
-    <br>
+
   </div>
   <br>
-  <button @click="$emit('del')">delete</button>
+  <button @click="$emit('del')">
+    <font size="5"  >
+    delete
+    </font>
+  </button>
 </div>`,
         props: [ 'value' ],
         computed: {
@@ -122,11 +147,11 @@
 
     });
 </script>
-<footer>
-    <section>
-        <p>Author</p>
-        <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
-    </section>
-</footer>
+<div class="footer">
+    <p>Author</p>
+    <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
+</div>
+
+
 </body>
 </html>

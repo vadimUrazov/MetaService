@@ -1,8 +1,16 @@
 <template>
   <v-app :theme="theme">
-    <v-app-bar app>
-      <v-btn flat nuxt to="/"> Home</v-btn>
-      <v-btn flat nuxt to="/paths"> Routes</v-btn>
+    <v-app-bar app >
+      <v-btn flat nuxt to="/" >
+        <font size="3"  >
+        Home
+        </font>
+      </v-btn>
+      <v-btn flat nuxt to="/paths" >
+        <font size="3"  >
+        Routes
+        </font>
+      </v-btn>
     </v-app-bar>
 
     <v-main class="img">
@@ -10,6 +18,7 @@
       <slot/>
       </v-container>
     </v-main>
+
   </v-app>
 
 </template>

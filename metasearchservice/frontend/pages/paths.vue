@@ -1,5 +1,4 @@
 <template>
-
   <NuxtLayout name="authenticated">
     <v-form v-model="valid">
       <v-container>
@@ -56,6 +55,7 @@
 
           <v-data-table :items="tripRes">
           </v-data-table>
+
         </v-row>
         </v-card>
       </v-container>
@@ -214,6 +214,7 @@ td {
   padding: 10px;
   padding-left: 20px;
 }
+
 .footer {
   background-color: #9aa9e3;
   position: fixed;

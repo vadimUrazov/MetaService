@@ -1,21 +1,39 @@
 * {
     font-family: monospace;
 }
-
+.usn{
+    background-color: whitesmoke;
+    margin: 10px;
+    padding: 10px;
+     width: 219px;
+    position: absolute;
+    left: 43%;
+}
 .form {
+    background-color: whitesmoke;
     margin: 10px;
     padding: 10px;
     border: 1px solid silver;
     display: inline-block;
 }
 
-footer{
-    background-color:  lightblue;
-    height: 200px;
-    width: 100%;
-
-
+.footer {
+    background-color: #9aa9e3;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    width: 99%;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fafaff;
 }
 .form button {
     margin-top: 10px;
+}
+.img{
+    background-image: url('../images/img.png');
+    height: 100%;
+    width: 100%;
+    background-size: cover;
 }
