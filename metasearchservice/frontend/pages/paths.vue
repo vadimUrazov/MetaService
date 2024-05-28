@@ -48,7 +48,7 @@
           <v-col
               cols="12"
               md="2">
-            <v-btn class="mr-4" color="blue" @click="getP"  v-slot:default>
+            <v-btn class="mr-4" color="blue" @click="getPath"  v-slot:default>
               Get
             </v-btn>
           </v-col>
@@ -112,54 +112,7 @@ export default {
     create() {
       this.$router.push('/login');
     },
-    async getP(){
-      this.tripRes=[
-
-        {
-          id:1,
-          fromStation: 'Omsk',
-          toStation: 'Moskow',
-          transport: 'BUS',
-          price: '200',
-          duration: '05:00',
-        },
-        {
-          fromStation: 'Moskow',
-          toStation: 'Anapa',
-          transport: 'BUS',
-          price: '200',
-          duration: '05:00'
-
-        },
-        {
-          id:2,
-          fromStation: 'Omsk',
-          toStation: 'Anapa',
-          transport: 'BUS',
-          price: '500',
-          duration: '08:00',
-        },
-        {
-          id:3,
-          fromStation: 'Omsk',
-          toStation: 'Samara',
-          transport: 'BUS',
-          price: '700',
-          duration: '08:00',
-        },
-        {
-          fromStation: 'Samara',
-          toStation: 'Anapa',
-          transport: 'Train',
-          price: '900',
-          duration: '02:00'
-        },
-
-      ];
-
-
-
-    },
+   
     async getPath() {
       var response = await $fetch('http://127.0.0.1:9080/graphql',
           {
