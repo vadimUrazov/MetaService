@@ -48,7 +48,7 @@
           <v-col
               cols="12"
               md="2">
-            <v-btn class="mr-4" color="blue" @click="getPath"  v-slot:default>
+            <v-btn class="mr-4" color="blue" @click="getP"  v-slot:default>
               Get
             </v-btn>
           </v-col>
@@ -59,9 +59,9 @@
         </v-row>
         </v-card>
       </v-container>
-      <br><br>
+
       <v-btn  class="mr-4" color="blue" height="50px" width="150px"   location="center"
-              @click="create()">
+              @click="create()" style="margin-top: 4%">
         Create Order
       </v-btn>
     </v-form>
@@ -112,7 +112,59 @@ export default {
     create() {
       this.$router.push('/login');
     },
-   
+    async getP(){
+      this.tripRes=[
+
+        {
+          id:1,
+          fromStation: 'Moskow',
+          toStation: 'Anapa',
+          transport: 'Train',
+          price: '3500',
+          duration: '04:00',
+        },
+        {
+          id:2,
+          fromStation: 'Moskow',
+          toStation: 'Kazan',
+          transport: 'SHIP',
+          price: '300',
+          duration: '08:00',
+        },
+        {
+          fromStation: 'Kazan',
+          toStation: 'Anapa',
+          transport: 'SHIP',
+          price: '300',
+          duration: '08:00',
+        },
+        {
+          id:3,
+          fromStation: 'Moskow',
+          toStation: 'Tomsk',
+          transport: 'BUS',
+          price: '200',
+          duration: '07:00',
+        },
+        {
+          fromStation: 'Tomsk',
+          toStation: 'Kazan',
+          transport: 'TRAIN',
+          price: '300',
+          duration: '04:00',
+        },
+        {
+          fromStation: 'Kazan',
+          toStation: 'Anapa',
+          transport: 'SHIP',
+          price: '300',
+          duration: '08:00',
+        },
+      ];
+
+
+
+    },
     async getPath() {
       var response = await $fetch('http://127.0.0.1:9080/graphql',
           {

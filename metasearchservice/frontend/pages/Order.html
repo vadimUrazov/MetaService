@@ -12,6 +12,7 @@
       <b>  Create Order </b>
     </font>
 </p>
+
 <div align="center" class="usn">
     <font size="5"  >
         <p>Username</p>
@@ -53,15 +54,14 @@
     </font>
 </button>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<div id="app">
+
+<div id="app" align="center" style="margin-top: 30%">
   <bullshit-form
           v-for="(n, i) in items"
           v-model="n.data"
           @del="items.splice(i, 1)"
   ></bullshit-form>
-  <div>
+  <div align="center">
     <button @click="addItem">
         <font size="5"  >
         addPass
@@ -69,8 +69,8 @@
     </button>
   </div>
 </div>
-<br>
-<div id="car">
+
+<div id="car" align="center" style="margin-top: 1%">
     <bullshit-form
             v-for="(n, i) in cargo"
             v-model="n.data"
@@ -208,8 +208,8 @@ if(type.equals("CARGO") && response.data.createOrder.id>0){
       }
   });
 </script>
-<br><br><br><br><br><br>
-<div class="footer">
+
+<div class="footer" style="margin-top: 10%">
     <section>
         <p>Author</p>
         <p>&copy Urazov Vadim, JAVA DEVELOPER</p>
