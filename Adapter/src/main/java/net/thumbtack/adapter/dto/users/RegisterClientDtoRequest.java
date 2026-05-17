@@ -29,4 +29,8 @@ public class RegisterClientDtoRequest {
     private String password;
     @NotEmpty
     private String typeCompany;
+
+    public RegisterClientDtoRequest(String surname, String name, String middlename, String email, String phone, String login, String password, String typeCompany) {
+       this(0,surname,name,middlename,email,phone,login,password,typeCompany);
+    }
 }
